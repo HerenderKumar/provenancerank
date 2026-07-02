@@ -40,3 +40,6 @@ submission.xlsx
 *.db-shm
 *.db-wal
 celerybeat-schedule.db
+
+# editor/agent local settings
+.claude/

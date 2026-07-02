@@ -1,0 +1,1 @@
+# keeps the artifacts/ directory in git; precompute.py fills it (all contents gitignored)

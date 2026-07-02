@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm --version)",
+      "Bash(npm install *)",
+      "Bash(nohup npm run dev)",
+      "Bash(echo \"launched pid $!\")",
+      "Bash(curl -s -o /dev/null -w \"HTTP %{http_code}\\\\n\" http://localhost:5173/)",
+      "Bash(grep -nA4 \"class LoginRequest\" api/schemas.py)",
+      "Bash(grep -nA12 \"class RankRequest\" api/schemas.py)",
+      "Bash(awk '{print $2}')",
+      "Bash(open http://localhost:5173)",
+      "Bash(grep -nA45 \"NUMERIC_FEATURE_COLUMNS\" core/constants.py)",
+      "Bash(awk '{print $2, $11, $12, $13, $14}')",
+      "Bash(lsof -iTCP -sTCP:LISTEN -P)",
+      "Bash(awk '{print $1, $9}')",
+      "Bash(sysctl -n kern.boottime)",
+      "Bash(ps -o pid,lstart,etime,command -p 23853,54520,26002,24500)",
+      "Bash(brew services *)",
+      "Bash(launchctl list *)",
+      "Bash(python3 -c \"import json;d=json.load\\(open\\('artifacts/jd_spec.json'\\)\\);print\\('keys:',list\\(d\\)[:12]\\);print\\('source:',d.get\\('source'\\)\\)\")",
+      "Bash(python3 -c \"import json;print\\('source:',json.load\\(open\\('artifacts_demo/jd_spec.json'\\)\\)['source']\\)\")"
+    ]
+  }
+}

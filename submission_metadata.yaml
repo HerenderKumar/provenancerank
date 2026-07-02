@@ -1,0 +1,79 @@
+# Redrob Hackathon — Submission Metadata
+# Fill the TODOs (team identity + repo/sandbox URLs) before uploading.
+
+team_name: "TODO-your-team-name"
+
+primary_contact:
+  name: "TODO Full Name"
+  email: "herender121112@gmail.com"
+  phone: "+91-TODO"
+
+team_members:
+  - name: "TODO Member 1"
+    email: "herender121112@gmail.com"
+    role: "ML Engineer"
+
+# ============================================================================
+# Code and reproducibility
+# ============================================================================
+github_repo: "https://github.com/TODO_USERNAME/provenancerank"
+sandbox_link: "https://huggingface.co/spaces/TODO_USERNAME/provenancerank"   # build the api/ layer for this
+
+reproduce_command: "python rank.py --candidates ./candidates.jsonl --out ./submission.csv"
+
+# ============================================================================
+# Compute environment
+# ============================================================================
+compute:
+  platform: "Linux x86_64, CPU only"
+  cpu_cores: 4
+  ram_gb: 16
+  python_version: "3.10"
+  os: "Ubuntu 22.04 LTS"
+  uses_gpu_for_inference: false
+  has_network_during_ranking: false
+  pre_computation_required: true
+  pre_computation_time_minutes: 30   # with sentence-transformers; ~1 min with the hashing fallback
+
+# ============================================================================
+# AI tools declaration (transparency only — not penalized)
+# ============================================================================
+ai_tools_used:
+  - "Claude"
+
+ai_usage_summary: |
+  Used Claude as a pair-programmer for architecture discussion, code review and
+  drafting. All design decisions — the two-phase split, the feature taxonomy
+  calibrated to the real skill vocabulary, the honeypot rules, the gate-vs-penalty
+  policy — were reviewed and validated by the team against the dataset. No
+  candidate data was sent to any hosted LLM; the ranking step makes zero network
+  calls. The optional Gemini JD-deconstruction step is offline-only and has a
+  hardcoded fallback, so the system runs with no API keys.
+
+# ============================================================================
+# Approach summary
+# ============================================================================
+methodology_summary: |
+  Two-phase system. Offline precompute builds a 40-feature materialised view per
+  candidate, sentence-transformer embeddings, a BM25 index, and an XGBoost fit
+  scorer trained on a proxy relevance label (no hire/reject labels exist). The
+  online ranker (no network, CPU, <5 min) reads those artifacts: vectorised hard
+  gates drop honeypots, all-consulting careers and keyword stuffers; hybrid
+  retrieval (BM25 + dense cosine, RRF-fused) plus the ML fit score plus a
+  behavioural composite combine into a final score. Notice period, location and
+  wrong-specialisation are heavy penalties, not hard gates, because the JD keeps
+  those candidates "in scope". The decisive signal is real retrieval/IR/ranking
+  experience at product companies, verified by on-platform assessment scores —
+  not raw AI-keyword count, which is the trap the dataset sets. Honeypots are
+  detected by impossible career arithmetic and forced to score 0; honeypot rate
+  in the top 100 is 0. Ranking 100K candidates takes a few seconds.
+
+# ============================================================================
+# Declarations
+# ============================================================================
+declarations:
+  read_submission_spec: true
+  code_is_original_work: true
+  no_collusion: true
+  honeypot_check_done: true
+  reproduction_tested: true

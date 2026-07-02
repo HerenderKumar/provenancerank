@@ -1,0 +1,47 @@
+[2026-06-26 23:23:22,032: INFO/MainProcess] beat: Starting...
+[2026-06-27 00:00:52,179: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 01:00:52,156: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 02:00:52,156: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 03:01:40,692: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 03:25:00,368: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-27 04:01:40,687: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 11:03:49,927: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 11:03:49,933: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-27 18:31:58,082: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 18:31:58,083: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-27 19:31:58,082: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 20:31:58,086: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 21:31:58,088: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 22:31:58,089: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-27 23:31:58,089: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 00:31:58,084: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-28 00:31:58,093: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 01:31:58,094: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 02:31:58,121: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 04:22:51,854: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 05:22:51,854: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 08:52:26,955: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 08:52:26,962: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-28 14:58:01,767: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 14:58:01,769: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-28 16:25:52,238: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 17:25:52,240: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 18:25:52,245: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 20:26:38,528: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 21:31:29,784: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-28 21:31:29,789: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-28 22:31:29,789: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-29 01:32:33,119: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-29 02:32:33,119: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+[2026-06-29 03:31:29,785: INFO/MainProcess] Scheduler: Sending due task sync-all-developers (ingestion.tasks.sync_all_developers)
+[2026-06-29 03:32:33,119: INFO/MainProcess] Scheduler: Sending due task scan-dead-letters (ingestion.tasks.scan_dead_letters)
+celery beat v5.6.3 (recovery) is starting.
+__    -    ... __   -        _
+LocalTime -> 2026-06-26 23:23:22
+Configuration ->
+    . broker -> redis://localhost:6379/1
+    . loader -> celery.loaders.app.AppLoader
+    . scheduler -> celery.beat.PersistentScheduler
+    . db -> /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/celerybeat-schedule
+    . logfile -> [stderr]@%INFO
+    . maxinterval -> 5.00 minutes (300s)

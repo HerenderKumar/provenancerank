@@ -1,0 +1,17 @@
+# Scrape both API replicas directly (not through nginx) so per-instance metrics
+# stay distinct.
+global:
+  scrape_interval: 10s
+  evaluation_interval: 10s
+
+scrape_configs:
+  - job_name: provenancerank-api
+    metrics_path: /metrics
+    static_configs:
+      - targets: ["api1:8000", "api2:8000"]
+        labels:
+          service: provenancerank-api
+
+  - job_name: prometheus
+    static_configs:
+      - targets: ["localhost:9090"]

@@ -1,0 +1,19 @@
+{
+  "candidates_sha256": "741f8cbba261ceaadee07aceb4784cfa3044534d2b04ab16e0158ff34957a657",
+  "jd_sha256": "3b594b091ad9a1fe",
+  "n_candidates": 1500,
+  "embedding_meta": {
+    "backend": "hashing",
+    "model": "hashing-384",
+    "dim": 384
+  },
+  "jd_source": "gemini",
+  "accuracy": {
+    "ranker_backend": "sklearn-histgbr",
+    "rerank_backend": "applied",
+    "tournament_n": 60,
+    "rerank_k": 300
+  },
+  "built_at": "2026-06-26T15:16:51Z",
+  "elapsed_sec": 166.9
+}

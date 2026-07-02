@@ -1,0 +1,98 @@
+# LITE stack — the same app, far fewer containers (6 instead of 14).
+#
+#   docker compose -f docker-compose.lite.yml up --build
+#   open http://localhost:3001          (recruiter UI)
+#   open http://localhost:8080/docs     (API)
+#
+# Dropped vs the full stack — and why nothing breaks (graceful degradation):
+#   * neo4j                -> graph uses the in-memory store (NEO4J_ENABLED=false);
+#                             evidence graph + hybrid RAG still work, just not
+#                             persisted across restarts.
+#   * worker-* + beat      -> "connect a developer" ingestion already runs inside
+#                             the API; tasks run inline (CELERY_TASK_ALWAYS_EAGER).
+#                             Only the auto-scheduled re-sync is gone.
+#   * prometheus/grafana/jaeger -> the API still emits /metrics, logs, traces;
+#                             you're just not running the dashboards.
+# The graded submission (precompute -> rank -> submission.csv) is unaffected.
+
+x-api-env: &api-env
+  ENVIRONMENT: production
+  DATABASE_URL: postgresql+asyncpg://pruser:prpass@postgres:5432/provenancerank
+  REDIS_URL: redis://redis:6379/0
+  ARTIFACTS_DIR: /app/artifacts
+  JD_FILE: /app/data/job_description.txt
+  JWT_SECRET: ${JWT_SECRET:-change-me-to-a-32char-random-secret-string}
+  BOOTSTRAP_ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@provenancerank.local}
+  BOOTSTRAP_ADMIN_PASSWORD: ${ADMIN_PASSWORD:-changeme-admin}
+  CORS_ORIGINS: http://localhost:5173,http://localhost:8080,http://localhost:3001
+  GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+  # lite differences:
+  NEO4J_ENABLED: "false"            # in-memory graph, no neo4j container
+  OTEL_ENABLED: "false"             # no jaeger to export to
+  CELERY_TASK_ALWAYS_EAGER: "true"  # no workers; run any task inline
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: pruser
+      POSTGRES_PASSWORD: prpass
+      POSTGRES_DB: provenancerank
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pruser -d provenancerank"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # one-shot: build artifacts into the shared volume, then exit
+  precompute:
+    build: .
+    command: ["python", "precompute.py", "--candidates", "/app/candidates.jsonl",
+              "--jd", "/app/data/job_description.txt", "--no-st", "--bm25-backend", "inverted",
+              "--resume"]
+    volumes:
+      - artifacts:/app/artifacts
+      - ./candidates.jsonl:/app/candidates.jsonl:ro
+    restart: "no"
+
+  # single API replica (named api1 so the lite nginx upstream resolves)
+  api1:
+    build: .
+    environment: *api-env
+    volumes: ["artifacts:/app/artifacts:ro"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      precompute: { condition: service_completed_successfully }
+    expose: ["8000"]
+    restart: unless-stopped
+
+  gateway:
+    image: nginx:1.27-alpine
+    volumes: ["./deploy/nginx/nginx.lite.conf:/etc/nginx/nginx.conf:ro"]
+    ports: ["8080:80"]
+    depends_on: [api1]
+    restart: unless-stopped
+
+  frontend:
+    build: ./frontend
+    ports: ["3001:80"]
+    depends_on: [gateway]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  artifacts:

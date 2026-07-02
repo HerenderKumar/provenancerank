@@ -1,0 +1,225 @@
+{
+  "hard_gates": [
+    {
+      "description": "Honeypot / impossible profile (ground-truth tier 0)",
+      "feature_key": "is_honeypot",
+      "operator": "bool",
+      "value": true
+    },
+    {
+      "description": "Entire career at pure consulting/services firms, no product co",
+      "feature_key": "all_consulting_career",
+      "operator": "bool",
+      "value": true
+    },
+    {
+      "description": "AI keyword stuffer on a non-technical career (framework trap)",
+      "feature_key": "keyword_stuffer_flag",
+      "operator": "bool",
+      "value": true
+    },
+    {
+      "description": "Inactive & unresponsive (>180d inactive AND response_rate<0.15)",
+      "feature_key": "inactive_unresponsive",
+      "operator": "bool",
+      "value": true
+    }
+  ],
+  "weighted_requirements": [
+    {
+      "description": "Production embeddings-based retrieval deployed to users",
+      "weight": 1.0,
+      "skill_tags": [
+        "embeddings",
+        "sentence transformers",
+        "retrieval",
+        "vector search",
+        "semantic search"
+      ]
+    },
+    {
+      "description": "Vector DB / hybrid search operational experience",
+      "weight": 1.0,
+      "skill_tags": [
+        "pinecone",
+        "qdrant",
+        "weaviate",
+        "milvus",
+        "faiss",
+        "elasticsearch",
+        "opensearch",
+        "hybrid search",
+        "bm25"
+      ]
+    },
+    {
+      "description": "Evaluation frameworks for ranking (NDCG/MRR/MAP, A/B)",
+      "weight": 0.9,
+      "skill_tags": [
+        "ndcg",
+        "mrr",
+        "map",
+        "learning to rank",
+        "a/b testing"
+      ]
+    },
+    {
+      "description": "Strong Python / code quality",
+      "weight": 0.6,
+      "skill_tags": [
+        "python"
+      ]
+    },
+    {
+      "description": "Prior HR-tech / recruiting / marketplace experience",
+      "weight": 0.9,
+      "skill_tags": [
+        "recommendation systems",
+        "search relevance"
+      ]
+    },
+    {
+      "description": "LLM fine-tuning (LoRA/QLoRA/PEFT)",
+      "weight": 0.8,
+      "skill_tags": [
+        "lora",
+        "qlora",
+        "peft",
+        "fine-tuning llms"
+      ]
+    },
+    {
+      "description": "Learning-to-rank (XGBoost/neural LTR)",
+      "weight": 0.7,
+      "skill_tags": [
+        "learning to rank",
+        "xgboost",
+        "lightgbm",
+        "ltr"
+      ]
+    },
+    {
+      "description": "Distributed systems / large-scale inference",
+      "weight": 0.6,
+      "skill_tags": [
+        "distributed systems",
+        "mlops",
+        "model serving"
+      ]
+    },
+    {
+      "description": "Open-source AI/ML contributions",
+      "weight": 0.7,
+      "skill_tags": [
+        "pytorch",
+        "transformers",
+        "hugging face transformers"
+      ]
+    }
+  ],
+  "latent_requirements": [
+    "Ability to thrive in a rapidly changing, early-stage (Series A) startup environment, where the role's scope evolves frequently.",
+    "Comfort with ambiguity and a willingness to define problems and solutions from scratch.",
+    "Strong bias towards shipping functional, even if imperfect, solutions quickly to gather user feedback.",
+    "Deep technical expertise in modern ML systems (embeddings, retrieval, ranking, LLMs, fine-tuning) combined with a scrappy product-engineering mindset.",
+    "Ownership of the entire 'intelligence layer' of the product, from architecture to evaluation.",
+    "Proactive identification and prioritization of high-leverage technical improvements.",
+    "Proficiency in designing and implementing robust evaluation frameworks (offline benchmarks, A/B testing, feedback loops).",
+    "Experience beyond basic LLM API usage, demonstrating understanding of pre-LLM era retrieval and ranking fundamentals.",
+    "Ability to mentor and grow a new team.",
+    "Excellent written communication skills, accustomed to async-first work.",
+    "Comfort with open debate and rapid decision-making.",
+    "Willingness to commit to the company for 3+ years.",
+    "Proven ability to ship end-to-end ranking, search, or recommendation systems at scale in a product company setting.",
+    "Strong, defensible opinions on ML system design and evaluation, backed by practical experience.",
+    "Active engagement in the job market or demonstrable availability for new roles.",
+    "Practical, production-focused experience with ML, not solely academic or research-oriented.",
+    "Strong Python skills and attention to code quality.",
+    "Willingness to relocate to Pune/Noida or be from Tier-1 Indian cities, with a flexible hybrid cadence and quarterly travel.",
+    "Preferably a notice period under 30 days."
+  ],
+  "jd_core_skills": [
+    "bentoml",
+    "bm25",
+    "data science",
+    "deep learning",
+    "elasticsearch",
+    "embeddings",
+    "faiss",
+    "feature engineering",
+    "fine-tuning",
+    "fine-tuning llms",
+    "haystack",
+    "hugging face transformers",
+    "hybrid search",
+    "information retrieval",
+    "kubeflow",
+    "langchain",
+    "large language models",
+    "learning to rank",
+    "lightgbm",
+    "llamaindex",
+    "llms",
+    "lora",
+    "ltr",
+    "machine learning",
+    "milvus",
+    "mlflow",
+    "mlops",
+    "model serving",
+    "natural language processing",
+    "nlp",
+    "opensearch",
+    "peft",
+    "pgvector",
+    "pinecone",
+    "prompt engineering",
+    "python",
+    "pytorch",
+    "qdrant",
+    "qlora",
+    "rag",
+    "ranking",
+    "recommendation",
+    "recommendation systems",
+    "retrieval",
+    "scikit-learn",
+    "search relevance",
+    "semantic search",
+    "sentence transformers",
+    "statistical modeling",
+    "tensorflow",
+    "transformers",
+    "vector search",
+    "weaviate",
+    "weights & biases",
+    "xgboost"
+  ],
+  "anti_patterns": [
+    "Seeking a well-scoped role with a defined career ladder (characteristic of large tech companies like Google/Meta).",
+    "Desire to 'just code' without engaging with product strategy, recruiter workflows, or evaluation frameworks.",
+    "Career primarily in pure research environments without production deployment experience.",
+    "AI experience limited to recent (under 12 months) LangChain/OpenAI API projects without foundational ML production experience.",
+    "Senior engineers who haven't actively written production code in the last 18 months due to architecture/tech lead roles.",
+    "Career trajectory focused on optimizing for titles ('title-chasers') by frequently switching companies (every ~1.5 years).",
+    "Individuals whose primary focus is on new frameworks rather than underlying system design ('framework enthusiasts').",
+    "Exclusive career experience at consulting firms (TCS, Infosys, Wipro, Accenture, Cognizant, Capgemini) without prior product company exposure.",
+    "Primary expertise in computer vision, speech, or robotics without significant NLP/IR background.",
+    "Lack of external validation (papers, talks, open-source contributions) for work done entirely on closed-source proprietary systems for 5+ years.",
+    "Need for a stable, mature codebase to be productive.",
+    "Discomfort with written communication, open disagreement, or fast-paced, sometimes unstable environments.",
+    "Candidates who are passively looking or disengaged (e.g., inactive on platform, low response rates)."
+  ],
+  "boilerplate_removed": [
+    "Rejection of the idea of a fixed 'checklist' JD that doesn't evolve.",
+    "Explicitly stating that the role definition will change every six months.",
+    "Redefining 'experience required' as a judgment range rather than a strict number of years.",
+    "Avoiding the typical JD practice of listing 20 skills and expecting candidates to have all.",
+    "Including a dedicated 'Things we explicitly do NOT want' section, which is often omitted in JDs.",
+    "Warning against superficial keyword matching (e.g., 'AI keywords') as a substitute for contextual understanding of a candidate's experience.",
+    "Explicitly stating that a perfect skills list does not guarantee fit if the background is irrelevant (e.g., Marketing Manager with AI keywords).",
+    "Emphasizing that behavioral signals (e.g., activity, response rate) are crucial and can down-weight otherwise perfect-on-paper candidates.",
+    "Directly addressing the gap between what a JD 'says' and what it 'means'."
+  ],
+  "source": "gemini"
+}

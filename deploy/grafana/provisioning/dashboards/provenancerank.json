@@ -1,0 +1,40 @@
+{
+  "title": "ProvenanceRank — API & Ranking",
+  "uid": "provenancerank",
+  "schemaVersion": 39,
+  "version": 1,
+  "refresh": "10s",
+  "time": { "from": "now-1h", "to": "now" },
+  "panels": [
+    {
+      "type": "timeseries", "title": "HTTP request rate (req/s)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 0 },
+      "targets": [{ "expr": "sum(rate(http_requests_total[1m])) by (status)", "legendFormat": "{{status}}" }]
+    },
+    {
+      "type": "timeseries", "title": "HTTP latency p95 (s)",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 0 },
+      "targets": [{ "expr": "histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket[5m])) by (le, path))", "legendFormat": "{{path}}" }]
+    },
+    {
+      "type": "timeseries", "title": "Ranking latency p95 (s)",
+      "gridPos": { "h": 8, "w": 12, "x": 0, "y": 8 },
+      "targets": [{ "expr": "histogram_quantile(0.95, sum(rate(ranking_latency_seconds_bucket[5m])) by (le))", "legendFormat": "p95" }]
+    },
+    {
+      "type": "timeseries", "title": "Ranking jobs by source / cache",
+      "gridPos": { "h": 8, "w": 12, "x": 12, "y": 8 },
+      "targets": [{ "expr": "sum(rate(ranking_requests_total[5m])) by (source, cache_hit)", "legendFormat": "{{source}} cache={{cache_hit}}" }]
+    },
+    {
+      "type": "stat", "title": "Honeypots detected (total)",
+      "gridPos": { "h": 6, "w": 8, "x": 0, "y": 16 },
+      "targets": [{ "expr": "honeypot_detected_total" }]
+    },
+    {
+      "type": "timeseries", "title": "Gate exclusions by reason",
+      "gridPos": { "h": 6, "w": 16, "x": 8, "y": 16 },
+      "targets": [{ "expr": "sum(rate(gate_filter_exclusions_total[5m])) by (reason)", "legendFormat": "{{reason}}" }]
+    }
+  ]
+}

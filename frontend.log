@@ -1,0 +1,10 @@
+
+> provenancerank-ui@1.0.0 dev
+> vite
+
+
+  VITE v5.4.21  ready in 498 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+2:00:58 am [vite] hmr update /src/pages/NaturalLanguageSearch.tsx, /src/index.css

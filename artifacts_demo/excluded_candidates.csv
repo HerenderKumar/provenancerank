@@ -1,0 +1,606 @@
+candidate_id,current_title,gate_failures
+CAND_0003582,Mobile Developer,honeypot
+CAND_0016000,Full Stack Developer,honeypot
+CAND_0033817,HR Manager,honeypot
+CAND_0033972,QA Engineer,honeypot
+CAND_0036839,Operations Manager,honeypot|all_consulting_career
+CAND_0040075,Marketing Manager,honeypot|inactive_unresponsive
+CAND_0042245,Business Analyst,honeypot
+CAND_0042453,Marketing Manager,honeypot
+CAND_0046649,Business Analyst,honeypot
+CAND_0046689,Business Analyst,honeypot
+CAND_0048740,HR Manager,honeypot
+CAND_0055792,.NET Developer,honeypot
+CAND_0056983,Accountant,honeypot
+CAND_0060642,Frontend Engineer,honeypot|all_consulting_career
+CAND_0061722,Software Engineer,honeypot|all_consulting_career
+CAND_0063888,.NET Developer,honeypot
+CAND_0065096,Civil Engineer,honeypot
+CAND_0070429,Software Engineer,honeypot
+CAND_0072379,Content Writer,honeypot
+CAND_0073853,Operations Manager,honeypot
+CAND_0095140,Backend Engineer,honeypot
+CAND_0095317,HR Manager,honeypot
+CAND_0095480,.NET Developer,honeypot
+CAND_0000021,Project Manager,keyword_stuffer
+CAND_0000074,Operations Manager,keyword_stuffer
+CAND_0000083,Graphic Designer,keyword_stuffer
+CAND_0000097,Mechanical Engineer,keyword_stuffer
+CAND_0000120,Graphic Designer,keyword_stuffer
+CAND_0000121,Customer Support,keyword_stuffer
+CAND_0000133,Graphic Designer,keyword_stuffer
+CAND_0000201,Marketing Manager,keyword_stuffer
+CAND_0000203,Operations Manager,keyword_stuffer
+CAND_0000211,Operations Manager,keyword_stuffer
+CAND_0000212,Customer Support,keyword_stuffer|inactive_unresponsive
+CAND_0000220,Marketing Manager,keyword_stuffer
+CAND_0000312,Content Writer,keyword_stuffer
+CAND_0000322,HR Manager,keyword_stuffer
+CAND_0000330,Civil Engineer,keyword_stuffer
+CAND_0000361,HR Manager,keyword_stuffer
+CAND_0000388,HR Manager,all_consulting_career|keyword_stuffer
+CAND_0000389,Operations Manager,keyword_stuffer|inactive_unresponsive
+CAND_0000410,Graphic Designer,keyword_stuffer
+CAND_0000421,Graphic Designer,keyword_stuffer
+CAND_0000498,Content Writer,keyword_stuffer
+CAND_0000505,Accountant,keyword_stuffer
+CAND_0000552,Accountant,keyword_stuffer
+CAND_0000576,Content Writer,keyword_stuffer
+CAND_0000581,Graphic Designer,keyword_stuffer
+CAND_0000664,Accountant,keyword_stuffer
+CAND_0000671,Project Manager,all_consulting_career|keyword_stuffer
+CAND_0000683,Graphic Designer,keyword_stuffer
+CAND_0000722,HR Manager,keyword_stuffer
+CAND_0000738,Graphic Designer,keyword_stuffer
+CAND_0000739,Civil Engineer,keyword_stuffer
+CAND_0000770,Mechanical Engineer,keyword_stuffer
+CAND_0000803,Marketing Manager,keyword_stuffer
+CAND_0000815,Project Manager,keyword_stuffer
+CAND_0000821,Mechanical Engineer,keyword_stuffer
+CAND_0000828,Project Manager,keyword_stuffer
+CAND_0000839,Mechanical Engineer,keyword_stuffer
+CAND_0000845,Project Manager,keyword_stuffer
+CAND_0000847,HR Manager,keyword_stuffer
+CAND_0000862,Content Writer,keyword_stuffer
+CAND_0000875,Accountant,keyword_stuffer
+CAND_0000883,Content Writer,keyword_stuffer
+CAND_0000906,Marketing Manager,keyword_stuffer
+CAND_0000915,Mechanical Engineer,keyword_stuffer
+CAND_0000921,Sales Executive,all_consulting_career|keyword_stuffer
+CAND_0000927,Civil Engineer,keyword_stuffer
+CAND_0000932,Operations Manager,keyword_stuffer
+CAND_0000967,HR Manager,keyword_stuffer
+CAND_0000987,Sales Executive,keyword_stuffer
+CAND_0000989,Accountant,keyword_stuffer
+CAND_0001009,Customer Support,all_consulting_career|keyword_stuffer
+CAND_0001088,Project Manager,keyword_stuffer
+CAND_0001095,Mechanical Engineer,keyword_stuffer
+CAND_0001109,Content Writer,keyword_stuffer
+CAND_0001147,Sales Executive,keyword_stuffer
+CAND_0001152,Project Manager,keyword_stuffer
+CAND_0001204,Accountant,keyword_stuffer
+CAND_0001206,Civil Engineer,keyword_stuffer
+CAND_0001238,Content Writer,keyword_stuffer
+CAND_0001271,Graphic Designer,keyword_stuffer
+CAND_0001319,Customer Support,keyword_stuffer
+CAND_0001347,Customer Support,keyword_stuffer
+CAND_0001363,Sales Executive,keyword_stuffer
+CAND_0001380,Mechanical Engineer,keyword_stuffer
+CAND_0001403,Content Writer,keyword_stuffer
+CAND_0001419,HR Manager,keyword_stuffer
+CAND_0001433,Mechanical Engineer,keyword_stuffer|inactive_unresponsive
+CAND_0001450,HR Manager,keyword_stuffer
+CAND_0001481,Operations Manager,keyword_stuffer
+CAND_0001508,Marketing Manager,keyword_stuffer
+CAND_0001511,Accountant,keyword_stuffer
+CAND_0001535,Operations Manager,all_consulting_career|keyword_stuffer
+CAND_0001537,Project Manager,keyword_stuffer
+CAND_0001544,Mechanical Engineer,keyword_stuffer
+CAND_0001632,Graphic Designer,keyword_stuffer
+CAND_0001643,Graphic Designer,keyword_stuffer
+CAND_0001645,Customer Support,keyword_stuffer
+CAND_0001673,HR Manager,keyword_stuffer|inactive_unresponsive
+CAND_0001694,Project Manager,keyword_stuffer
+CAND_0001723,Operations Manager,keyword_stuffer
+CAND_0001776,Graphic Designer,keyword_stuffer
+CAND_0001820,Civil Engineer,keyword_stuffer
+CAND_0001837,Marketing Manager,keyword_stuffer
+CAND_0001842,Sales Executive,keyword_stuffer
+CAND_0001845,Customer Support,keyword_stuffer
+CAND_0001871,Marketing Manager,keyword_stuffer
+CAND_0001874,Accountant,keyword_stuffer
+CAND_0001896,Sales Executive,all_consulting_career|keyword_stuffer
+CAND_0001921,Marketing Manager,keyword_stuffer
+CAND_0001942,Content Writer,keyword_stuffer
+CAND_0001962,Accountant,keyword_stuffer
+CAND_0001980,Operations Manager,keyword_stuffer
+CAND_0001999,Marketing Manager,keyword_stuffer
+CAND_0002005,Sales Executive,keyword_stuffer
+CAND_0002040,HR Manager,all_consulting_career|keyword_stuffer
+CAND_0002058,Content Writer,keyword_stuffer
+CAND_0002077,Content Writer,keyword_stuffer
+CAND_0002094,Sales Executive,keyword_stuffer
+CAND_0002102,Marketing Manager,keyword_stuffer
+CAND_0002110,Accountant,keyword_stuffer
+CAND_0002112,Customer Support,keyword_stuffer
+CAND_0002113,Civil Engineer,keyword_stuffer
+CAND_0002126,Civil Engineer,keyword_stuffer
+CAND_0002127,Accountant,keyword_stuffer
+CAND_0002140,Sales Executive,all_consulting_career|keyword_stuffer|inactive_unresponsive
+CAND_0002177,Sales Executive,keyword_stuffer
+CAND_0002190,Customer Support,keyword_stuffer
+CAND_0002220,Content Writer,keyword_stuffer|inactive_unresponsive
+CAND_0002243,Graphic Designer,keyword_stuffer
+CAND_0002336,Accountant,keyword_stuffer
+CAND_0002346,HR Manager,all_consulting_career|keyword_stuffer
+CAND_0002356,Project Manager,keyword_stuffer
+CAND_0002393,Graphic Designer,keyword_stuffer
+CAND_0002441,Sales Executive,keyword_stuffer
+CAND_0002451,Civil Engineer,keyword_stuffer
+CAND_0002463,Graphic Designer,keyword_stuffer
+CAND_0002477,Project Manager,keyword_stuffer
+CAND_0002492,Civil Engineer,keyword_stuffer
+CAND_0002525,Content Writer,keyword_stuffer
+CAND_0002534,HR Manager,keyword_stuffer
+CAND_0002541,Accountant,keyword_stuffer
+CAND_0002545,Content Writer,keyword_stuffer
+CAND_0002557,Mechanical Engineer,keyword_stuffer
+CAND_0002563,Marketing Manager,keyword_stuffer
+CAND_0002572,Content Writer,all_consulting_career|keyword_stuffer
+CAND_0002590,Graphic Designer,keyword_stuffer
+CAND_0002601,HR Manager,keyword_stuffer
+CAND_0002623,HR Manager,keyword_stuffer
+CAND_0002631,Operations Manager,keyword_stuffer
+CAND_0002638,Customer Support,keyword_stuffer
+CAND_0002657,Sales Executive,keyword_stuffer
+CAND_0002662,Operations Manager,all_consulting_career|keyword_stuffer
+CAND_0002671,Operations Manager,keyword_stuffer
+CAND_0002696,Mechanical Engineer,keyword_stuffer
+CAND_0002697,Customer Support,keyword_stuffer
+CAND_0002751,Accountant,all_consulting_career|keyword_stuffer
+CAND_0002752,Project Manager,all_consulting_career|keyword_stuffer
+CAND_0002763,Marketing Manager,keyword_stuffer
+CAND_0002800,Graphic Designer,keyword_stuffer
+CAND_0002801,Sales Executive,keyword_stuffer
+CAND_0002813,Civil Engineer,keyword_stuffer
+CAND_0002825,Sales Executive,keyword_stuffer
+CAND_0002830,Customer Support,keyword_stuffer
+CAND_0002839,Accountant,keyword_stuffer
+CAND_0002881,Content Writer,keyword_stuffer
+CAND_0002950,Graphic Designer,keyword_stuffer
+CAND_0002963,Civil Engineer,keyword_stuffer
+CAND_0002980,Graphic Designer,all_consulting_career|keyword_stuffer
+CAND_0002983,Content Writer,keyword_stuffer
+CAND_0002994,Project Manager,keyword_stuffer
+CAND_0003004,Accountant,keyword_stuffer
+CAND_0003029,Content Writer,keyword_stuffer
+CAND_0003057,Accountant,keyword_stuffer
+CAND_0003067,HR Manager,all_consulting_career|keyword_stuffer
+CAND_0003117,Civil Engineer,keyword_stuffer
+CAND_0003119,Mechanical Engineer,keyword_stuffer
+CAND_0003183,Operations Manager,keyword_stuffer
+CAND_0003189,Project Manager,keyword_stuffer|inactive_unresponsive
+CAND_0003222,Operations Manager,keyword_stuffer
+CAND_0003234,Marketing Manager,keyword_stuffer
+CAND_0003278,Customer Support,all_consulting_career|keyword_stuffer
+CAND_0003284,Customer Support,all_consulting_career|keyword_stuffer
+CAND_0003291,Accountant,keyword_stuffer
+CAND_0003310,Graphic Designer,keyword_stuffer
+CAND_0003317,Accountant,keyword_stuffer
+CAND_0003324,Mechanical Engineer,keyword_stuffer
+CAND_0003337,Content Writer,keyword_stuffer
+CAND_0003395,Graphic Designer,keyword_stuffer
+CAND_0003397,Mechanical Engineer,keyword_stuffer|inactive_unresponsive
+CAND_0003408,Accountant,keyword_stuffer
+CAND_0003461,Marketing Manager,keyword_stuffer
+CAND_0003501,Accountant,keyword_stuffer
+CAND_0003505,Accountant,keyword_stuffer
+CAND_0003510,Graphic Designer,keyword_stuffer
+CAND_0003515,Mechanical Engineer,keyword_stuffer
+CAND_0003612,Mechanical Engineer,keyword_stuffer
+CAND_0003620,Customer Support,keyword_stuffer
+CAND_0003625,Civil Engineer,keyword_stuffer
+CAND_0003635,Customer Support,keyword_stuffer
+CAND_0003644,Marketing Manager,keyword_stuffer
+CAND_0003660,Civil Engineer,keyword_stuffer
+CAND_0003676,Mechanical Engineer,keyword_stuffer
+CAND_0003687,Graphic Designer,all_consulting_career|keyword_stuffer
+CAND_0003688,HR Manager,keyword_stuffer
+CAND_0003732,Operations Manager,keyword_stuffer
+CAND_0003741,Marketing Manager,keyword_stuffer|inactive_unresponsive
+CAND_0003770,Content Writer,keyword_stuffer
+CAND_0003773,Project Manager,keyword_stuffer
+CAND_0003805,HR Manager,keyword_stuffer
+CAND_0003824,Sales Executive,keyword_stuffer
+CAND_0003840,Customer Support,keyword_stuffer
+CAND_0003871,Customer Support,keyword_stuffer
+CAND_0003881,Content Writer,keyword_stuffer
+CAND_0003895,Accountant,keyword_stuffer
+CAND_0003903,HR Manager,keyword_stuffer
+CAND_0003908,Operations Manager,keyword_stuffer
+CAND_0003937,Operations Manager,keyword_stuffer
+CAND_0003962,HR Manager,keyword_stuffer|inactive_unresponsive
+CAND_0004001,Civil Engineer,keyword_stuffer
+CAND_0004005,Civil Engineer,keyword_stuffer
+CAND_0004006,Customer Support,keyword_stuffer
+CAND_0004008,Civil Engineer,keyword_stuffer
+CAND_0004051,Marketing Manager,keyword_stuffer
+CAND_0004098,Accountant,keyword_stuffer
+CAND_0004123,Civil Engineer,keyword_stuffer
+CAND_0004159,Sales Executive,keyword_stuffer
+CAND_0004167,Operations Manager,keyword_stuffer
+CAND_0004183,Operations Manager,all_consulting_career|keyword_stuffer
+CAND_0004193,HR Manager,keyword_stuffer
+CAND_0004196,HR Manager,keyword_stuffer
+CAND_0004207,Content Writer,keyword_stuffer
+CAND_0004220,Civil Engineer,keyword_stuffer
+CAND_0004236,Operations Manager,keyword_stuffer
+CAND_0004320,Sales Executive,keyword_stuffer
+CAND_0004330,Mechanical Engineer,keyword_stuffer
+CAND_0004344,Customer Support,keyword_stuffer
+CAND_0004361,Mechanical Engineer,keyword_stuffer
+CAND_0004363,Sales Executive,keyword_stuffer
+CAND_0004393,Sales Executive,keyword_stuffer
+CAND_0004443,Graphic Designer,keyword_stuffer
+CAND_0004449,Sales Executive,keyword_stuffer
+CAND_0004464,Customer Support,keyword_stuffer
+CAND_0004471,Operations Manager,keyword_stuffer|inactive_unresponsive
+CAND_0004477,Customer Support,keyword_stuffer
+CAND_0004500,Accountant,keyword_stuffer
+CAND_0004524,Graphic Designer,all_consulting_career|keyword_stuffer
+CAND_0004548,Accountant,keyword_stuffer
+CAND_0004567,Project Manager,keyword_stuffer
+CAND_0004569,Mechanical Engineer,keyword_stuffer
+CAND_0004570,Marketing Manager,keyword_stuffer
+CAND_0004601,Content Writer,keyword_stuffer
+CAND_0004613,Content Writer,keyword_stuffer
+CAND_0004641,Accountant,keyword_stuffer
+CAND_0004643,Accountant,keyword_stuffer
+CAND_0004659,Civil Engineer,keyword_stuffer
+CAND_0004673,Customer Support,keyword_stuffer
+CAND_0004733,Sales Executive,keyword_stuffer
+CAND_0004743,HR Manager,keyword_stuffer
+CAND_0004761,Content Writer,keyword_stuffer
+CAND_0004773,Civil Engineer,keyword_stuffer
+CAND_0004788,Sales Executive,keyword_stuffer
+CAND_0004799,Customer Support,keyword_stuffer
+CAND_0004800,Customer Support,keyword_stuffer
+CAND_0004820,Accountant,keyword_stuffer
+CAND_0004843,Graphic Designer,keyword_stuffer
+CAND_0004911,Marketing Manager,keyword_stuffer
+CAND_0004920,Graphic Designer,keyword_stuffer
+CAND_0004946,Customer Support,keyword_stuffer
+CAND_0004965,Customer Support,keyword_stuffer
+CAND_0004978,Operations Manager,keyword_stuffer
+CAND_0000256,Java Developer,all_consulting_career
+CAND_0000536,DevOps Engineer,all_consulting_career
+CAND_0000628,Analytics Engineer,all_consulting_career
+CAND_0000712,Data Analyst,all_consulting_career
+CAND_0000782,Software Engineer,all_consulting_career
+CAND_0000805,Cloud Engineer,all_consulting_career
+CAND_0000898,DevOps Engineer,all_consulting_career
+CAND_0001035,Software Engineer,all_consulting_career
+CAND_0001046,Data Analyst,all_consulting_career
+CAND_0001133,Software Engineer,all_consulting_career
+CAND_0001277,Backend Engineer,all_consulting_career
+CAND_0001389,Senior Software Engineer (ML),all_consulting_career
+CAND_0001407,QA Engineer,all_consulting_career
+CAND_0001873,Mobile Developer,all_consulting_career
+CAND_0001957,Analytics Engineer,all_consulting_career
+CAND_0002092,Software Engineer,all_consulting_career
+CAND_0002179,Full Stack Developer,all_consulting_career
+CAND_0002221,Java Developer,all_consulting_career
+CAND_0002259,Analytics Engineer,all_consulting_career
+CAND_0002390,.NET Developer,all_consulting_career
+CAND_0002430,Mobile Developer,inactive_unresponsive
+CAND_0002517,Cloud Engineer,all_consulting_career
+CAND_0002574,QA Engineer,all_consulting_career
+CAND_0003151,Software Engineer,all_consulting_career
+CAND_0003233,Senior Data Engineer,all_consulting_career
+CAND_0003356,.NET Developer,all_consulting_career
+CAND_0003446,Java Developer,all_consulting_career
+CAND_0003633,.NET Developer,all_consulting_career
+CAND_0003766,Software Engineer,all_consulting_career
+CAND_0003836,Frontend Engineer,all_consulting_career
+CAND_0003988,QA Engineer,all_consulting_career
+CAND_0004626,Software Engineer,inactive_unresponsive
+CAND_0004853,Data Analyst,all_consulting_career
+CAND_0004877,Data Engineer,all_consulting_career
+CAND_0004887,Full Stack Developer,all_consulting_career
+CAND_0004944,DevOps Engineer,all_consulting_career
+CAND_0005272,Data Engineer,all_consulting_career
+CAND_0005458,Business Analyst,all_consulting_career
+CAND_0005675,Data Analyst,all_consulting_career
+CAND_0005706,Senior Software Engineer,all_consulting_career
+CAND_0005786,Data Engineer,all_consulting_career
+CAND_0006135,Senior Data Engineer,all_consulting_career
+CAND_0006182,Software Engineer,all_consulting_career
+CAND_0006625,Analytics Engineer,all_consulting_career
+CAND_0006704,Full Stack Developer,all_consulting_career
+CAND_0006918,Full Stack Developer,all_consulting_career
+CAND_0006923,Cloud Engineer,all_consulting_career
+CAND_0007093,DevOps Engineer,all_consulting_career
+CAND_0007132,.NET Developer,all_consulting_career
+CAND_0000003,Customer Support,all_consulting_career
+CAND_0000008,Operations Manager,all_consulting_career
+CAND_0000012,Operations Manager,all_consulting_career
+CAND_0000024,HR Manager,all_consulting_career
+CAND_0000027,DevOps Engineer,all_consulting_career
+CAND_0000028,Operations Manager,all_consulting_career
+CAND_0000047,Project Manager,all_consulting_career
+CAND_0000056,Frontend Engineer,all_consulting_career
+CAND_0000059,Frontend Engineer,all_consulting_career
+CAND_0000062,DevOps Engineer,all_consulting_career
+CAND_0000068,Java Developer,all_consulting_career
+CAND_0000080,Graphic Designer,all_consulting_career
+CAND_0000086,Mechanical Engineer,all_consulting_career
+CAND_0000087,Full Stack Developer,all_consulting_career
+CAND_0000091,Frontend Engineer,all_consulting_career
+CAND_0000098,Business Analyst,all_consulting_career
+CAND_0000113,.NET Developer,all_consulting_career
+CAND_0000126,Mechanical Engineer,all_consulting_career
+CAND_0000142,Mobile Developer,all_consulting_career
+CAND_0000158,Frontend Engineer,all_consulting_career
+CAND_0000164,Content Writer,all_consulting_career
+CAND_0000174,Marketing Manager,all_consulting_career
+CAND_0000175,Project Manager,all_consulting_career
+CAND_0000179,.NET Developer,all_consulting_career
+CAND_0000182,QA Engineer,all_consulting_career
+CAND_0000196,QA Engineer,all_consulting_career
+CAND_0000199,Mechanical Engineer,all_consulting_career
+CAND_0000213,Cloud Engineer,all_consulting_career
+CAND_0000223,Java Developer,all_consulting_career
+CAND_0000234,Frontend Engineer,all_consulting_career
+CAND_0000245,Project Manager,all_consulting_career
+CAND_0000250,Full Stack Developer,all_consulting_career
+CAND_0000257,Full Stack Developer,all_consulting_career
+CAND_0000260,Mobile Developer,all_consulting_career
+CAND_0000265,HR Manager,all_consulting_career
+CAND_0000266,Customer Support,all_consulting_career|inactive_unresponsive
+CAND_0000274,Frontend Engineer,all_consulting_career
+CAND_0000281,Content Writer,all_consulting_career
+CAND_0000283,Project Manager,all_consulting_career
+CAND_0000284,Graphic Designer,all_consulting_career
+CAND_0000290,Civil Engineer,all_consulting_career
+CAND_0000303,Mechanical Engineer,all_consulting_career
+CAND_0000315,DevOps Engineer,all_consulting_career
+CAND_0000324,Graphic Designer,all_consulting_career
+CAND_0000326,Full Stack Developer,all_consulting_career
+CAND_0000329,Sales Executive,all_consulting_career
+CAND_0000335,Mechanical Engineer,all_consulting_career
+CAND_0000353,Marketing Manager,all_consulting_career
+CAND_0000362,Project Manager,all_consulting_career
+CAND_0000364,QA Engineer,all_consulting_career
+CAND_0000369,Business Analyst,all_consulting_career
+CAND_0000374,Content Writer,all_consulting_career
+CAND_0000379,Customer Support,all_consulting_career
+CAND_0000380,Sales Executive,all_consulting_career
+CAND_0000391,Java Developer,all_consulting_career
+CAND_0000393,.NET Developer,all_consulting_career
+CAND_0000394,QA Engineer,all_consulting_career
+CAND_0000403,Customer Support,all_consulting_career
+CAND_0000407,Mechanical Engineer,all_consulting_career
+CAND_0000416,Customer Support,all_consulting_career
+CAND_0000427,DevOps Engineer,all_consulting_career
+CAND_0000429,Java Developer,all_consulting_career
+CAND_0000438,Business Analyst,all_consulting_career
+CAND_0000453,HR Manager,all_consulting_career
+CAND_0000462,Graphic Designer,all_consulting_career
+CAND_0000463,Accountant,all_consulting_career
+CAND_0000468,Frontend Engineer,all_consulting_career
+CAND_0000469,Frontend Engineer,all_consulting_career
+CAND_0000477,QA Engineer,all_consulting_career
+CAND_0000480,Software Engineer,all_consulting_career
+CAND_0000481,Mechanical Engineer,all_consulting_career
+CAND_0000483,Customer Support,all_consulting_career
+CAND_0000502,HR Manager,all_consulting_career
+CAND_0000507,Software Engineer,all_consulting_career
+CAND_0000522,Software Engineer,all_consulting_career
+CAND_0000531,Customer Support,all_consulting_career|inactive_unresponsive
+CAND_0000546,Marketing Manager,all_consulting_career
+CAND_0000567,Operations Manager,all_consulting_career
+CAND_0000571,HR Manager,all_consulting_career|inactive_unresponsive
+CAND_0000575,Frontend Engineer,all_consulting_career
+CAND_0000580,Customer Support,all_consulting_career
+CAND_0000604,Java Developer,all_consulting_career
+CAND_0000611,Software Engineer,all_consulting_career
+CAND_0000615,Frontend Engineer,all_consulting_career
+CAND_0000625,Accountant,all_consulting_career
+CAND_0000637,Civil Engineer,all_consulting_career
+CAND_0000655,.NET Developer,all_consulting_career
+CAND_0000672,Business Analyst,all_consulting_career
+CAND_0000679,Frontend Engineer,all_consulting_career
+CAND_0000681,Java Developer,all_consulting_career
+CAND_0000682,Data Engineer,all_consulting_career
+CAND_0000707,Civil Engineer,all_consulting_career
+CAND_0000737,Frontend Engineer,all_consulting_career
+CAND_0000741,Full Stack Developer,all_consulting_career
+CAND_0000742,Mobile Developer,all_consulting_career
+CAND_0000758,Customer Support,all_consulting_career
+CAND_0000763,Customer Support,all_consulting_career|inactive_unresponsive
+CAND_0000765,Civil Engineer,all_consulting_career
+CAND_0000778,Marketing Manager,all_consulting_career
+CAND_0000795,HR Manager,all_consulting_career
+CAND_0000801,Full Stack Developer,all_consulting_career
+CAND_0000804,Mechanical Engineer,all_consulting_career
+CAND_0000808,Sales Executive,all_consulting_career
+CAND_0000814,QA Engineer,all_consulting_career
+CAND_0000827,Civil Engineer,all_consulting_career
+CAND_0000829,HR Manager,all_consulting_career
+CAND_0000831,Content Writer,all_consulting_career
+CAND_0000844,QA Engineer,all_consulting_career
+CAND_0000868,Civil Engineer,all_consulting_career
+CAND_0000872,Mobile Developer,all_consulting_career
+CAND_0000873,Senior Software Engineer,all_consulting_career
+CAND_0000900,.NET Developer,all_consulting_career
+CAND_0000903,DevOps Engineer,all_consulting_career
+CAND_0000904,Graphic Designer,all_consulting_career
+CAND_0000913,Cloud Engineer,all_consulting_career
+CAND_0000923,Mobile Developer,all_consulting_career
+CAND_0000926,.NET Developer,all_consulting_career
+CAND_0000948,.NET Developer,all_consulting_career
+CAND_0000952,Full Stack Developer,all_consulting_career
+CAND_0000955,Mobile Developer,all_consulting_career
+CAND_0000971,Mobile Developer,all_consulting_career
+CAND_0000975,Java Developer,all_consulting_career
+CAND_0000977,Software Engineer,all_consulting_career
+CAND_0000992,Mobile Developer,all_consulting_career
+CAND_0000995,Content Writer,all_consulting_career
+CAND_0001005,Content Writer,all_consulting_career
+CAND_0001008,Marketing Manager,all_consulting_career
+CAND_0001011,Java Developer,all_consulting_career
+CAND_0001029,Content Writer,all_consulting_career
+CAND_0001030,Software Engineer,all_consulting_career
+CAND_0001031,Java Developer,all_consulting_career
+CAND_0001054,Graphic Designer,all_consulting_career
+CAND_0001066,Full Stack Developer,all_consulting_career
+CAND_0001068,QA Engineer,all_consulting_career
+CAND_0001087,Full Stack Developer,all_consulting_career
+CAND_0001089,Cloud Engineer,all_consulting_career
+CAND_0001105,DevOps Engineer,all_consulting_career
+CAND_0001108,Software Engineer,all_consulting_career
+CAND_0001112,Cloud Engineer,all_consulting_career
+CAND_0001118,Frontend Engineer,all_consulting_career
+CAND_0001132,Cloud Engineer,all_consulting_career
+CAND_0001145,Java Developer,all_consulting_career
+CAND_0001154,Accountant,all_consulting_career
+CAND_0001165,Content Writer,all_consulting_career
+CAND_0001175,Frontend Engineer,all_consulting_career
+CAND_0001183,Marketing Manager,all_consulting_career
+CAND_0001192,Frontend Engineer,all_consulting_career
+CAND_0001198,Senior Software Engineer,all_consulting_career
+CAND_0001222,Operations Manager,all_consulting_career
+CAND_0001244,Operations Manager,all_consulting_career
+CAND_0097093,DevOps Engineer,all_consulting_career
+CAND_0023533,.NET Developer,all_consulting_career
+CAND_0042843,Accountant,all_consulting_career
+CAND_0075148,Content Writer,keyword_stuffer
+CAND_0098619,Civil Engineer,keyword_stuffer
+CAND_0052017,Business Analyst,all_consulting_career
+CAND_0098078,Java Developer,all_consulting_career
+CAND_0064618,Project Manager,keyword_stuffer
+CAND_0034084,Frontend Engineer,all_consulting_career
+CAND_0033391,QA Engineer,all_consulting_career
+CAND_0046284,.NET Developer,all_consulting_career
+CAND_0034569,Customer Support,inactive_unresponsive
+CAND_0083190,Civil Engineer,all_consulting_career
+CAND_0091345,Content Writer,keyword_stuffer
+CAND_0057350,Software Engineer,all_consulting_career
+CAND_0073148,Business Analyst,inactive_unresponsive
+CAND_0002034,.NET Developer,all_consulting_career
+CAND_0042022,Full Stack Developer,all_consulting_career
+CAND_0067674,Business Analyst,all_consulting_career
+CAND_0055831,Project Manager,keyword_stuffer
+CAND_0032010,Project Manager,all_consulting_career
+CAND_0098353,Sales Executive,all_consulting_career
+CAND_0068348,Operations Manager,keyword_stuffer
+CAND_0013239,QA Engineer,all_consulting_career
+CAND_0051961,Cloud Engineer,all_consulting_career
+CAND_0092059,Mobile Developer,all_consulting_career
+CAND_0058224,Business Analyst,inactive_unresponsive
+CAND_0024192,Java Developer,all_consulting_career
+CAND_0079629,Content Writer,keyword_stuffer
+CAND_0032729,.NET Developer,all_consulting_career
+CAND_0069190,DevOps Engineer,all_consulting_career
+CAND_0014026,Mechanical Engineer,inactive_unresponsive
+CAND_0050465,Customer Support,all_consulting_career
+CAND_0015606,Frontend Engineer,all_consulting_career
+CAND_0031687,Graphic Designer,inactive_unresponsive
+CAND_0047545,Content Writer,all_consulting_career
+CAND_0057384,Frontend Engineer,all_consulting_career
+CAND_0079045,Marketing Manager,all_consulting_career
+CAND_0084085,Marketing Manager,all_consulting_career
+CAND_0069193,Mechanical Engineer,all_consulting_career
+CAND_0047820,Marketing Manager,all_consulting_career
+CAND_0029619,Mechanical Engineer,all_consulting_career
+CAND_0064195,Java Developer,all_consulting_career
+CAND_0080407,Graphic Designer,all_consulting_career
+CAND_0070527,Customer Support,keyword_stuffer
+CAND_0092875,Cloud Engineer,all_consulting_career
+CAND_0049710,Accountant,keyword_stuffer
+CAND_0032967,Sales Executive,all_consulting_career
+CAND_0067582,Business Analyst,all_consulting_career
+CAND_0077274,DevOps Engineer,all_consulting_career
+CAND_0024829,Accountant,inactive_unresponsive
+CAND_0074654,Accountant,all_consulting_career
+CAND_0067702,Mechanical Engineer,inactive_unresponsive
+CAND_0078869,Business Analyst,all_consulting_career
+CAND_0056636,Customer Support,all_consulting_career
+CAND_0045970,Operations Manager,keyword_stuffer
+CAND_0091208,.NET Developer,all_consulting_career
+CAND_0080926,Sales Executive,inactive_unresponsive
+CAND_0050199,Cloud Engineer,all_consulting_career
+CAND_0040175,Project Manager,all_consulting_career
+CAND_0032862,HR Manager,inactive_unresponsive
+CAND_0078626,Sales Executive,all_consulting_career|keyword_stuffer
+CAND_0080811,Graphic Designer,all_consulting_career
+CAND_0080325,Marketing Manager,keyword_stuffer
+CAND_0099248,Content Writer,inactive_unresponsive
+CAND_0026326,Full Stack Developer,all_consulting_career
+CAND_0055319,Cloud Engineer,all_consulting_career
+CAND_0011360,Software Engineer,all_consulting_career
+CAND_0073221,Customer Support,all_consulting_career
+CAND_0023995,Sales Executive,all_consulting_career
+CAND_0081812,Mechanical Engineer,all_consulting_career
+CAND_0072485,Sales Executive,keyword_stuffer
+CAND_0065418,Cloud Engineer,all_consulting_career
+CAND_0079869,Content Writer,all_consulting_career
+CAND_0043976,HR Manager,all_consulting_career|keyword_stuffer
+CAND_0017336,Civil Engineer,keyword_stuffer
+CAND_0023966,Operations Manager,keyword_stuffer
+CAND_0079995,Sales Executive,all_consulting_career|keyword_stuffer
+CAND_0061280,Accountant,all_consulting_career
+CAND_0059828,Operations Manager,all_consulting_career
+CAND_0057770,QA Engineer,all_consulting_career
+CAND_0045011,Frontend Engineer,all_consulting_career
+CAND_0021008,DevOps Engineer,all_consulting_career
+CAND_0063691,Operations Manager,all_consulting_career
+CAND_0046281,.NET Developer,all_consulting_career
+CAND_0099262,Accountant,all_consulting_career
+CAND_0046436,Content Writer,all_consulting_career
+CAND_0023761,Marketing Manager,inactive_unresponsive
+CAND_0005790,Customer Support,all_consulting_career
+CAND_0035980,Content Writer,keyword_stuffer
+CAND_0059154,HR Manager,all_consulting_career
+CAND_0067739,Business Analyst,inactive_unresponsive
+CAND_0066501,Operations Manager,keyword_stuffer|inactive_unresponsive
+CAND_0087311,Operations Manager,all_consulting_career|keyword_stuffer
+CAND_0000504,Graphic Designer,inactive_unresponsive
+CAND_0047584,Customer Support,all_consulting_career
+CAND_0051504,Business Analyst,all_consulting_career
+CAND_0080376,Java Developer,all_consulting_career
+CAND_0030642,Mobile Developer,all_consulting_career
+CAND_0035993,Java Developer,all_consulting_career
+CAND_0066679,Mobile Developer,all_consulting_career
+CAND_0096406,Frontend Engineer,all_consulting_career
+CAND_0032022,Full Stack Developer,inactive_unresponsive
+CAND_0037872,DevOps Engineer,all_consulting_career
+CAND_0018107,Java Developer,all_consulting_career
+CAND_0056285,HR Manager,all_consulting_career
+CAND_0066477,QA Engineer,all_consulting_career
+CAND_0021477,Project Manager,keyword_stuffer
+CAND_0063983,Mobile Developer,all_consulting_career
+CAND_0001574,Frontend Engineer,all_consulting_career
+CAND_0026611,Analytics Engineer,all_consulting_career
+CAND_0041172,Senior Software Engineer,all_consulting_career
+CAND_0078747,Mobile Developer,all_consulting_career
+CAND_0039378,Frontend Engineer,all_consulting_career
+CAND_0063511,Operations Manager,all_consulting_career
+CAND_0026219,DevOps Engineer,all_consulting_career
+CAND_0035790,Content Writer,keyword_stuffer
+CAND_0093127,Content Writer,all_consulting_career
+CAND_0007387,Customer Support,keyword_stuffer
+CAND_0069860,Project Manager,all_consulting_career
+CAND_0067951,Business Analyst,all_consulting_career
+CAND_0059272,Marketing Manager,all_consulting_career
+CAND_0081572,Customer Support,all_consulting_career
+CAND_0058704,Graphic Designer,all_consulting_career|keyword_stuffer
+CAND_0015266,Frontend Engineer,all_consulting_career
+CAND_0031864,HR Manager,all_consulting_career
+CAND_0026563,Mobile Developer,all_consulting_career
+CAND_0063668,Content Writer,keyword_stuffer
+CAND_0033782,Java Developer,all_consulting_career
+CAND_0026836,Graphic Designer,keyword_stuffer
+CAND_0040025,Graphic Designer,keyword_stuffer
+CAND_0092115,Frontend Engineer,all_consulting_career
+CAND_0071979,Customer Support,inactive_unresponsive

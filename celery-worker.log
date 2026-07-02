@@ -1,0 +1,1205 @@
+ 
+ -------------- celery@Herenders-MacBook-Air.local v5.6.3 (recovery)
+--- ***** ----- 
+-- ******* ---- macOS-26.5.1-arm64-arm-64bit 2026-06-26 23:23:22
+- *** --- * --- 
+- ** ---------- [config]
+- ** ---------- .> app:         provenancerank:0x11319fa10
+- ** ---------- .> transport:   redis://localhost:6379/1
+- ** ---------- .> results:     redis://localhost:6379/2
+- *** --- * --- .> concurrency: 2 (prefork)
+-- ******* ---- .> task events: OFF (enable -E to monitor tasks in this worker)
+--- ***** ----- 
+ -------------- [queues]
+                .> ingestion        exchange=ingestion(direct) key=ingestion
+                .> intelligence     exchange=intelligence(direct) key=intelligence
+
+[tasks]
+  . ingestion.tasks.scan_dead_letters
+  . ingestion.tasks.summarise_and_index
+  . ingestion.tasks.sync_all_developers
+  . ingestion.tasks.sync_developer_github
+
+[2026-06-26 23:23:22,105: INFO/MainProcess] Connected to redis://localhost:6379/1
+[2026-06-26 23:23:22,107: INFO/MainProcess] mingle: searching for neighbors
+[2026-06-26 23:23:23,113: INFO/MainProcess] mingle: all alone
+[2026-06-26 23:23:23,134: INFO/MainProcess] celery@Herenders-MacBook-Air.local ready.
+[2026-06-27 00:00:52,192: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[a53e728f-c5db-4588-9cc9-64b1f6e11e2c] received
+[2026-06-27 00:00:52,211: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-26T18:30:52.210720Z"}
+[2026-06-27 00:00:52,215: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[a53e728f-c5db-4588-9cc9-64b1f6e11e2c] succeeded in 0.018950540994410403s: 1
+[2026-06-27 01:00:52,170: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[0e6cf1c5-bc28-4d98-a8aa-787abbf2b2fa] received
+[2026-06-27 01:00:52,182: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-26T19:30:52.182306Z"}
+[2026-06-27 01:00:52,184: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[0e6cf1c5-bc28-4d98-a8aa-787abbf2b2fa] succeeded in 0.009891250003420282s: 1
+[2026-06-27 02:00:52,166: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[7d4aefbc-b8db-4a70-ab6a-26df00d323f5] received
+[2026-06-27 02:00:52,178: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-26T20:30:52.178163Z"}
+[2026-06-27 02:00:52,181: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[7d4aefbc-b8db-4a70-ab6a-26df00d323f5] succeeded in 0.01111237499571871s: 1
+[2026-06-27 03:01:40,704: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[1e580aa7-ea17-4b2e-bc14-a0b509ff5450] received
+[2026-06-27 03:01:40,719: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-26T21:31:40.719591Z"}
+[2026-06-27 03:01:40,722: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[1e580aa7-ea17-4b2e-bc14-a0b509ff5450] succeeded in 0.013765375006187242s: 1
+[2026-06-27 03:25:00,371: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[e145f5ed-aea0-40dd-9906-dde88a87a611] received
+[2026-06-27 03:25:00,416: WARNING/ForkPoolWorker-2] {"url": "sqlite+aiosqlite", "event": "db.engine_created", "level": "info", "timestamp": "2026-06-26T21:55:00.416244Z"}
+[2026-06-27 03:25:00,441: WARNING/ForkPoolWorker-2] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-26T21:55:00.441325Z"}
+[2026-06-27 03:25:00,441: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[f114cd39-4c93-4ce2-9c37-0f276c8e30c3] received
+[2026-06-27 03:25:00,441: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_all_developers[e145f5ed-aea0-40dd-9906-dde88a87a611] succeeded in 0.0690150829977938s: 1
+[2026-06-27 03:25:00,453: WARNING/ForkPoolWorker-1] {"url": "sqlite+aiosqlite", "event": "db.engine_created", "level": "info", "timestamp": "2026-06-26T21:55:00.453687Z"}
+[2026-06-27 03:25:05,500: INFO/ForkPoolWorker-1] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-27 03:25:05,609: WARNING/ForkPoolWorker-1] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-26T21:55:05.609308Z"}
+[2026-06-27 03:25:05,627: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e8f16401-8e4e-4701-a327-076f3c414c98] received
+[2026-06-27 03:25:05,629: WARNING/ForkPoolWorker-2] {"backend": "in-memory", "event": "graph.backend_ready", "level": "info", "timestamp": "2026-06-26T21:55:05.629376Z"}
+[2026-06-27 03:25:05,636: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e8f16401-8e4e-4701-a327-076f3c414c98] succeeded in 0.008265707998361904s: False
+[2026-06-27 03:25:05,639: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[86c7ccfc-9f2e-44e0-a9c3-188e3d852f53] received
+[2026-06-27 03:25:05,642: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[86c7ccfc-9f2e-44e0-a9c3-188e3d852f53] succeeded in 0.0026213750024908222s: False
+[2026-06-27 03:25:05,643: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ca38c2e3-419e-43bc-9d27-5220981cac50] received
+[2026-06-27 03:25:05,645: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ca38c2e3-419e-43bc-9d27-5220981cac50] succeeded in 0.0018761250030365773s: False
+[2026-06-27 03:25:05,647: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4f6b5ab3-fede-40bd-8c56-88dec6b1c2b0] received
+[2026-06-27 03:25:05,649: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4f6b5ab3-fede-40bd-8c56-88dec6b1c2b0] succeeded in 0.0015840420019230805s: False
+[2026-06-27 03:25:05,650: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2dd128b7-5267-46c3-8d98-aab44e251e2b] received
+[2026-06-27 03:25:05,651: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[2dd128b7-5267-46c3-8d98-aab44e251e2b] succeeded in 0.0014179580030031502s: False
+[2026-06-27 03:25:05,652: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[94f65de1-53c0-4bbb-869c-47d2f4ab4412] received
+[2026-06-27 03:25:05,654: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[94f65de1-53c0-4bbb-869c-47d2f4ab4412] succeeded in 0.0015235419996315613s: False
+[2026-06-27 03:25:05,655: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[69dab4b2-4383-4f14-b120-8ed322c08c73] received
+[2026-06-27 03:25:05,657: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[69dab4b2-4383-4f14-b120-8ed322c08c73] succeeded in 0.0017990000051213428s: False
+[2026-06-27 03:25:05,657: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_developer_github[f114cd39-4c93-4ce2-9c37-0f276c8e30c3] succeeded in 5.214656999996805s: {'enqueued': 58, 'fetched': 58}
+[2026-06-27 03:25:05,658: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[83369837-871c-43db-94f6-d3ac41ed9501] received
+[2026-06-27 03:25:05,659: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ad6885fd-ef50-4267-88a1-4dd74184b0ea] received
+[2026-06-27 03:25:05,659: WARNING/ForkPoolWorker-1] {"backend": "in-memory", "event": "graph.backend_ready", "level": "info", "timestamp": "2026-06-26T21:55:05.659650Z"}
+[2026-06-27 03:25:05,660: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[83369837-871c-43db-94f6-d3ac41ed9501] succeeded in 0.0012482919992180541s: False
+[2026-06-27 03:25:05,661: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7aa90d83-f2d6-4ada-b5ad-7ce4bb7a263c] received
+[2026-06-27 03:25:05,662: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ad6885fd-ef50-4267-88a1-4dd74184b0ea] succeeded in 0.0027133750045322813s: False
+[2026-06-27 03:25:05,662: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7aa90d83-f2d6-4ada-b5ad-7ce4bb7a263c] succeeded in 0.0012451250004232861s: False
+[2026-06-27 03:25:05,663: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8e1c9311-11e1-49d2-b01f-b735f951e890] received
+[2026-06-27 03:25:05,663: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[80da7f66-b51b-4430-8229-295898ae38b7] received
+[2026-06-27 03:25:05,664: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[8e1c9311-11e1-49d2-b01f-b735f951e890] succeeded in 0.0012120410028728656s: False
+[2026-06-27 03:25:05,665: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[80da7f66-b51b-4430-8229-295898ae38b7] succeeded in 0.0013872910058125854s: False
+[2026-06-27 03:25:05,665: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d04ac991-732c-45ce-88c0-2ab39939f3a2] received
+[2026-06-27 03:25:05,666: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7c41e659-9d9a-4df4-bdcd-975040e0c371] received
+[2026-06-27 03:25:05,666: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d04ac991-732c-45ce-88c0-2ab39939f3a2] succeeded in 0.0011017500000889413s: False
+[2026-06-27 03:25:05,667: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[43eb9def-c0d9-45af-833c-32770f2ef8fa] received
+[2026-06-27 03:25:05,667: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7c41e659-9d9a-4df4-bdcd-975040e0c371] succeeded in 0.001243833998159971s: False
+[2026-06-27 03:25:05,668: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a1a8c5ed-50dc-4469-9ee9-43297d224264] received
+[2026-06-27 03:25:05,668: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[43eb9def-c0d9-45af-833c-32770f2ef8fa] succeeded in 0.0011246249996474944s: False
+[2026-06-27 03:25:05,669: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[df406199-9f1f-453b-a9b2-e94b1d8b262f] received
+[2026-06-27 03:25:05,669: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a1a8c5ed-50dc-4469-9ee9-43297d224264] succeeded in 0.0012354589998722076s: False
+[2026-06-27 03:25:05,670: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a7750640-423b-461b-b30c-f538b631441d] received
+[2026-06-27 03:25:05,670: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[df406199-9f1f-453b-a9b2-e94b1d8b262f] succeeded in 0.0010782079989439808s: False
+[2026-06-27 03:25:05,671: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[afcf98eb-1872-4c71-a008-2c623ec9bf80] received
+[2026-06-27 03:25:05,672: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a7750640-423b-461b-b30c-f538b631441d] succeeded in 0.0012535829955595545s: False
+[2026-06-27 03:25:05,672: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[467e22ec-c5cc-4461-8ae6-1bd1339e397b] received
+[2026-06-27 03:25:05,672: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[afcf98eb-1872-4c71-a008-2c623ec9bf80] succeeded in 0.0010620000030030496s: False
+[2026-06-27 03:25:05,673: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[73dec555-5314-4450-ba65-c06dc0ac0e99] received
+[2026-06-27 03:25:05,674: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[467e22ec-c5cc-4461-8ae6-1bd1339e397b] succeeded in 0.0012000839997199364s: False
+[2026-06-27 03:25:05,674: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[73dec555-5314-4450-ba65-c06dc0ac0e99] succeeded in 0.0010059999985969625s: False
+[2026-06-27 03:25:05,674: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6bc7cc04-a128-4b5f-9bfd-9515eb60e5ed] received
+[2026-06-27 03:25:05,675: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b9b00625-07e7-48a3-a981-f3ed248e6846] received
+[2026-06-27 03:25:05,676: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6bc7cc04-a128-4b5f-9bfd-9515eb60e5ed] succeeded in 0.0009812909993343055s: False
+[2026-06-27 03:25:05,676: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[45085ec6-0c89-490e-b4fe-6bbd6ad315fb] received
+[2026-06-27 03:25:05,676: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b9b00625-07e7-48a3-a981-f3ed248e6846] succeeded in 0.0011191670055268332s: False
+[2026-06-27 03:25:05,677: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6ff4eef0-5388-4007-a390-98c82d6a864a] received
+[2026-06-27 03:25:05,678: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[45085ec6-0c89-490e-b4fe-6bbd6ad315fb] succeeded in 0.0010912919969996437s: False
+[2026-06-27 03:25:05,678: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a558d11a-8b59-4ba0-b83a-5cabb5f4cf44] received
+[2026-06-27 03:25:05,678: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6ff4eef0-5388-4007-a390-98c82d6a864a] succeeded in 0.0010482919969945215s: False
+[2026-06-27 03:25:05,679: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f1a9f4c0-ff4a-4e66-bc59-d3062385bb29] received
+[2026-06-27 03:25:05,679: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a558d11a-8b59-4ba0-b83a-5cabb5f4cf44] succeeded in 0.0010343749963794835s: False
+[2026-06-27 03:25:05,680: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0b7d93d4-f553-45f2-a30b-3fd3c274fcf3] received
+[2026-06-27 03:25:05,680: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f1a9f4c0-ff4a-4e66-bc59-d3062385bb29] succeeded in 0.001025124998704996s: False
+[2026-06-27 03:25:05,681: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f0a569dc-c9e9-4cde-987d-c26551302a13] received
+[2026-06-27 03:25:05,681: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0b7d93d4-f553-45f2-a30b-3fd3c274fcf3] succeeded in 0.000985500002570916s: False
+[2026-06-27 03:25:05,682: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[eba44b6f-5a6d-4df2-9007-14c926b85a27] received
+[2026-06-27 03:25:05,682: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f0a569dc-c9e9-4cde-987d-c26551302a13] succeeded in 0.0010201250042882748s: False
+[2026-06-27 03:25:05,683: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[95bc2eb7-d794-4a1f-a40e-4c3a43bc0f64] received
+[2026-06-27 03:25:05,683: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[eba44b6f-5a6d-4df2-9007-14c926b85a27] succeeded in 0.001309040999331046s: False
+[2026-06-27 03:25:05,684: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[95bc2eb7-d794-4a1f-a40e-4c3a43bc0f64] succeeded in 0.001000832999125123s: False
+[2026-06-27 03:25:05,684: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0ac09789-e819-498a-840a-91b560ea8ad1] received
+[2026-06-27 03:25:05,685: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b300fff8-5ce4-4047-9edc-e910011325e7] received
+[2026-06-27 03:25:05,685: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0ac09789-e819-498a-840a-91b560ea8ad1] succeeded in 0.0009774579957593232s: False
+[2026-06-27 03:25:05,686: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b300fff8-5ce4-4047-9edc-e910011325e7] succeeded in 0.0009140409965766594s: False
+[2026-06-27 03:25:05,686: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5969a800-835c-42c8-b0dc-34f8b906f0ce] received
+[2026-06-27 03:25:05,686: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e3ba9c78-4302-4ae9-a029-e9353917c61f] received
+[2026-06-27 03:25:05,687: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5969a800-835c-42c8-b0dc-34f8b906f0ce] succeeded in 0.000905542001419235s: False
+[2026-06-27 03:25:05,688: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aa6f84f5-f8b4-411c-a4b1-d41e7979bb11] received
+[2026-06-27 03:25:05,687: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e3ba9c78-4302-4ae9-a029-e9353917c61f] succeeded in 0.0009796670055948198s: False
+[2026-06-27 03:25:05,688: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b1badacd-202d-4afe-8f5d-519080bcdb42] received
+[2026-06-27 03:25:05,689: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[aa6f84f5-f8b4-411c-a4b1-d41e7979bb11] succeeded in 0.0009663329983595759s: False
+[2026-06-27 03:25:05,689: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ecd17c62-d722-4755-8613-574d8ae6e61c] received
+[2026-06-27 03:25:05,689: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b1badacd-202d-4afe-8f5d-519080bcdb42] succeeded in 0.0010134580006706528s: False
+[2026-06-27 03:25:05,690: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1e3da568-e649-4ab0-bbd3-69ff1466d7f8] received
+[2026-06-27 03:25:05,690: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ecd17c62-d722-4755-8613-574d8ae6e61c] succeeded in 0.000904333996004425s: False
+[2026-06-27 03:25:05,691: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ac317e50-b48e-48fa-ab69-fb8dd295719a] received
+[2026-06-27 03:25:05,691: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1e3da568-e649-4ab0-bbd3-69ff1466d7f8] succeeded in 0.0009290829984820448s: False
+[2026-06-27 03:25:05,692: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8cca2f5a-f977-416a-b328-320135271098] received
+[2026-06-27 03:25:05,692: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ac317e50-b48e-48fa-ab69-fb8dd295719a] succeeded in 0.0009125840006163344s: False
+[2026-06-27 03:25:05,693: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[794f3291-8e4a-4779-9587-5f46d7f504a7] received
+[2026-06-27 03:25:05,693: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8cca2f5a-f977-416a-b328-320135271098] succeeded in 0.0009081250027520582s: False
+[2026-06-27 03:25:05,693: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1b2e7fce-da82-48b0-97db-9de6009bd31f] received
+[2026-06-27 03:25:05,694: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[794f3291-8e4a-4779-9587-5f46d7f504a7] succeeded in 0.0009836659955908544s: False
+[2026-06-27 03:25:05,694: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1b2e7fce-da82-48b0-97db-9de6009bd31f] succeeded in 0.0009909169966704212s: False
+[2026-06-27 03:25:05,694: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7e7caa25-2ad3-40ba-989a-b4690810d0be] received
+[2026-06-27 03:25:05,695: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8e2311d7-be1b-471b-a3d3-7f5875cd773e] received
+[2026-06-27 03:25:05,695: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7e7caa25-2ad3-40ba-989a-b4690810d0be] succeeded in 0.0009062919998541474s: False
+[2026-06-27 03:25:05,696: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8e2311d7-be1b-471b-a3d3-7f5875cd773e] succeeded in 0.0009301250029238872s: False
+[2026-06-27 03:25:05,696: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4eb72b0c-3f69-4eef-ad0a-1977fe4c972a] received
+[2026-06-27 03:25:05,697: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7ef69973-211f-4940-b6ec-66ff5e1cbbef] received
+[2026-06-27 03:25:05,697: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4eb72b0c-3f69-4eef-ad0a-1977fe4c972a] succeeded in 0.0008367090049432591s: False
+[2026-06-27 03:25:05,698: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c746e5cb-0754-40c0-90ca-2168ec76171b] received
+[2026-06-27 03:25:05,698: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7ef69973-211f-4940-b6ec-66ff5e1cbbef] succeeded in 0.0008374999961233698s: False
+[2026-06-27 03:25:05,698: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c91a7eb5-4c3c-4851-a901-597e3cc4ec08] received
+[2026-06-27 03:25:05,698: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c746e5cb-0754-40c0-90ca-2168ec76171b] succeeded in 0.0007973339961608872s: False
+[2026-06-27 03:25:05,699: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[70cb0ad8-7c57-4125-be0e-46474233dcae] received
+[2026-06-27 03:25:05,699: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[c91a7eb5-4c3c-4851-a901-597e3cc4ec08] succeeded in 0.0008200420052162372s: False
+[2026-06-27 03:25:05,699: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b677961a-c5cd-4b51-8551-5387b85b57f4] received
+[2026-06-27 03:25:05,700: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[70cb0ad8-7c57-4125-be0e-46474233dcae] succeeded in 0.0007675000015296973s: False
+[2026-06-27 03:25:05,700: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6b148e5f-b82d-4d7e-876f-5712db73ad30] received
+[2026-06-27 03:25:05,700: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b677961a-c5cd-4b51-8551-5387b85b57f4] succeeded in 0.0008079590043053031s: False
+[2026-06-27 03:25:05,701: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[20fc9afb-84c6-49fb-8134-8a36f1a32b65] received
+[2026-06-27 03:25:05,701: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6b148e5f-b82d-4d7e-876f-5712db73ad30] succeeded in 0.0007822089974069968s: False
+[2026-06-27 03:25:05,702: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d0b9ea91-24c0-44a8-bee2-5f2e4238aa01] received
+[2026-06-27 03:25:05,702: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[20fc9afb-84c6-49fb-8134-8a36f1a32b65] succeeded in 0.0007993749968591146s: False
+[2026-06-27 03:25:05,702: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0233b28a-30d9-4eca-828f-dfa46926d941] received
+[2026-06-27 03:25:05,703: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d0b9ea91-24c0-44a8-bee2-5f2e4238aa01] succeeded in 0.0008556669999961741s: False
+[2026-06-27 03:25:05,703: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0233b28a-30d9-4eca-828f-dfa46926d941] succeeded in 0.0008567080003558658s: False
+[2026-06-27 03:25:05,703: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c5824c0d-775b-4ba1-ba43-bd5bbd255f9f] received
+[2026-06-27 03:25:05,704: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fab39437-43a8-4615-a3d4-39dadff860e4] received
+[2026-06-27 03:25:05,704: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c5824c0d-775b-4ba1-ba43-bd5bbd255f9f] succeeded in 0.0009162080023088492s: False
+[2026-06-27 03:25:05,705: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[fab39437-43a8-4615-a3d4-39dadff860e4] succeeded in 0.0008801670046523213s: False
+[2026-06-27 03:25:05,705: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b464fbd6-e15e-4c10-b07c-2e4e3779ff67] received
+[2026-06-27 03:25:05,706: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b464fbd6-e15e-4c10-b07c-2e4e3779ff67] succeeded in 0.0008380830040550791s: False
+[2026-06-27 04:01:40,698: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[55c0a714-b18e-461b-9514-65cb3d362466] received
+[2026-06-27 04:01:40,739: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-26T22:31:40.739426Z"}
+[2026-06-27 04:01:40,742: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[55c0a714-b18e-461b-9514-65cb3d362466] succeeded in 0.04076800000621006s: 1
+[2026-06-27 11:03:49,933: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[00ac27bf-0536-4a5b-9195-18955cb8f40b] received
+[2026-06-27 11:03:49,934: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[6ed23d3b-5471-4f56-82b8-77d73c196513] received
+[2026-06-27 11:03:49,956: WARNING/ForkPoolWorker-1] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-27T05:33:49.956661Z"}
+[2026-06-27 11:03:49,958: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_all_developers[6ed23d3b-5471-4f56-82b8-77d73c196513] succeeded in 0.021511917002499104s: 1
+[2026-06-27 11:03:49,961: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[e9cf6f7f-a20a-43f7-9448-f74584322b3b] received
+[2026-06-27 11:03:49,962: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T05:33:49.962294Z"}
+[2026-06-27 11:03:49,963: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[00ac27bf-0536-4a5b-9195-18955cb8f40b] succeeded in 0.027956334000919014s: 1
+[2026-06-27 11:34:55,560: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[e9cf6f7f-a20a-43f7-9448-f74584322b3b] received
+[2026-06-27 11:34:55,576: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_developer_github[e9cf6f7f-a20a-43f7-9448-f74584322b3b] retry: Retry in 1s: ReadTimeout('')
+[2026-06-27 11:40:04,691: INFO/ForkPoolWorker-2] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-27 11:40:04,738: WARNING/ForkPoolWorker-2] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-27T06:10:04.738410Z"}
+[2026-06-27 11:40:04,742: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8960a824-8cdd-4af6-87ac-44cae6c1e05d] received
+[2026-06-27 11:40:04,746: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8960a824-8cdd-4af6-87ac-44cae6c1e05d] succeeded in 0.0031767500040587038s: False
+[2026-06-27 11:40:04,747: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cd9075b6-7e2e-484a-b7af-d6d0e6e87c54] received
+[2026-06-27 11:40:04,749: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[cd9075b6-7e2e-484a-b7af-d6d0e6e87c54] succeeded in 0.0017290000032517128s: False
+[2026-06-27 11:40:04,750: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4a887c33-13e9-40d8-909c-beadd41d3a2c] received
+[2026-06-27 11:40:04,752: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[4a887c33-13e9-40d8-909c-beadd41d3a2c] succeeded in 0.0014758329998585396s: False
+[2026-06-27 11:40:04,753: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[80d52054-cb7a-4711-9819-ad63ecb5e8bd] received
+[2026-06-27 11:40:04,755: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[80d52054-cb7a-4711-9819-ad63ecb5e8bd] succeeded in 0.0015089160006027669s: False
+[2026-06-27 11:40:04,756: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b64a384f-4912-493e-a89e-e0a1de469c28] received
+[2026-06-27 11:40:04,758: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b64a384f-4912-493e-a89e-e0a1de469c28] succeeded in 0.0016852080007083714s: False
+[2026-06-27 11:40:04,759: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[12433f16-7dbf-430a-b070-de0e51322a30] received
+[2026-06-27 11:40:04,761: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[12433f16-7dbf-430a-b070-de0e51322a30] succeeded in 0.0016718750048312359s: False
+[2026-06-27 11:40:04,762: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[19e4367e-1b0d-42f3-871c-b16ee0c283ad] received
+[2026-06-27 11:40:04,763: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[19e4367e-1b0d-42f3-871c-b16ee0c283ad] succeeded in 0.0013572500029113144s: False
+[2026-06-27 11:40:04,764: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ff2acbfd-a2e2-48d7-b84e-08d9da18fadf] received
+[2026-06-27 11:40:04,766: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ff2acbfd-a2e2-48d7-b84e-08d9da18fadf] succeeded in 0.0017282909975619987s: False
+[2026-06-27 11:40:04,767: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_developer_github[e9cf6f7f-a20a-43f7-9448-f74584322b3b] succeeded in 2.7623725419980474s: {'enqueued': 58, 'fetched': 58}
+[2026-06-27 11:40:04,768: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7d4b0252-0828-4ac2-8443-2de9962841cb] received
+[2026-06-27 11:40:04,769: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[42686e4d-1eab-433d-a2ad-cb89b98034db] received
+[2026-06-27 11:40:04,773: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[42686e4d-1eab-433d-a2ad-cb89b98034db] succeeded in 0.003584374993806705s: False
+[2026-06-27 11:40:04,773: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7d4b0252-0828-4ac2-8443-2de9962841cb] succeeded in 0.004598042003635783s: False
+[2026-06-27 11:40:04,774: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e7ad09d3-c113-47c3-abad-2dc3a1f25536] received
+[2026-06-27 11:40:04,775: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cf64a868-8ae9-43d1-88bc-c6acc1d5ff3d] received
+[2026-06-27 11:40:04,776: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e7ad09d3-c113-47c3-abad-2dc3a1f25536] succeeded in 0.0015557919978164136s: False
+[2026-06-27 11:40:04,777: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[cf64a868-8ae9-43d1-88bc-c6acc1d5ff3d] succeeded in 0.0016067079995991662s: False
+[2026-06-27 11:40:04,777: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b029367f-9f80-49f3-946c-fbeffbb069a1] received
+[2026-06-27 11:40:04,778: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[47492bfc-bc3f-441e-b0a4-eba9d530334d] received
+[2026-06-27 11:40:04,779: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b029367f-9f80-49f3-946c-fbeffbb069a1] succeeded in 0.0016322919982485473s: False
+[2026-06-27 11:40:04,780: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aa824bb8-7941-49f5-b6bd-e3b161235879] received
+[2026-06-27 11:40:04,780: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[47492bfc-bc3f-441e-b0a4-eba9d530334d] succeeded in 0.00145929200516548s: False
+[2026-06-27 11:40:04,781: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e8958933-95a6-46fd-b2c8-db7fac8715c5] received
+[2026-06-27 11:40:04,782: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[aa824bb8-7941-49f5-b6bd-e3b161235879] succeeded in 0.001426332994014956s: False
+[2026-06-27 11:40:04,783: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6735ca01-22e6-43d5-940d-0e2cf1108d86] received
+[2026-06-27 11:40:04,783: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e8958933-95a6-46fd-b2c8-db7fac8715c5] succeeded in 0.001448625000193715s: False
+[2026-06-27 11:40:04,784: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a678dd36-83ee-4ef6-a90f-50541d5a4135] received
+[2026-06-27 11:40:04,784: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6735ca01-22e6-43d5-940d-0e2cf1108d86] succeeded in 0.0013582079991465434s: False
+[2026-06-27 11:40:04,785: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e33719c0-7aa7-42c7-bf80-a5a2c5a37216] received
+[2026-06-27 11:40:04,785: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a678dd36-83ee-4ef6-a90f-50541d5a4135] succeeded in 0.0013548749993788078s: False
+[2026-06-27 11:40:04,786: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[77aead1e-1ffd-429a-a696-292224098e9e] received
+[2026-06-27 11:40:04,787: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e33719c0-7aa7-42c7-bf80-a5a2c5a37216] succeeded in 0.0013037090029683895s: False
+[2026-06-27 11:40:04,788: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[31d70932-3b29-4114-8eaf-66573c9cfd5f] received
+[2026-06-27 11:40:04,788: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[77aead1e-1ffd-429a-a696-292224098e9e] succeeded in 0.0013104169993312098s: False
+[2026-06-27 11:40:04,788: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fef74fe5-dd41-439e-8c31-caeb4676cf6c] received
+[2026-06-27 11:40:04,789: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[31d70932-3b29-4114-8eaf-66573c9cfd5f] succeeded in 0.0011753330036299303s: False
+[2026-06-27 11:40:04,790: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3d3a5c8d-601b-43ef-81ea-8922eac2ad71] received
+[2026-06-27 11:40:04,790: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[fef74fe5-dd41-439e-8c31-caeb4676cf6c] succeeded in 0.0012276249981368892s: False
+[2026-06-27 11:40:04,791: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7cf850a1-306b-4fc6-b67e-e88674196d8a] received
+[2026-06-27 11:40:04,791: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3d3a5c8d-601b-43ef-81ea-8922eac2ad71] succeeded in 0.0011623339960351586s: False
+[2026-06-27 11:40:04,792: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[70f33cd5-85c9-4f87-ad38-9244b5df84a1] received
+[2026-06-27 11:40:04,792: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7cf850a1-306b-4fc6-b67e-e88674196d8a] succeeded in 0.0012230409993208013s: False
+[2026-06-27 11:40:04,793: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a7d395a5-7d4d-4925-82f7-c18fbb56d914] received
+[2026-06-27 11:40:04,793: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[70f33cd5-85c9-4f87-ad38-9244b5df84a1] succeeded in 0.0011559589984244667s: False
+[2026-06-27 11:40:04,794: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e88a46c6-3b84-441b-b9eb-14edeee502cf] received
+[2026-06-27 11:40:04,794: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a7d395a5-7d4d-4925-82f7-c18fbb56d914] succeeded in 0.0011377080008969642s: False
+[2026-06-27 11:40:04,795: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c3cbf82b-15d1-4f6b-973a-43af374f1e97] received
+[2026-06-27 11:40:04,795: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e88a46c6-3b84-441b-b9eb-14edeee502cf] succeeded in 0.0011671250031213276s: False
+[2026-06-27 11:40:04,798: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f3989862-de47-4d29-b3b7-4555b52223c4] received
+[2026-06-27 11:40:04,798: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[c3cbf82b-15d1-4f6b-973a-43af374f1e97] succeeded in 0.0025026669973158278s: False
+[2026-06-27 11:40:04,798: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[68f3335f-7671-4d99-b4b1-cb89230ddd45] received
+[2026-06-27 11:40:04,799: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f3989862-de47-4d29-b3b7-4555b52223c4] succeeded in 0.0011657080031000078s: False
+[2026-06-27 11:40:04,800: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0b113ce1-f278-4684-885a-995e90ad9037] received
+[2026-06-27 11:40:04,800: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[68f3335f-7671-4d99-b4b1-cb89230ddd45] succeeded in 0.0011691250037983991s: False
+[2026-06-27 11:40:04,801: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5c55d9d3-4f45-49dc-a32e-a73aed889783] received
+[2026-06-27 11:40:04,801: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0b113ce1-f278-4684-885a-995e90ad9037] succeeded in 0.0011645839986158535s: False
+[2026-06-27 11:40:04,802: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5c55d9d3-4f45-49dc-a32e-a73aed889783] succeeded in 0.0011296250013401732s: False
+[2026-06-27 11:40:04,804: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c3407fa6-4351-4f8d-a339-c55c9f96fefc] received
+[2026-06-27 11:40:04,804: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[dc0d356f-4040-411c-acef-38c40c3e00dd] received
+[2026-06-27 11:40:04,805: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c3407fa6-4351-4f8d-a339-c55c9f96fefc] succeeded in 0.0011833749958896078s: False
+[2026-06-27 11:40:04,808: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[569032a9-80d9-436c-888d-ce08ce6a5294] received
+[2026-06-27 11:40:04,809: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[dc0d356f-4040-411c-acef-38c40c3e00dd] succeeded in 0.0011974579974776134s: False
+[2026-06-27 11:40:04,809: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[569032a9-80d9-436c-888d-ce08ce6a5294] succeeded in 0.0011120830022264272s: False
+[2026-06-27 11:40:04,809: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bdd4b1fa-9bb1-4094-865b-a8a6961f3e87] received
+[2026-06-27 11:40:04,810: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[22e9ac15-5adb-40e7-84b2-ca6ecddee7e3] received
+[2026-06-27 11:40:04,811: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[bdd4b1fa-9bb1-4094-865b-a8a6961f3e87] succeeded in 0.0011658329967758618s: False
+[2026-06-27 11:40:04,812: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1d2d0c86-5a24-4492-85e4-a851decf4d65] received
+[2026-06-27 11:40:04,811: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[22e9ac15-5adb-40e7-84b2-ca6ecddee7e3] succeeded in 0.0011623329992289655s: False
+[2026-06-27 11:40:04,812: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6935b3b5-33c6-49ea-99ae-e263686e58f1] received
+[2026-06-27 11:40:04,813: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1d2d0c86-5a24-4492-85e4-a851decf4d65] succeeded in 0.00114620900421869s: False
+[2026-06-27 11:40:04,813: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6935b3b5-33c6-49ea-99ae-e263686e58f1] succeeded in 0.0011077079980168492s: False
+[2026-06-27 11:40:04,814: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[29527e2c-dcef-4549-bf99-e51045f052bc] received
+[2026-06-27 11:40:04,814: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[54094278-b7bc-40fd-8b82-b46fbd365eed] received
+[2026-06-27 11:40:04,815: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[29527e2c-dcef-4549-bf99-e51045f052bc] succeeded in 0.00110720800148556s: False
+[2026-06-27 11:40:04,815: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[54094278-b7bc-40fd-8b82-b46fbd365eed] succeeded in 0.0010653329954948276s: False
+[2026-06-27 11:40:04,816: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8be76575-0a91-4d66-bccb-c55404584434] received
+[2026-06-27 11:40:04,816: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[93ebcf85-e220-4387-a5e5-b23464e2790a] received
+[2026-06-27 11:40:04,817: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[8be76575-0a91-4d66-bccb-c55404584434] succeeded in 0.0010495419992366806s: False
+[2026-06-27 11:40:04,818: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fc80751d-f4c0-40e7-b1ad-51a496ca0ce9] received
+[2026-06-27 11:40:04,818: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[93ebcf85-e220-4387-a5e5-b23464e2790a] succeeded in 0.0010305000032531098s: False
+[2026-06-27 11:40:04,818: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[65f9657d-e0ea-4b53-a8e9-12614cf998d6] received
+[2026-06-27 11:40:04,819: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[fc80751d-f4c0-40e7-b1ad-51a496ca0ce9] succeeded in 0.0010517910050111823s: False
+[2026-06-27 11:40:04,820: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[684efc6c-f531-4553-ab6d-10c893854b6c] received
+[2026-06-27 11:40:04,819: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[65f9657d-e0ea-4b53-a8e9-12614cf998d6] succeeded in 0.0010806659993249923s: False
+[2026-06-27 11:40:04,820: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[471a104d-5c4e-44ce-8929-253a984f5d69] received
+[2026-06-27 11:40:04,821: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[684efc6c-f531-4553-ab6d-10c893854b6c] succeeded in 0.001038082999002654s: False
+[2026-06-27 11:40:04,821: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[471a104d-5c4e-44ce-8929-253a984f5d69] succeeded in 0.0010063340014312416s: False
+[2026-06-27 11:40:04,821: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[718a3cf5-407f-47b4-96cd-8e0329ee8dfc] received
+[2026-06-27 11:40:04,822: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[53b408b0-1e3b-4161-962c-d406063f488b] received
+[2026-06-27 11:40:04,823: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[718a3cf5-407f-47b4-96cd-8e0329ee8dfc] succeeded in 0.0010732080045272596s: False
+[2026-06-27 11:40:04,823: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6abc5fd2-9fa7-425e-8171-957002e82a33] received
+[2026-06-27 11:40:04,823: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[53b408b0-1e3b-4161-962c-d406063f488b] succeeded in 0.0010621669935062528s: False
+[2026-06-27 11:40:04,824: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5fb4f9f2-ce2a-4c08-bfd3-ba9be1b96c56] received
+[2026-06-27 11:40:04,825: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6abc5fd2-9fa7-425e-8171-957002e82a33] succeeded in 0.0010237499955110252s: False
+[2026-06-27 11:40:04,825: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ba437404-13d3-4950-8b7c-53e27e94a487] received
+[2026-06-27 11:40:04,825: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5fb4f9f2-ce2a-4c08-bfd3-ba9be1b96c56] succeeded in 0.001011542000924237s: False
+[2026-06-27 11:40:04,826: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f5394f7c-300b-4551-95bf-d91a93f60eaf] received
+[2026-06-27 11:40:04,826: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ba437404-13d3-4950-8b7c-53e27e94a487] succeeded in 0.0010297920016455464s: False
+[2026-06-27 11:40:04,827: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f5394f7c-300b-4551-95bf-d91a93f60eaf] succeeded in 0.0009960000024875626s: False
+[2026-06-27 11:40:04,827: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9ccb9dc6-a020-46d1-8310-7f0108100036] received
+[2026-06-27 11:40:04,828: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[659abd1a-cfcc-42f7-949a-1a2fb2d89c90] received
+[2026-06-27 11:40:04,828: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[9ccb9dc6-a020-46d1-8310-7f0108100036] succeeded in 0.0009466249975957908s: False
+[2026-06-27 11:40:04,829: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[24527f84-386e-4deb-827e-7569a861f2ea] received
+[2026-06-27 11:40:04,829: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[659abd1a-cfcc-42f7-949a-1a2fb2d89c90] succeeded in 0.0010023750000982545s: False
+[2026-06-27 11:40:04,830: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6131ee30-2f86-422f-a78c-0a1d4d4af672] received
+[2026-06-27 11:40:04,830: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[24527f84-386e-4deb-827e-7569a861f2ea] succeeded in 0.0009518750011920929s: False
+[2026-06-27 11:40:04,831: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[670ca98c-b550-4ee9-b042-9cf34ac92cb9] received
+[2026-06-27 11:40:04,831: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6131ee30-2f86-422f-a78c-0a1d4d4af672] succeeded in 0.0009930000014719553s: False
+[2026-06-27 11:40:04,832: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[670ca98c-b550-4ee9-b042-9cf34ac92cb9] succeeded in 0.0009858339981292374s: False
+[2026-06-27 18:31:58,084: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[e77e6014-1b14-4707-ad43-30b12fbc58e8] received
+[2026-06-27 18:31:58,084: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[81b96f89-5053-4b5e-97c7-4b5edea6c60a] received
+[2026-06-27 18:31:58,089: WARNING/ForkPoolWorker-1] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-27T13:01:58.088999Z"}
+[2026-06-27 18:31:58,089: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_all_developers[81b96f89-5053-4b5e-97c7-4b5edea6c60a] succeeded in 0.004615958998329006s: 1
+[2026-06-27 18:31:58,091: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[990e8284-dd41-4e30-a05d-eb62df348e37] received
+[2026-06-27 18:31:58,108: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T13:01:58.108534Z"}
+[2026-06-27 18:31:58,109: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[e77e6014-1b14-4707-ad43-30b12fbc58e8] succeeded in 0.024311583998496644s: 1
+[2026-06-27 18:32:03,180: INFO/ForkPoolWorker-1] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-27 18:32:03,254: WARNING/ForkPoolWorker-1] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-27T13:02:03.254749Z"}
+[2026-06-27 18:32:03,258: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aeaa8c09-1b9e-4fec-bf10-387d2502a471] received
+[2026-06-27 18:32:03,263: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[aeaa8c09-1b9e-4fec-bf10-387d2502a471] succeeded in 0.004233125000610016s: False
+[2026-06-27 18:32:03,265: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5ff7e2b7-57d3-4052-bdca-89ba97d48dfa] received
+[2026-06-27 18:32:03,268: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5ff7e2b7-57d3-4052-bdca-89ba97d48dfa] succeeded in 0.002171334002923686s: False
+[2026-06-27 18:32:03,269: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[019df213-0aa4-4972-824e-89c56fac8543] received
+[2026-06-27 18:32:03,272: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[019df213-0aa4-4972-824e-89c56fac8543] succeeded in 0.0019192499967175536s: False
+[2026-06-27 18:32:03,273: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[847ebd92-6702-4ab2-ba06-ffd40eca16ca] received
+[2026-06-27 18:32:03,276: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[847ebd92-6702-4ab2-ba06-ffd40eca16ca] succeeded in 0.002313833996595349s: False
+[2026-06-27 18:32:03,277: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3b9fc818-3b33-4f93-9d01-9ee08b2583d1] received
+[2026-06-27 18:32:03,279: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3b9fc818-3b33-4f93-9d01-9ee08b2583d1] succeeded in 0.001804416999220848s: False
+[2026-06-27 18:32:03,281: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[01b75dc2-eefd-4717-bf94-ee5db549cc99] received
+[2026-06-27 18:32:03,283: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[01b75dc2-eefd-4717-bf94-ee5db549cc99] succeeded in 0.0020811250069527887s: False
+[2026-06-27 18:32:03,284: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6a957865-0501-45a4-95ed-422d3ed7d6c5] received
+[2026-06-27 18:32:03,286: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6a957865-0501-45a4-95ed-422d3ed7d6c5] succeeded in 0.0014369159980560653s: False
+[2026-06-27 18:32:03,287: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[48c9087d-2c7e-421a-8112-b4592ca3430b] received
+[2026-06-27 18:32:03,289: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[48c9087d-2c7e-421a-8112-b4592ca3430b] succeeded in 0.001621707997401245s: False
+[2026-06-27 18:32:03,290: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d2d6a2b8-7f86-4f24-abc9-fa2c42e8b63a] received
+[2026-06-27 18:32:03,290: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_developer_github[990e8284-dd41-4e30-a05d-eb62df348e37] succeeded in 5.198135749997164s: {'enqueued': 58, 'fetched': 58}
+[2026-06-27 18:32:03,291: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7510dda8-9f68-4aa4-9e2c-a914e9ec85bc] received
+[2026-06-27 18:32:03,292: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d2d6a2b8-7f86-4f24-abc9-fa2c42e8b63a] succeeded in 0.0015130000028875656s: False
+[2026-06-27 18:32:03,293: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a4c17c9d-1312-4b17-afef-fd40e7a90ec6] received
+[2026-06-27 18:32:03,293: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7510dda8-9f68-4aa4-9e2c-a914e9ec85bc] succeeded in 0.001559249998535961s: False
+[2026-06-27 18:32:03,294: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0494c93c-2f51-4407-b9ee-ad9df3ca832b] received
+[2026-06-27 18:32:03,294: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a4c17c9d-1312-4b17-afef-fd40e7a90ec6] succeeded in 0.0013404580022324808s: False
+[2026-06-27 18:32:03,295: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[18966b3d-b2f3-45f4-886d-4983edb089f0] received
+[2026-06-27 18:32:03,296: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0494c93c-2f51-4407-b9ee-ad9df3ca832b] succeeded in 0.0015118750015972182s: False
+[2026-06-27 18:32:03,297: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[74c0e92e-c8ad-4909-b34e-31fe6de98841] received
+[2026-06-27 18:32:03,297: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[18966b3d-b2f3-45f4-886d-4983edb089f0] succeeded in 0.0014735410004504956s: False
+[2026-06-27 18:32:03,298: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fbcf8931-a81e-4957-ad34-d594819ddb82] received
+[2026-06-27 18:32:03,298: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[74c0e92e-c8ad-4909-b34e-31fe6de98841] succeeded in 0.0012957079961779527s: False
+[2026-06-27 18:32:03,299: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3ee8cafe-5e1a-41e7-9716-915702d027c6] received
+[2026-06-27 18:32:03,299: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[fbcf8931-a81e-4957-ad34-d594819ddb82] succeeded in 0.0012595419975696132s: False
+[2026-06-27 18:32:03,300: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e2b901be-0b13-4b83-b658-2a5d35d6d71c] received
+[2026-06-27 18:32:03,301: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3ee8cafe-5e1a-41e7-9716-915702d027c6] succeeded in 0.0012847910038544796s: False
+[2026-06-27 18:32:03,302: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[add5eb97-0344-4c5a-9f6d-ea969a9c7150] received
+[2026-06-27 18:32:03,302: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e2b901be-0b13-4b83-b658-2a5d35d6d71c] succeeded in 0.0012506670027505606s: False
+[2026-06-27 18:32:03,303: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b5352859-ef31-48ac-9c0c-34277608a41c] received
+[2026-06-27 18:32:03,303: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[add5eb97-0344-4c5a-9f6d-ea969a9c7150] succeeded in 0.0013544999965233728s: False
+[2026-06-27 18:32:03,304: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[564bff4d-8d16-4eeb-a135-ef2b5cdb2de5] received
+[2026-06-27 18:32:03,304: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b5352859-ef31-48ac-9c0c-34277608a41c] succeeded in 0.001265874998352956s: False
+[2026-06-27 18:32:03,305: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fe85354f-0c49-4c74-a2e7-60856fa06b65] received
+[2026-06-27 18:32:03,305: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[564bff4d-8d16-4eeb-a135-ef2b5cdb2de5] succeeded in 0.0011974169974564575s: False
+[2026-06-27 18:32:03,306: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1d7364b1-a1bc-4377-a943-75612974e93f] received
+[2026-06-27 18:32:03,306: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[fe85354f-0c49-4c74-a2e7-60856fa06b65] succeeded in 0.001203416999487672s: False
+[2026-06-27 18:32:03,307: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2e7fb214-b4a2-4eb4-bafd-724790d5a948] received
+[2026-06-27 18:32:03,308: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1d7364b1-a1bc-4377-a943-75612974e93f] succeeded in 0.0011608339991653338s: False
+[2026-06-27 18:32:03,308: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ae2a60b4-3f15-4f13-bc07-dbbe39e398ac] received
+[2026-06-27 18:32:03,308: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[2e7fb214-b4a2-4eb4-bafd-724790d5a948] succeeded in 0.0011620000004768372s: False
+[2026-06-27 18:32:03,309: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cecd9560-fe0c-442f-a5d6-a0b05e4cb54a] received
+[2026-06-27 18:32:03,310: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ae2a60b4-3f15-4f13-bc07-dbbe39e398ac] succeeded in 0.0011613750029937364s: False
+[2026-06-27 18:32:03,311: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[93f3427b-7662-4710-8e20-bb5028b042c5] received
+[2026-06-27 18:32:03,310: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[cecd9560-fe0c-442f-a5d6-a0b05e4cb54a] succeeded in 0.0011580829959711991s: False
+[2026-06-27 18:32:03,311: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2e841c9a-a80c-4dcc-8719-81f043dfff3b] received
+[2026-06-27 18:32:03,312: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[93f3427b-7662-4710-8e20-bb5028b042c5] succeeded in 0.0011089589970652014s: False
+[2026-06-27 18:32:03,313: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[acf28dde-af9a-4853-87a3-0daf389cd619] received
+[2026-06-27 18:32:03,313: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2e841c9a-a80c-4dcc-8719-81f043dfff3b] succeeded in 0.001128832998801954s: False
+[2026-06-27 18:32:03,313: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[00a9cc4c-6d9f-4f0f-9e2b-685a02d90e8d] received
+[2026-06-27 18:32:03,314: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[acf28dde-af9a-4853-87a3-0daf389cd619] succeeded in 0.0010518749986658804s: False
+[2026-06-27 18:32:03,315: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4b306cdd-b3e9-45f9-8e22-7ed007c9dc42] received
+[2026-06-27 18:32:03,315: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[00a9cc4c-6d9f-4f0f-9e2b-685a02d90e8d] succeeded in 0.001091541998903267s: False
+[2026-06-27 18:32:03,315: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1a9a8670-64d0-4527-961f-3943a22c2c59] received
+[2026-06-27 18:32:03,316: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4b306cdd-b3e9-45f9-8e22-7ed007c9dc42] succeeded in 0.0010581250026007183s: False
+[2026-06-27 18:32:03,317: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6a5d5e25-c0f7-4d1e-ad3f-30adf8aed58b] received
+[2026-06-27 18:32:03,317: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1a9a8670-64d0-4527-961f-3943a22c2c59] succeeded in 0.00110816700180294s: False
+[2026-06-27 18:32:03,317: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5e23c181-c510-48e8-8d5d-ee9b24e3aaf2] received
+[2026-06-27 18:32:03,318: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6a5d5e25-c0f7-4d1e-ad3f-30adf8aed58b] succeeded in 0.0010827090009115636s: False
+[2026-06-27 18:32:03,319: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8df2b5cd-a7ac-4bbf-a7a3-37e2d3ac0b58] received
+[2026-06-27 18:32:03,318: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5e23c181-c510-48e8-8d5d-ee9b24e3aaf2] succeeded in 0.0010628750023897737s: False
+[2026-06-27 18:32:03,319: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4c0eea6a-d4f1-408a-91e7-b45914622020] received
+[2026-06-27 18:32:03,320: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[8df2b5cd-a7ac-4bbf-a7a3-37e2d3ac0b58] succeeded in 0.001076790998922661s: False
+[2026-06-27 18:32:03,320: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[4c0eea6a-d4f1-408a-91e7-b45914622020] succeeded in 0.0009582079946994781s: False
+[2026-06-27 18:32:03,320: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1d743e22-4bfc-4171-b9c9-bf164a7192d4] received
+[2026-06-27 18:32:03,321: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9997d67d-71b1-41c7-bc9e-6d589a022a52] received
+[2026-06-27 18:32:03,322: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1d743e22-4bfc-4171-b9c9-bf164a7192d4] succeeded in 0.0009953749977285042s: False
+[2026-06-27 18:32:03,322: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c14c9fd3-093e-40b4-bed2-baedfac522ff] received
+[2026-06-27 18:32:03,322: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9997d67d-71b1-41c7-bc9e-6d589a022a52] succeeded in 0.0010124170003109612s: False
+[2026-06-27 18:32:03,323: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2afbd708-e067-4cdf-a29e-59d757750913] received
+[2026-06-27 18:32:03,323: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c14c9fd3-093e-40b4-bed2-baedfac522ff] succeeded in 0.0009930829983204603s: False
+[2026-06-27 18:32:03,324: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6dc94224-f705-4250-a74e-51d29dd24cc8] received
+[2026-06-27 18:32:03,324: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2afbd708-e067-4cdf-a29e-59d757750913] succeeded in 0.0010155839991057292s: False
+[2026-06-27 18:32:03,325: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e4267790-cd23-4983-a104-9ddab43f98e2] received
+[2026-06-27 18:32:03,325: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6dc94224-f705-4250-a74e-51d29dd24cc8] succeeded in 0.000977458999841474s: False
+[2026-06-27 18:32:03,326: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d24870b7-3126-4116-9e14-fcd12c720028] received
+[2026-06-27 18:32:03,326: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e4267790-cd23-4983-a104-9ddab43f98e2] succeeded in 0.0009617499963496812s: False
+[2026-06-27 18:32:03,326: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fd61497c-7417-407c-a63f-2841210e068d] received
+[2026-06-27 18:32:03,327: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d24870b7-3126-4116-9e14-fcd12c720028] succeeded in 0.0009681669980636798s: False
+[2026-06-27 18:32:03,328: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[fd61497c-7417-407c-a63f-2841210e068d] succeeded in 0.0009681669980636798s: False
+[2026-06-27 18:32:03,328: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[50220aa4-c746-4d80-87a5-143b6a297aa3] received
+[2026-06-27 18:32:03,328: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f2b41949-ad78-4c52-8537-08b1b9815298] received
+[2026-06-27 18:32:03,329: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[50220aa4-c746-4d80-87a5-143b6a297aa3] succeeded in 0.0009483749963692389s: False
+[2026-06-27 18:32:03,330: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7da6b486-a537-42ae-bccf-a8d7e606562e] received
+[2026-06-27 18:32:03,329: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f2b41949-ad78-4c52-8537-08b1b9815298] succeeded in 0.0009694170003058389s: False
+[2026-06-27 18:32:03,330: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7a24d2c2-7a53-4c6b-aac8-3dc5c1068fba] received
+[2026-06-27 18:32:03,331: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7da6b486-a537-42ae-bccf-a8d7e606562e] succeeded in 0.0009501249951426871s: False
+[2026-06-27 18:32:03,331: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4d94d24a-b02a-4d22-ac74-0708196e93de] received
+[2026-06-27 18:32:03,331: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7a24d2c2-7a53-4c6b-aac8-3dc5c1068fba] succeeded in 0.0009625000020605512s: False
+[2026-06-27 18:32:03,332: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[851f4694-388f-4a6a-8e69-8eeb31103387] received
+[2026-06-27 18:32:03,332: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4d94d24a-b02a-4d22-ac74-0708196e93de] succeeded in 0.0009372919957968406s: False
+[2026-06-27 18:32:03,333: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[474160c1-b123-4967-ab08-81b2a5d684eb] received
+[2026-06-27 18:32:03,333: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[851f4694-388f-4a6a-8e69-8eeb31103387] succeeded in 0.0009501249951426871s: False
+[2026-06-27 18:32:03,334: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6a8e2028-2206-455c-94de-0362c2aec906] received
+[2026-06-27 18:32:03,334: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[474160c1-b123-4967-ab08-81b2a5d684eb] succeeded in 0.0009501250024186447s: False
+[2026-06-27 18:32:03,335: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5062b7cc-c84a-468e-bb49-1ccc3beed143] received
+[2026-06-27 18:32:03,335: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6a8e2028-2206-455c-94de-0362c2aec906] succeeded in 0.000910041002498474s: False
+[2026-06-27 18:32:03,335: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cd6fefcd-129d-406e-8fe1-d5c8ae8faba8] received
+[2026-06-27 18:32:03,336: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5062b7cc-c84a-468e-bb49-1ccc3beed143] succeeded in 0.000909207999939099s: False
+[2026-06-27 18:32:03,336: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c973357a-40cc-4a73-8190-4550241c1063] received
+[2026-06-27 18:32:03,336: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[cd6fefcd-129d-406e-8fe1-d5c8ae8faba8] succeeded in 0.0009155000007012859s: False
+[2026-06-27 18:32:03,337: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a5df655a-a11d-4233-bf1b-3ab7f21448d5] received
+[2026-06-27 18:32:03,337: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c973357a-40cc-4a73-8190-4550241c1063] succeeded in 0.0009155830048257485s: False
+[2026-06-27 18:32:03,338: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1e066842-84b2-429d-b888-d2cdc38c9715] received
+[2026-06-27 18:32:03,338: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a5df655a-a11d-4233-bf1b-3ab7f21448d5] succeeded in 0.0008933329954743385s: False
+[2026-06-27 18:32:03,338: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[78f9389e-afa4-471e-8fd0-d03035b61fdf] received
+[2026-06-27 18:32:03,339: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1e066842-84b2-429d-b888-d2cdc38c9715] succeeded in 0.0009124170028371736s: False
+[2026-06-27 18:32:03,339: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d335ebd0-55cd-4d5d-964f-1c95f1808966] received
+[2026-06-27 18:32:03,339: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[78f9389e-afa4-471e-8fd0-d03035b61fdf] succeeded in 0.000890292001713533s: False
+[2026-06-27 18:32:03,340: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d335ebd0-55cd-4d5d-964f-1c95f1808966] succeeded in 0.0008899590029614046s: False
+[2026-06-27 19:31:58,097: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[730d3bff-643b-48c3-b60c-f0a7e1bab2f0] received
+[2026-06-27 19:31:58,135: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T14:01:58.134904Z"}
+[2026-06-27 19:31:58,138: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[730d3bff-643b-48c3-b60c-f0a7e1bab2f0] succeeded in 0.03720150000299327s: 1
+[2026-06-27 20:31:58,095: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[682b2291-8dcd-49a9-9ce6-4696a4afb0bb] received
+[2026-06-27 20:31:58,135: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T15:01:58.135286Z"}
+[2026-06-27 20:31:58,138: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[682b2291-8dcd-49a9-9ce6-4696a4afb0bb] succeeded in 0.03978679099964211s: 1
+[2026-06-27 21:31:58,094: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[74f7a4f4-39b9-477e-b580-ac558f7cd239] received
+[2026-06-27 21:31:58,127: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T16:01:58.126986Z"}
+[2026-06-27 21:31:58,128: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[74f7a4f4-39b9-477e-b580-ac558f7cd239] succeeded in 0.03215062500385102s: 1
+[2026-06-27 22:31:58,098: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[0c8d5f6a-aa35-4672-85d8-c9ac4875a404] received
+[2026-06-27 22:31:58,141: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T17:01:58.141054Z"}
+[2026-06-27 22:31:58,144: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[0c8d5f6a-aa35-4672-85d8-c9ac4875a404] succeeded in 0.04199433300527744s: 1
+[2026-06-27 23:31:58,101: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[721510aa-e42e-443f-be2d-c3048dc8568e] received
+[2026-06-27 23:31:58,142: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T18:01:58.142028Z"}
+[2026-06-27 23:31:58,144: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[721510aa-e42e-443f-be2d-c3048dc8568e] succeeded in 0.039430707998690195s: 1
+[2026-06-28 00:31:58,094: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[de16b187-105a-4b07-af3a-8b6f59bbd94b] received
+[2026-06-28 00:31:58,096: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[e5bcf0ae-c06d-4c3c-9d7f-d903c2f3eea2] received
+[2026-06-28 00:31:58,119: WARNING/ForkPoolWorker-2] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-27T19:01:58.119730Z"}
+[2026-06-28 00:31:58,121: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_all_developers[de16b187-105a-4b07-af3a-8b6f59bbd94b] succeeded in 0.02307462500175461s: 1
+[2026-06-28 00:31:58,123: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[42f486dc-dc8a-43a3-9a75-44cafd0a03d5] received
+[2026-06-28 00:31:58,151: WARNING/ForkPoolWorker-1] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T19:01:58.150642Z"}
+[2026-06-28 00:31:58,153: INFO/ForkPoolWorker-1] Task ingestion.tasks.scan_dead_letters[e5bcf0ae-c06d-4c3c-9d7f-d903c2f3eea2] succeeded in 0.053255500009981915s: 1
+[2026-06-28 00:32:02,777: INFO/ForkPoolWorker-2] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-28 00:32:02,827: WARNING/ForkPoolWorker-2] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-27T19:02:02.827293Z"}
+[2026-06-28 00:32:02,831: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[dd5d2857-1715-415e-867a-d43c5cca66dd] received
+[2026-06-28 00:32:02,847: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[dd5d2857-1715-415e-867a-d43c5cca66dd] succeeded in 0.01473766699200496s: False
+[2026-06-28 00:32:02,852: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ea5f0500-d2a1-45d8-8863-ee1827cb6e96] received
+[2026-06-28 00:32:02,856: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ea5f0500-d2a1-45d8-8863-ee1827cb6e96] succeeded in 0.0029562090057879686s: False
+[2026-06-28 00:32:02,859: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1721f086-10e4-43c2-a46f-bef69773c490] received
+[2026-06-28 00:32:02,862: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1721f086-10e4-43c2-a46f-bef69773c490] succeeded in 0.002343999993172474s: False
+[2026-06-28 00:32:02,863: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[14438365-1ff9-416d-b13b-20af328f380f] received
+[2026-06-28 00:32:02,865: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[14438365-1ff9-416d-b13b-20af328f380f] succeeded in 0.0016923749935813248s: False
+[2026-06-28 00:32:02,866: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[48478653-fe98-4fca-98bb-9480e3acc4f9] received
+[2026-06-28 00:32:02,868: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[48478653-fe98-4fca-98bb-9480e3acc4f9] succeeded in 0.001712041994323954s: False
+[2026-06-28 00:32:02,870: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f35532e6-4bdb-4aaa-a60f-29afdfe514e6] received
+[2026-06-28 00:32:02,870: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_developer_github[42f486dc-dc8a-43a3-9a75-44cafd0a03d5] succeeded in 4.746566041998449s: {'enqueued': 58, 'fetched': 58}
+[2026-06-28 00:32:02,871: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4628b8db-ccc9-4c3f-abf7-efc532aa4483] received
+[2026-06-28 00:32:02,872: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f35532e6-4bdb-4aaa-a60f-29afdfe514e6] succeeded in 0.0019749999919440597s: False
+[2026-06-28 00:32:02,874: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a4a8584d-096b-4177-b9be-a47f4ebe5f54] received
+[2026-06-28 00:32:02,874: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4628b8db-ccc9-4c3f-abf7-efc532aa4483] succeeded in 0.002377208002144471s: False
+[2026-06-28 00:32:02,875: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4de766ea-2dd1-45a8-8b05-eada814a45b0] received
+[2026-06-28 00:32:02,876: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a4a8584d-096b-4177-b9be-a47f4ebe5f54] succeeded in 0.0018700000073295087s: False
+[2026-06-28 00:32:02,877: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4de766ea-2dd1-45a8-8b05-eada814a45b0] succeeded in 0.0018958750006277114s: False
+[2026-06-28 00:32:02,878: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[475e6835-7c4a-4d76-8dd9-17fc16389faa] received
+[2026-06-28 00:32:02,879: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[740c9851-e608-4500-b16e-02a60091542b] received
+[2026-06-28 00:32:02,880: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[475e6835-7c4a-4d76-8dd9-17fc16389faa] succeeded in 0.001574458001414314s: False
+[2026-06-28 00:32:02,880: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[740c9851-e608-4500-b16e-02a60091542b] succeeded in 0.001556792005430907s: False
+[2026-06-28 00:32:02,881: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1f33c30a-d41f-4bb1-8f50-043ec34333aa] received
+[2026-06-28 00:32:02,882: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[74d8d0b3-1616-43eb-af68-1532df3b0c6f] received
+[2026-06-28 00:32:02,883: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1f33c30a-d41f-4bb1-8f50-043ec34333aa] succeeded in 0.001614458000403829s: False
+[2026-06-28 00:32:02,883: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[74d8d0b3-1616-43eb-af68-1532df3b0c6f] succeeded in 0.001310332998400554s: False
+[2026-06-28 00:32:02,884: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c8b2091d-6126-4b46-baa6-76d44f2876f1] received
+[2026-06-28 00:32:02,884: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ec9a0522-f794-43b8-ba69-e489bb71e98c] received
+[2026-06-28 00:32:02,885: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c8b2091d-6126-4b46-baa6-76d44f2876f1] succeeded in 0.0013515419996110722s: False
+[2026-06-28 00:32:02,886: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ec9a0522-f794-43b8-ba69-e489bb71e98c] succeeded in 0.0013152080064173788s: False
+[2026-06-28 00:32:02,886: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3307e9ae-40e6-497f-9b40-7eefc4a414be] received
+[2026-06-28 00:32:02,887: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[18bdcc40-a030-4fff-a74a-0ceb93fd68ab] received
+[2026-06-28 00:32:02,888: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3307e9ae-40e6-497f-9b40-7eefc4a414be] succeeded in 0.0012388749892124906s: False
+[2026-06-28 00:32:02,889: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e30d6e51-8c0a-468b-8acf-35eb8dff5134] received
+[2026-06-28 00:32:02,889: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[18bdcc40-a030-4fff-a74a-0ceb93fd68ab] succeeded in 0.0013125419936841354s: False
+[2026-06-28 00:32:02,889: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2c9fe317-5f04-400e-b03d-b49a14965f8b] received
+[2026-06-28 00:32:02,890: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e30d6e51-8c0a-468b-8acf-35eb8dff5134] succeeded in 0.0013150840095477179s: False
+[2026-06-28 00:32:02,891: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4e3c90f6-a1a4-47e3-bfb3-655bf374deb5] received
+[2026-06-28 00:32:02,891: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2c9fe317-5f04-400e-b03d-b49a14965f8b] succeeded in 0.0016520409990334883s: False
+[2026-06-28 00:32:02,892: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[74555c0d-f8cc-4eba-8ac1-c7393e625f53] received
+[2026-06-28 00:32:02,892: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4e3c90f6-a1a4-47e3-bfb3-655bf374deb5] succeeded in 0.0011889999877894297s: False
+[2026-06-28 00:32:02,893: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[93c192c6-3b3d-4966-ae29-a35c726a53b7] received
+[2026-06-28 00:32:02,893: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[74555c0d-f8cc-4eba-8ac1-c7393e625f53] succeeded in 0.0011537499958649278s: False
+[2026-06-28 00:32:02,894: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2373d286-be92-4ccf-8f41-4385e251a3f0] received
+[2026-06-28 00:32:02,894: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[93c192c6-3b3d-4966-ae29-a35c726a53b7] succeeded in 0.0012411250063451007s: False
+[2026-06-28 00:32:02,895: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c701135b-b7f0-4e12-97a7-1e0dc2f7e06d] received
+[2026-06-28 00:32:02,896: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2373d286-be92-4ccf-8f41-4385e251a3f0] succeeded in 0.001146083013736643s: False
+[2026-06-28 00:32:02,897: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1adf719c-d305-4a73-95ba-6ba4275c096c] received
+[2026-06-28 00:32:02,897: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c701135b-b7f0-4e12-97a7-1e0dc2f7e06d] succeeded in 0.0011217909923288971s: False
+[2026-06-28 00:32:02,897: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ee907357-9f6d-423e-ab4d-74b9ba8463fd] received
+[2026-06-28 00:32:02,898: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1adf719c-d305-4a73-95ba-6ba4275c096c] succeeded in 0.0011061669938499108s: False
+[2026-06-28 00:32:02,899: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[43f23581-b961-4bda-8aac-7f4858fab819] received
+[2026-06-28 00:32:02,899: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ee907357-9f6d-423e-ab4d-74b9ba8463fd] succeeded in 0.0011155420070281252s: False
+[2026-06-28 00:32:02,900: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0bbbf17a-9625-4e93-9618-dbffc470d900] received
+[2026-06-28 00:32:02,900: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[43f23581-b961-4bda-8aac-7f4858fab819] succeeded in 0.0011016659991582856s: False
+[2026-06-28 00:32:02,901: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3fd014cb-6b36-43e8-bd7a-4c5b4167d589] received
+[2026-06-28 00:32:02,901: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0bbbf17a-9625-4e93-9618-dbffc470d900] succeeded in 0.001100250010495074s: False
+[2026-06-28 00:32:02,902: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0e5297d8-a04e-4a33-ab43-ad5faedc7c7d] received
+[2026-06-28 00:32:02,902: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3fd014cb-6b36-43e8-bd7a-4c5b4167d589] succeeded in 0.0010649159958120435s: False
+[2026-06-28 00:32:02,902: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f8c41511-f5a8-4ad2-bba7-f1811bfa1e7c] received
+[2026-06-28 00:32:02,903: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0e5297d8-a04e-4a33-ab43-ad5faedc7c7d] succeeded in 0.0010892499994952232s: False
+[2026-06-28 00:32:02,904: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ce262baf-9c39-473a-b741-926a229af2e6] received
+[2026-06-28 00:32:02,904: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f8c41511-f5a8-4ad2-bba7-f1811bfa1e7c] succeeded in 0.0012760410027112812s: False
+[2026-06-28 00:32:02,905: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[be2ca7d8-25e9-47bf-836e-cbc7b90c6a0d] received
+[2026-06-28 00:32:02,905: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ce262baf-9c39-473a-b741-926a229af2e6] succeeded in 0.001053999993018806s: False
+[2026-06-28 00:32:02,905: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7d3398d1-23fb-4572-b509-b36a43ea5667] received
+[2026-06-28 00:32:02,906: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[be2ca7d8-25e9-47bf-836e-cbc7b90c6a0d] succeeded in 0.0010515409958316013s: False
+[2026-06-28 00:32:02,907: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a5d927eb-9a84-4e27-8c44-9c1a47e84607] received
+[2026-06-28 00:32:02,907: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7d3398d1-23fb-4572-b509-b36a43ea5667] succeeded in 0.0011045419960282743s: False
+[2026-06-28 00:32:02,907: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a4ba8f5c-415b-4fc9-b774-1d90537ca2ab] received
+[2026-06-28 00:32:02,908: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a5d927eb-9a84-4e27-8c44-9c1a47e84607] succeeded in 0.0010576670028967783s: False
+[2026-06-28 00:32:02,909: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[efd820e6-0ac8-4b6c-8a52-52f28c4c2bc3] received
+[2026-06-28 00:32:02,909: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a4ba8f5c-415b-4fc9-b774-1d90537ca2ab] succeeded in 0.0010636250081006438s: False
+[2026-06-28 00:32:02,909: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e5819a45-c871-49be-89df-423d89ee65b5] received
+[2026-06-28 00:32:02,910: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[efd820e6-0ac8-4b6c-8a52-52f28c4c2bc3] succeeded in 0.0009609999979147688s: False
+[2026-06-28 00:32:02,910: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9ebad9d1-50da-400a-b345-32a01a882e9f] received
+[2026-06-28 00:32:02,911: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e5819a45-c871-49be-89df-423d89ee65b5] succeeded in 0.0011130830098409206s: False
+[2026-06-28 00:32:02,911: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ede83574-7546-4431-ad58-2cee95a529a6] received
+[2026-06-28 00:32:02,911: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9ebad9d1-50da-400a-b345-32a01a882e9f] succeeded in 0.0010095840116264299s: False
+[2026-06-28 00:32:02,912: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d45ef09f-a4b1-4bb6-8533-a8105d307c9a] received
+[2026-06-28 00:32:02,912: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ede83574-7546-4431-ad58-2cee95a529a6] succeeded in 0.000981042001512833s: False
+[2026-06-28 00:32:02,913: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[96c84c40-080b-49d2-8429-429914e86f48] received
+[2026-06-28 00:32:02,913: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d45ef09f-a4b1-4bb6-8533-a8105d307c9a] succeeded in 0.0009633750014472753s: False
+[2026-06-28 00:32:02,914: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f6d0adb6-db2b-4063-93bb-36461c04d1cd] received
+[2026-06-28 00:32:02,914: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[96c84c40-080b-49d2-8429-429914e86f48] succeeded in 0.0009330419998150319s: False
+[2026-06-28 00:32:02,915: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3794229e-b062-4338-988d-c64333c9f442] received
+[2026-06-28 00:32:02,915: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f6d0adb6-db2b-4063-93bb-36461c04d1cd] succeeded in 0.0009824159933486953s: False
+[2026-06-28 00:32:02,916: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[749597db-a6a2-4574-87f8-967587ed373e] received
+[2026-06-28 00:32:02,916: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3794229e-b062-4338-988d-c64333c9f442] succeeded in 0.0009578750032233074s: False
+[2026-06-28 00:32:02,917: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[34d66088-4c15-4300-afd8-d39d1fb69e2f] received
+[2026-06-28 00:32:02,917: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[749597db-a6a2-4574-87f8-967587ed373e] succeeded in 0.0010120839870069176s: False
+[2026-06-28 00:32:02,917: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4815e21a-16b3-4812-9a22-51a4919406c2] received
+[2026-06-28 00:32:02,918: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[34d66088-4c15-4300-afd8-d39d1fb69e2f] succeeded in 0.0009633339941501617s: False
+[2026-06-28 00:32:02,918: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[04a46e8d-d130-40e2-b3dd-ecdbad5a0f00] received
+[2026-06-28 00:32:02,919: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[4815e21a-16b3-4812-9a22-51a4919406c2] succeeded in 0.0009390000050188974s: False
+[2026-06-28 00:32:02,919: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0d7c7f83-4b10-42af-8204-00f71b31ba6b] received
+[2026-06-28 00:32:02,919: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[04a46e8d-d130-40e2-b3dd-ecdbad5a0f00] succeeded in 0.000898582991794683s: False
+[2026-06-28 00:32:02,920: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[38a94a29-c21e-4914-a648-ad03711e6090] received
+[2026-06-28 00:32:02,920: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0d7c7f83-4b10-42af-8204-00f71b31ba6b] succeeded in 0.0009125000069616362s: False
+[2026-06-28 00:32:02,921: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e9846936-4305-447d-9671-7e9f4a422a78] received
+[2026-06-28 00:32:02,921: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[38a94a29-c21e-4914-a648-ad03711e6090] succeeded in 0.0009078330040210858s: False
+[2026-06-28 00:32:02,922: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[84152cf9-a65c-4d66-a9b6-1ec193a0689e] received
+[2026-06-28 00:32:02,922: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e9846936-4305-447d-9671-7e9f4a422a78] succeeded in 0.0009165000083157793s: False
+[2026-06-28 00:32:02,922: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[619fbe53-ef1d-49cc-9970-9be7f08050b1] received
+[2026-06-28 00:32:02,923: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[84152cf9-a65c-4d66-a9b6-1ec193a0689e] succeeded in 0.0008790839929133654s: False
+[2026-06-28 00:32:02,923: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4ec55899-41ed-4d82-99e9-c81d8f565aec] received
+[2026-06-28 00:32:02,923: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[619fbe53-ef1d-49cc-9970-9be7f08050b1] succeeded in 0.0008861659880494699s: False
+[2026-06-28 00:32:02,924: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5978e137-c6f2-4816-86e2-d78815241fb1] received
+[2026-06-28 00:32:02,924: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4ec55899-41ed-4d82-99e9-c81d8f565aec] succeeded in 0.0008798339986242354s: False
+[2026-06-28 00:32:02,925: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0d3e30df-9b29-4b2c-ad21-08ff27a84647] received
+[2026-06-28 00:32:02,925: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5978e137-c6f2-4816-86e2-d78815241fb1] succeeded in 0.0008924169960664585s: False
+[2026-06-28 00:32:02,926: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aeeb9d4f-0819-41f5-a00d-5d0eb882868a] received
+[2026-06-28 00:32:02,926: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0d3e30df-9b29-4b2c-ad21-08ff27a84647] succeeded in 0.0009107079968089238s: False
+[2026-06-28 00:32:02,927: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[aeeb9d4f-0819-41f5-a00d-5d0eb882868a] succeeded in 0.0008640000014565885s: False
+[2026-06-28 00:32:02,927: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b2bd0357-d041-48bc-b0e0-02459568bcb7] received
+[2026-06-28 00:32:02,928: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b2bd0357-d041-48bc-b0e0-02459568bcb7] succeeded in 0.0008902089903131127s: False
+[2026-06-28 01:31:58,103: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[2bd14448-b84d-4f1f-b3c2-9edbd16506fe] received
+[2026-06-28 01:31:58,139: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T20:01:58.139066Z"}
+[2026-06-28 01:31:58,145: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[2bd14448-b84d-4f1f-b3c2-9edbd16506fe] succeeded in 0.03818554199824575s: 1
+[2026-06-28 02:31:58,159: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[4a191b2f-658d-4769-b90d-fe5628519f77] received
+[2026-06-28 02:31:58,218: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T21:01:58.217609Z"}
+[2026-06-28 02:31:58,227: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[4a191b2f-658d-4769-b90d-fe5628519f77] succeeded in 0.04756770801031962s: 1
+[2026-06-28 04:22:51,872: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[f94582f2-4724-4d4f-a3d8-56297a4808c6] received
+[2026-06-28 04:22:51,952: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T22:52:51.951681Z"}
+[2026-06-28 04:22:51,979: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[f94582f2-4724-4d4f-a3d8-56297a4808c6] succeeded in 0.10482666600728408s: 1
+[2026-06-28 05:22:51,868: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[6683d859-39b2-413c-8ad0-d053f81d1c3d] received
+[2026-06-28 05:22:51,906: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-27T23:52:51.906444Z"}
+[2026-06-28 05:22:51,909: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[6683d859-39b2-413c-8ad0-d053f81d1c3d] succeeded in 0.03618454201205168s: 1
+[2026-06-28 08:52:26,962: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[75b06530-f98f-4971-90f9-1b76e3e47099] received
+[2026-06-28 08:52:26,964: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[bdd454d4-e049-4693-a1aa-eb1593a6f1dd] received
+[2026-06-28 08:52:26,997: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T03:22:26.996977Z"}
+[2026-06-28 08:52:26,998: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[75b06530-f98f-4971-90f9-1b76e3e47099] succeeded in 0.034027250003418885s: 1
+[2026-06-28 08:52:27,057: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[40c1dc1e-4150-439b-ad2f-fcdbb9c448f5] received
+[2026-06-28 08:52:27,058: WARNING/ForkPoolWorker-1] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-28T03:22:27.058200Z"}
+[2026-06-28 08:52:27,059: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_all_developers[bdd454d4-e049-4693-a1aa-eb1593a6f1dd] succeeded in 0.07734329099184833s: 1
+[2026-06-28 08:52:31,378: INFO/ForkPoolWorker-2] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-28 08:52:31,482: WARNING/ForkPoolWorker-2] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-28T03:22:31.482404Z"}
+[2026-06-28 08:52:31,486: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[01c37f61-e23b-41f6-80cc-51866d3f7bab] received
+[2026-06-28 08:52:31,492: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[01c37f61-e23b-41f6-80cc-51866d3f7bab] succeeded in 0.005330500003765337s: False
+[2026-06-28 08:52:31,494: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[427f788e-bd04-47de-959a-66d02a8fc24a] received
+[2026-06-28 08:52:31,496: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[427f788e-bd04-47de-959a-66d02a8fc24a] succeeded in 0.0016861250041984022s: False
+[2026-06-28 08:52:31,498: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cff20449-02cb-4f27-8f66-ba126ba3dcc8] received
+[2026-06-28 08:52:31,499: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[cff20449-02cb-4f27-8f66-ba126ba3dcc8] succeeded in 0.0014106250018812716s: False
+[2026-06-28 08:52:31,500: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9c24d55f-a617-4d1c-87c1-a1fd10f59f77] received
+[2026-06-28 08:52:31,502: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9c24d55f-a617-4d1c-87c1-a1fd10f59f77] succeeded in 0.0013043329963693395s: False
+[2026-06-28 08:52:31,503: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7fc2631b-1a82-43e9-828a-528f7f7c8881] received
+[2026-06-28 08:52:31,506: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7fc2631b-1a82-43e9-828a-528f7f7c8881] succeeded in 0.0023789169936208054s: False
+[2026-06-28 08:52:31,507: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cec1782c-113d-44f8-9f2a-973cb0779a1b] received
+[2026-06-28 08:52:31,509: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[cec1782c-113d-44f8-9f2a-973cb0779a1b] succeeded in 0.0015034999960334972s: False
+[2026-06-28 08:52:31,510: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7f892021-a099-4c89-a21e-38ebb424ea8e] received
+[2026-06-28 08:52:31,512: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7f892021-a099-4c89-a21e-38ebb424ea8e] succeeded in 0.0014955000078771263s: False
+[2026-06-28 08:52:31,513: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[703d091a-e7dc-4110-9d44-49746fe4f6ed] received
+[2026-06-28 08:52:31,514: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_developer_github[40c1dc1e-4150-439b-ad2f-fcdbb9c448f5] succeeded in 4.456914500013227s: {'enqueued': 58, 'fetched': 58}
+[2026-06-28 08:52:31,515: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[703d091a-e7dc-4110-9d44-49746fe4f6ed] succeeded in 0.001675708990660496s: False
+[2026-06-28 08:52:31,516: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[16028a00-89f5-404c-ab5f-f7b7b4f3323e] received
+[2026-06-28 08:52:31,516: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[610f739d-c4d6-402b-b145-d4444d7d4c33] received
+[2026-06-28 08:52:31,518: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[16028a00-89f5-404c-ab5f-f7b7b4f3323e] succeeded in 0.001694874998065643s: False
+[2026-06-28 08:52:31,518: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[610f739d-c4d6-402b-b145-d4444d7d4c33] succeeded in 0.0012920829904032871s: False
+[2026-06-28 08:52:31,519: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[711e015d-7b71-41d9-b556-770d08369de5] received
+[2026-06-28 08:52:31,519: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[51dc364b-7e42-4126-8601-4d2ad667d838] received
+[2026-06-28 08:52:31,520: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[711e015d-7b71-41d9-b556-770d08369de5] succeeded in 0.0013407499936874956s: False
+[2026-06-28 08:52:31,521: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[51dc364b-7e42-4126-8601-4d2ad667d838] succeeded in 0.0012326670112088323s: False
+[2026-06-28 08:52:31,521: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[18f6e5c4-755b-400a-b318-f29e981d8897] received
+[2026-06-28 08:52:31,522: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[81d73740-fc3c-4acd-badb-76c8b404564a] received
+[2026-06-28 08:52:31,523: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[18f6e5c4-755b-400a-b318-f29e981d8897] succeeded in 0.0011599999997997656s: False
+[2026-06-28 08:52:31,524: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4e60bb9a-8070-4a88-9827-77f14d4b1e51] received
+[2026-06-28 08:52:31,524: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[81d73740-fc3c-4acd-badb-76c8b404564a] succeeded in 0.001142291002906859s: False
+[2026-06-28 08:52:31,524: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bc31f643-76fb-41e3-bba4-96ab461c3627] received
+[2026-06-28 08:52:31,525: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4e60bb9a-8070-4a88-9827-77f14d4b1e51] succeeded in 0.0011681249889079481s: False
+[2026-06-28 08:52:31,526: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[bc31f643-76fb-41e3-bba4-96ab461c3627] succeeded in 0.0010505410027690232s: False
+[2026-06-28 08:52:31,527: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d87a1c24-f9d6-412b-86f3-99ed8d656c5d] received
+[2026-06-28 08:52:31,527: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7e44cfd8-835b-48ab-8563-2ca55edac775] received
+[2026-06-28 08:52:31,528: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d87a1c24-f9d6-412b-86f3-99ed8d656c5d] succeeded in 0.0011483749985927716s: False
+[2026-06-28 08:52:31,529: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[159e9b55-d4a4-4d5e-8193-e91e647c7e12] received
+[2026-06-28 08:52:31,529: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7e44cfd8-835b-48ab-8563-2ca55edac775] succeeded in 0.0014464580017374828s: False
+[2026-06-28 08:52:31,529: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3bbfcc8e-30ca-4560-aeab-319f1646b76a] received
+[2026-06-28 08:52:31,530: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[159e9b55-d4a4-4d5e-8193-e91e647c7e12] succeeded in 0.0010872079874388874s: False
+[2026-06-28 08:52:31,531: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4b1c223d-c591-4f41-b312-c40f2fff4795] received
+[2026-06-28 08:52:31,531: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3bbfcc8e-30ca-4560-aeab-319f1646b76a] succeeded in 0.0010529999999562278s: False
+[2026-06-28 08:52:31,531: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bd573545-5cf5-4f39-9585-68178e25f9f9] received
+[2026-06-28 08:52:31,532: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4b1c223d-c591-4f41-b312-c40f2fff4795] succeeded in 0.0009962079930119216s: False
+[2026-06-28 08:52:31,532: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ce56fb9b-88bb-45fa-b2c1-47d64106de65] received
+[2026-06-28 08:52:31,532: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[bd573545-5cf5-4f39-9585-68178e25f9f9] succeeded in 0.0010070839925901964s: False
+[2026-06-28 08:52:31,533: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d2a263ce-9a80-420b-b88b-17ce807facc4] received
+[2026-06-28 08:52:31,534: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ce56fb9b-88bb-45fa-b2c1-47d64106de65] succeeded in 0.0009993330022552982s: False
+[2026-06-28 08:52:31,534: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d622e71f-e982-4e69-8ae5-98b1f6ef0b3b] received
+[2026-06-28 08:52:31,534: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d2a263ce-9a80-420b-b88b-17ce807facc4] succeeded in 0.0010400830069556832s: False
+[2026-06-28 08:52:31,535: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9b3ac2cf-ec40-4ce6-bf1e-11bc4283dbca] received
+[2026-06-28 08:52:31,535: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d622e71f-e982-4e69-8ae5-98b1f6ef0b3b] succeeded in 0.0010161250102100894s: False
+[2026-06-28 08:52:31,536: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7f738f67-a7ac-4ade-96ff-382d91245e17] received
+[2026-06-28 08:52:31,536: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9b3ac2cf-ec40-4ce6-bf1e-11bc4283dbca] succeeded in 0.0010298749984940514s: False
+[2026-06-28 08:52:31,538: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[35ca6e3d-33bd-4862-9d37-a9b2ded6246c] received
+[2026-06-28 08:52:31,538: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7f738f67-a7ac-4ade-96ff-382d91245e17] succeeded in 0.0020416250044945627s: False
+[2026-06-28 08:52:31,539: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[287d028d-7144-4472-acc3-fa177359f6de] received
+[2026-06-28 08:52:31,539: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[35ca6e3d-33bd-4862-9d37-a9b2ded6246c] succeeded in 0.001291166990995407s: False
+[2026-06-28 08:52:31,540: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[98993236-0bc9-469b-82e9-ae6daa4611bf] received
+[2026-06-28 08:52:31,540: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[287d028d-7144-4472-acc3-fa177359f6de] succeeded in 0.0009784999856492504s: False
+[2026-06-28 08:52:31,541: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[37be2d81-2eb8-431b-946b-42f05536d381] received
+[2026-06-28 08:52:31,541: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[98993236-0bc9-469b-82e9-ae6daa4611bf] succeeded in 0.0009307909931521863s: False
+[2026-06-28 08:52:31,542: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[36ee15b5-37f4-49fe-8bb6-0d741c601165] received
+[2026-06-28 08:52:31,542: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[37be2d81-2eb8-431b-946b-42f05536d381] succeeded in 0.0009806250018300489s: False
+[2026-06-28 08:52:31,543: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5c2ba667-4673-47e4-8179-45eec7168536] received
+[2026-06-28 08:52:31,543: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[36ee15b5-37f4-49fe-8bb6-0d741c601165] succeeded in 0.0009494589903624728s: False
+[2026-06-28 08:52:31,544: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a185ba16-c1fd-450a-9428-5e587cffb46e] received
+[2026-06-28 08:52:31,544: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5c2ba667-4673-47e4-8179-45eec7168536] succeeded in 0.0010283340088790283s: False
+[2026-06-28 08:52:31,545: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a185ba16-c1fd-450a-9428-5e587cffb46e] succeeded in 0.0009487499919487163s: False
+[2026-06-28 08:52:31,548: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f003c3bc-f813-4ab4-bc5d-855d0186f92e] received
+[2026-06-28 08:52:31,548: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[069d119a-a92a-438b-860f-5c0d59830cfe] received
+[2026-06-28 08:52:31,549: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f003c3bc-f813-4ab4-bc5d-855d0186f92e] succeeded in 0.001021417003357783s: False
+[2026-06-28 08:52:31,550: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f2ff28b4-907d-409a-8d3f-2c709686fe7b] received
+[2026-06-28 08:52:31,550: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[069d119a-a92a-438b-860f-5c0d59830cfe] succeeded in 0.0013495830062311143s: False
+[2026-06-28 08:52:31,550: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ded3ef95-3497-4178-8ed3-5a7bd54fd60e] received
+[2026-06-28 08:52:31,551: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f2ff28b4-907d-409a-8d3f-2c709686fe7b] succeeded in 0.000983916994300671s: False
+[2026-06-28 08:52:31,551: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7b85609f-e2af-4d3c-8d0d-711c6129d5eb] received
+[2026-06-28 08:52:31,551: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ded3ef95-3497-4178-8ed3-5a7bd54fd60e] succeeded in 0.000992832996416837s: False
+[2026-06-28 08:52:31,552: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3f651882-8d68-48d3-b1c3-ba615b815bde] received
+[2026-06-28 08:52:31,553: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7b85609f-e2af-4d3c-8d0d-711c6129d5eb] succeeded in 0.0009709580044727772s: False
+[2026-06-28 08:52:31,553: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3f651882-8d68-48d3-b1c3-ba615b815bde] succeeded in 0.0008946669986471534s: False
+[2026-06-28 08:52:31,553: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[735d19c5-fe48-474e-af3a-324336e26860] received
+[2026-06-28 08:52:31,554: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d928c09a-6490-4492-9e65-0825ee1b6c82] received
+[2026-06-28 08:52:31,554: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[735d19c5-fe48-474e-af3a-324336e26860] succeeded in 0.0009183329966617748s: False
+[2026-06-28 08:52:31,555: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0fab2e0b-53a3-4a8d-b687-7d89871e11c1] received
+[2026-06-28 08:52:31,555: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d928c09a-6490-4492-9e65-0825ee1b6c82] succeeded in 0.0009232499869540334s: False
+[2026-06-28 08:52:31,556: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9741d904-d4da-4170-b611-64e6ac31f474] received
+[2026-06-28 08:52:31,556: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[0fab2e0b-53a3-4a8d-b687-7d89871e11c1] succeeded in 0.0009117079898715019s: False
+[2026-06-28 08:52:31,557: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[13c41119-ef1f-4dc6-b0e2-6fbd1b92b8a2] received
+[2026-06-28 08:52:31,557: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9741d904-d4da-4170-b611-64e6ac31f474] succeeded in 0.0009120830072788522s: False
+[2026-06-28 08:52:31,557: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2481318e-29f4-48e9-9ca2-b4ea13ac9642] received
+[2026-06-28 08:52:31,558: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[13c41119-ef1f-4dc6-b0e2-6fbd1b92b8a2] succeeded in 0.000941999998758547s: False
+[2026-06-28 08:52:31,558: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e61c1385-7379-46f1-a35c-e005121f7c35] received
+[2026-06-28 08:52:31,559: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2481318e-29f4-48e9-9ca2-b4ea13ac9642] succeeded in 0.0012652089935727417s: False
+[2026-06-28 08:52:31,559: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f8d2e3e2-b883-45b9-88ab-3c8c715ed6f4] received
+[2026-06-28 08:52:31,559: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e61c1385-7379-46f1-a35c-e005121f7c35] succeeded in 0.0009720829984871671s: False
+[2026-06-28 08:52:31,560: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b7ac05f8-b1ed-48c6-a3bb-a030132eebce] received
+[2026-06-28 08:52:31,560: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f8d2e3e2-b883-45b9-88ab-3c8c715ed6f4] succeeded in 0.0009235409961547703s: False
+[2026-06-28 08:52:31,561: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f42cfe86-767b-4696-b9d3-9a873d0842bc] received
+[2026-06-28 08:52:31,561: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b7ac05f8-b1ed-48c6-a3bb-a030132eebce] succeeded in 0.0009362079872516915s: False
+[2026-06-28 08:52:31,562: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[10f92a9a-3360-43f7-ae73-1eb370706c61] received
+[2026-06-28 08:52:31,562: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f42cfe86-767b-4696-b9d3-9a873d0842bc] succeeded in 0.0009317499934695661s: False
+[2026-06-28 08:52:31,563: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7b4ad22c-39f6-4408-98a8-46d29c51e577] received
+[2026-06-28 08:52:31,563: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[10f92a9a-3360-43f7-ae73-1eb370706c61] succeeded in 0.000920084014069289s: False
+[2026-06-28 08:52:31,564: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7b4ad22c-39f6-4408-98a8-46d29c51e577] succeeded in 0.0009117500012507662s: False
+[2026-06-28 08:52:31,564: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e0674fe5-8abe-482f-8194-70afed1f8af0] received
+[2026-06-28 08:52:31,565: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b9ee6def-0552-451a-8d0c-9cdae98cfb60] received
+[2026-06-28 08:52:31,565: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e0674fe5-8abe-482f-8194-70afed1f8af0] succeeded in 0.0009612499998183921s: False
+[2026-06-28 08:52:31,566: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b9ee6def-0552-451a-8d0c-9cdae98cfb60] succeeded in 0.0009420839924132451s: False
+[2026-06-28 08:52:31,566: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cd0eaa20-e72b-4cbc-8a80-e704931001ec] received
+[2026-06-28 08:52:31,566: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0cf0664b-0610-440d-9898-b5c32859d842] received
+[2026-06-28 08:52:31,567: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[cd0eaa20-e72b-4cbc-8a80-e704931001ec] succeeded in 0.0008929999894462526s: False
+[2026-06-28 08:52:31,568: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1929c0ab-4fbd-49cf-9d98-0877864fa643] received
+[2026-06-28 08:52:31,567: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0cf0664b-0610-440d-9898-b5c32859d842] succeeded in 0.0009341250115539879s: False
+[2026-06-28 08:52:31,568: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e9da88b5-c033-40ec-84d5-67585a8b3c8d] received
+[2026-06-28 08:52:31,569: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1929c0ab-4fbd-49cf-9d98-0877864fa643] succeeded in 0.0008774169982643798s: False
+[2026-06-28 08:52:31,569: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e9da88b5-c033-40ec-84d5-67585a8b3c8d] succeeded in 0.0008980840066215023s: False
+[2026-06-28 14:58:01,769: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[53c0db90-ac83-46fb-bd2b-08288d7aa075] received
+[2026-06-28 14:58:01,771: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[9a15f7dc-7816-4dae-ad3e-0944d11bbf6e] received
+[2026-06-28 14:58:01,775: WARNING/ForkPoolWorker-1] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-28T09:28:01.775127Z"}
+[2026-06-28 14:58:01,776: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_all_developers[9a15f7dc-7816-4dae-ad3e-0944d11bbf6e] succeeded in 0.004577333005727269s: 1
+[2026-06-28 14:58:01,777: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[e4f2e002-9acf-4d95-a247-49ecbbf8122f] received
+[2026-06-28 14:58:01,790: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T09:28:01.790820Z"}
+[2026-06-28 14:58:01,791: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[53c0db90-ac83-46fb-bd2b-08288d7aa075] succeeded in 0.0210890830057906s: 1
+[2026-06-28 15:42:18,651: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[e4f2e002-9acf-4d95-a247-49ecbbf8122f] received
+[2026-06-28 15:42:18,665: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_developer_github[e4f2e002-9acf-4d95-a247-49ecbbf8122f] retry: Retry in 1s: ReadTimeout('')
+[2026-06-28 16:00:06,624: INFO/ForkPoolWorker-2] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-28 16:00:06,834: WARNING/ForkPoolWorker-2] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-28T10:30:06.834065Z"}
+[2026-06-28 16:00:06,836: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0c0488fd-c913-4d1a-ad0c-402c0a2d12d8] received
+[2026-06-28 16:00:06,839: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0c0488fd-c913-4d1a-ad0c-402c0a2d12d8] succeeded in 0.0029228339990368113s: False
+[2026-06-28 16:00:06,841: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2216d602-ccf1-429b-aea9-a6312acc5901] received
+[2026-06-28 16:00:06,842: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2216d602-ccf1-429b-aea9-a6312acc5901] succeeded in 0.0015732500032754615s: False
+[2026-06-28 16:00:06,843: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[43be23ad-a107-42ee-ae4e-270400ab926f] received
+[2026-06-28 16:00:06,845: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[43be23ad-a107-42ee-ae4e-270400ab926f] succeeded in 0.0014460000093095005s: False
+[2026-06-28 16:00:06,846: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1b6e6668-c7b0-4383-ab96-209d00a1c027] received
+[2026-06-28 16:00:06,847: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1b6e6668-c7b0-4383-ab96-209d00a1c027] succeeded in 0.0012540839961729944s: False
+[2026-06-28 16:00:06,848: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9acb2a56-c0bc-4565-957c-ca62b1c5f10f] received
+[2026-06-28 16:00:06,851: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9acb2a56-c0bc-4565-957c-ca62b1c5f10f] succeeded in 0.002319875013199635s: False
+[2026-06-28 16:00:06,852: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[37332100-3dd6-486f-b6fd-04212a937a3d] received
+[2026-06-28 16:00:06,855: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[37332100-3dd6-486f-b6fd-04212a937a3d] succeeded in 0.0017081669939216226s: False
+[2026-06-28 16:00:06,856: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ff2fcd4d-700d-4de5-9521-275ed253c4c4] received
+[2026-06-28 16:00:06,858: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ff2fcd4d-700d-4de5-9521-275ed253c4c4] succeeded in 0.0014873330073896796s: False
+[2026-06-28 16:00:06,859: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a5700616-9842-4b62-b20a-839a7c6b8014] received
+[2026-06-28 16:00:06,860: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a5700616-9842-4b62-b20a-839a7c6b8014] succeeded in 0.0014570829953299835s: False
+[2026-06-28 16:00:06,862: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e579f801-24bb-4246-94e1-1e8615168696] received
+[2026-06-28 16:00:06,862: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_developer_github[e4f2e002-9acf-4d95-a247-49ecbbf8122f] succeeded in 4.5131381249957485s: {'enqueued': 58, 'fetched': 58}
+[2026-06-28 16:00:06,863: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6faf4110-a8a6-4e9a-981c-2bd6dbb04cf3] received
+[2026-06-28 16:00:06,863: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e579f801-24bb-4246-94e1-1e8615168696] succeeded in 0.0013189159944886342s: False
+[2026-06-28 16:00:06,864: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e70edb92-42fe-44bd-9811-199e58a6ac57] received
+[2026-06-28 16:00:06,865: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6faf4110-a8a6-4e9a-981c-2bd6dbb04cf3] succeeded in 0.0014359170017996803s: False
+[2026-06-28 16:00:06,865: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f430b42e-22c2-4631-9156-21e81152983a] received
+[2026-06-28 16:00:06,865: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e70edb92-42fe-44bd-9811-199e58a6ac57] succeeded in 0.0012365839938865975s: False
+[2026-06-28 16:00:06,866: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bcfb6e9b-bd96-420e-95b3-c64c40ada99a] received
+[2026-06-28 16:00:06,867: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f430b42e-22c2-4631-9156-21e81152983a] succeeded in 0.0011999160051345825s: False
+[2026-06-28 16:00:06,868: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f3907f03-85f2-46b7-b15c-f3b8678be816] received
+[2026-06-28 16:00:06,868: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[bcfb6e9b-bd96-420e-95b3-c64c40ada99a] succeeded in 0.0012119169987272471s: False
+[2026-06-28 16:00:06,869: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d8449f89-7525-46ef-a199-ac27d055ebec] received
+[2026-06-28 16:00:06,869: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f3907f03-85f2-46b7-b15c-f3b8678be816] succeeded in 0.00116879100096412s: False
+[2026-06-28 16:00:06,870: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9cd13f04-da98-44a0-9424-4c258c525018] received
+[2026-06-28 16:00:06,870: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d8449f89-7525-46ef-a199-ac27d055ebec] succeeded in 0.0011882079998031259s: False
+[2026-06-28 16:00:06,871: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a0d55291-e16c-4f20-a7e6-db1fb584cbd4] received
+[2026-06-28 16:00:06,871: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[9cd13f04-da98-44a0-9424-4c258c525018] succeeded in 0.001135833008447662s: False
+[2026-06-28 16:00:06,872: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4796cf0b-28b2-4f70-b9e0-0415ec6089f1] received
+[2026-06-28 16:00:06,872: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a0d55291-e16c-4f20-a7e6-db1fb584cbd4] succeeded in 0.0011015420022886246s: False
+[2026-06-28 16:00:06,873: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d6e57bf5-0ae4-4721-b76e-eb2f6c841f0c] received
+[2026-06-28 16:00:06,873: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4796cf0b-28b2-4f70-b9e0-0415ec6089f1] succeeded in 0.0010893330036196858s: False
+[2026-06-28 16:00:06,874: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[30fcb23b-5d65-4ed9-a52e-0e89d2897ab5] received
+[2026-06-28 16:00:06,874: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d6e57bf5-0ae4-4721-b76e-eb2f6c841f0c] succeeded in 0.0010640420077834278s: False
+[2026-06-28 16:00:06,875: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[88301f40-5d62-4218-9148-50e095512b80] received
+[2026-06-28 16:00:06,875: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[30fcb23b-5d65-4ed9-a52e-0e89d2897ab5] succeeded in 0.0010925829992629588s: False
+[2026-06-28 16:00:06,876: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[37415044-08cd-4deb-8a6d-ca9255e389ef] received
+[2026-06-28 16:00:06,876: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[88301f40-5d62-4218-9148-50e095512b80] succeeded in 0.0011250829993514344s: False
+[2026-06-28 16:00:06,877: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[dfbcc857-57ed-4a63-857a-f2e60a0e9d55] received
+[2026-06-28 16:00:06,878: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[37415044-08cd-4deb-8a6d-ca9255e389ef] succeeded in 0.001024459008476697s: False
+[2026-06-28 16:00:06,878: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[369f2d9f-11b5-4f06-b9a7-b5aa1f37121a] received
+[2026-06-28 16:00:06,879: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[dfbcc857-57ed-4a63-857a-f2e60a0e9d55] succeeded in 0.0010003329953178763s: False
+[2026-06-28 16:00:06,879: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d671b8ab-bb31-4e71-aee4-1cda86e2a64b] received
+[2026-06-28 16:00:06,879: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[369f2d9f-11b5-4f06-b9a7-b5aa1f37121a] succeeded in 0.00096841600316111s: False
+[2026-06-28 16:00:06,880: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[08ad64f5-c37b-493b-a9f3-5e9dd5879c89] received
+[2026-06-28 16:00:06,881: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d671b8ab-bb31-4e71-aee4-1cda86e2a64b] succeeded in 0.0009991250117309391s: False
+[2026-06-28 16:00:06,881: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[08ad64f5-c37b-493b-a9f3-5e9dd5879c89] succeeded in 0.0009888750064419582s: False
+[2026-06-28 16:00:06,882: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a3dca460-a778-4f46-803e-31865a592bea] received
+[2026-06-28 16:00:06,883: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6de5ca3a-15cf-4da0-85b0-8688b399943c] received
+[2026-06-28 16:00:06,883: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a3dca460-a778-4f46-803e-31865a592bea] succeeded in 0.0009776670049177483s: False
+[2026-06-28 16:00:06,884: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[611688af-e34c-417d-b320-927dcce1febb] received
+[2026-06-28 16:00:06,884: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6de5ca3a-15cf-4da0-85b0-8688b399943c] succeeded in 0.0010119590006070212s: False
+[2026-06-28 16:00:06,884: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[31b9414d-3952-427a-91d9-fabbb7d8e605] received
+[2026-06-28 16:00:06,885: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[611688af-e34c-417d-b320-927dcce1febb] succeeded in 0.0009638749907026067s: False
+[2026-06-28 16:00:06,885: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1ce55f0a-d902-401a-b0e5-d064458a6d08] received
+[2026-06-28 16:00:06,885: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[31b9414d-3952-427a-91d9-fabbb7d8e605] succeeded in 0.0009600000048521906s: False
+[2026-06-28 16:00:06,886: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b63a65f2-8446-452d-915a-190fb49946a8] received
+[2026-06-28 16:00:06,887: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1ce55f0a-d902-401a-b0e5-d064458a6d08] succeeded in 0.0009792080090846866s: False
+[2026-06-28 16:00:06,887: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[43d7a5e5-bcc4-4d6a-baa9-5a68f42342bb] received
+[2026-06-28 16:00:06,887: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b63a65f2-8446-452d-915a-190fb49946a8] succeeded in 0.0009728750010253862s: False
+[2026-06-28 16:00:06,888: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8ecb8bac-8081-4a8f-b1ee-3a2a705f7d21] received
+[2026-06-28 16:00:06,888: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[43d7a5e5-bcc4-4d6a-baa9-5a68f42342bb] succeeded in 0.0009537500009173527s: False
+[2026-06-28 16:00:06,889: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ecd807c8-2412-4931-b3a2-d5f84d72b5d6] received
+[2026-06-28 16:00:06,889: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8ecb8bac-8081-4a8f-b1ee-3a2a705f7d21] succeeded in 0.0009565410000504926s: False
+[2026-06-28 16:00:06,890: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ca202288-84d3-4b78-94b1-184bc60a5028] received
+[2026-06-28 16:00:06,890: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ecd807c8-2412-4931-b3a2-d5f84d72b5d6] succeeded in 0.0009878330020001158s: False
+[2026-06-28 16:00:06,891: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5cbd5c78-4778-4d59-b9fc-cc48ddc2d93e] received
+[2026-06-28 16:00:06,891: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ca202288-84d3-4b78-94b1-184bc60a5028] succeeded in 0.0009699999936856329s: False
+[2026-06-28 16:00:06,891: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e8b4022c-2bbc-402d-92ee-3d89a9155caf] received
+[2026-06-28 16:00:06,892: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5cbd5c78-4778-4d59-b9fc-cc48ddc2d93e] succeeded in 0.0009267499990528449s: False
+[2026-06-28 16:00:06,892: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4db849be-855b-4ed9-8283-0d4144cf9f2a] received
+[2026-06-28 16:00:06,892: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e8b4022c-2bbc-402d-92ee-3d89a9155caf] succeeded in 0.0009489579970249906s: False
+[2026-06-28 16:00:06,893: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5ead910b-d9ed-4a19-8965-338c64e9acee] received
+[2026-06-28 16:00:06,893: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4db849be-855b-4ed9-8283-0d4144cf9f2a] succeeded in 0.00093404199287761s: False
+[2026-06-28 16:00:06,894: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5ca346dd-894e-4ef3-a380-79d40b4abbef] received
+[2026-06-28 16:00:06,894: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5ead910b-d9ed-4a19-8965-338c64e9acee] succeeded in 0.0009144590003415942s: False
+[2026-06-28 16:00:06,895: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[72641e8c-3b48-4518-8aa0-5a41fa1a121b] received
+[2026-06-28 16:00:06,895: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5ca346dd-894e-4ef3-a380-79d40b4abbef] succeeded in 0.00092804100131616s: False
+[2026-06-28 16:00:06,896: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3fcfb554-b6d4-4860-9494-4abbbe64e9a4] received
+[2026-06-28 16:00:06,896: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[72641e8c-3b48-4518-8aa0-5a41fa1a121b] succeeded in 0.0009212500008288771s: False
+[2026-06-28 16:00:06,896: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[659b6aa2-adda-4035-9a18-f9007c8f55d6] received
+[2026-06-28 16:00:06,897: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3fcfb554-b6d4-4860-9494-4abbbe64e9a4] succeeded in 0.0008992499933810905s: False
+[2026-06-28 16:00:06,897: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bccd4761-c632-4982-9cad-6f77d543d2ab] received
+[2026-06-28 16:00:06,897: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[659b6aa2-adda-4035-9a18-f9007c8f55d6] succeeded in 0.0009059170115506276s: False
+[2026-06-28 16:00:06,898: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c9b414ca-71b0-4a9c-8a7c-2870d6e036cb] received
+[2026-06-28 16:00:06,898: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[bccd4761-c632-4982-9cad-6f77d543d2ab] succeeded in 0.0008896249928511679s: False
+[2026-06-28 16:00:06,899: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b5daaf8b-8ed4-49c6-b9d9-e8aed8ab9dff] received
+[2026-06-28 16:00:06,899: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[c9b414ca-71b0-4a9c-8a7c-2870d6e036cb] succeeded in 0.0008950420015025884s: False
+[2026-06-28 16:00:06,900: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[36401fca-7688-4666-973a-2a401755762a] received
+[2026-06-28 16:00:06,900: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b5daaf8b-8ed4-49c6-b9d9-e8aed8ab9dff] succeeded in 0.0009005409956444055s: False
+[2026-06-28 16:00:06,901: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[06ae77a7-50c8-4251-a8bb-588a53edc55b] received
+[2026-06-28 16:00:06,901: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[36401fca-7688-4666-973a-2a401755762a] succeeded in 0.0008909580064937472s: False
+[2026-06-28 16:00:06,902: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[06ae77a7-50c8-4251-a8bb-588a53edc55b] succeeded in 0.0009209999989252537s: False
+[2026-06-28 16:00:06,902: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a89e2881-1ae7-4eb9-b347-80fb89be4914] received
+[2026-06-28 16:00:06,902: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5f9c3c1d-3a5e-47ab-897d-f73743476525] received
+[2026-06-28 16:00:06,903: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a89e2881-1ae7-4eb9-b347-80fb89be4914] succeeded in 0.0008902499976102263s: False
+[2026-06-28 16:00:06,903: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[73b2e93c-f830-4200-be72-de38358e69c1] received
+[2026-06-28 16:00:06,903: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5f9c3c1d-3a5e-47ab-897d-f73743476525] succeeded in 0.0009072079992620274s: False
+[2026-06-28 16:00:06,904: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ee6626ff-d5e0-446b-8df7-9b1331475b7b] received
+[2026-06-28 16:00:06,904: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[73b2e93c-f830-4200-be72-de38358e69c1] succeeded in 0.0008946250018198043s: False
+[2026-06-28 16:00:06,905: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[62b82d5a-7e75-444d-a050-ba45cbbcee73] received
+[2026-06-28 16:00:06,905: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ee6626ff-d5e0-446b-8df7-9b1331475b7b] succeeded in 0.0009286249987781048s: False
+[2026-06-28 16:00:06,906: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1d9fee98-5af8-459f-91b4-9ab94db4c345] received
+[2026-06-28 16:00:06,906: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[62b82d5a-7e75-444d-a050-ba45cbbcee73] succeeded in 0.0008609580108895898s: False
+[2026-06-28 16:00:06,907: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[495e20f6-9b57-4eaa-98e0-09d5c4c0bc79] received
+[2026-06-28 16:00:06,907: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[1d9fee98-5af8-459f-91b4-9ab94db4c345] succeeded in 0.0009184579976135865s: False
+[2026-06-28 16:00:06,907: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[db185d91-03f6-4ec0-b8cd-40fa97267663] received
+[2026-06-28 16:00:06,908: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[495e20f6-9b57-4eaa-98e0-09d5c4c0bc79] succeeded in 0.0008693749987287447s: False
+[2026-06-28 16:00:06,908: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4f603263-10a4-487c-be63-3a9ea300e8c8] received
+[2026-06-28 16:00:06,908: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[db185d91-03f6-4ec0-b8cd-40fa97267663] succeeded in 0.0008604169997852296s: False
+[2026-06-28 16:00:06,909: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4f603263-10a4-487c-be63-3a9ea300e8c8] succeeded in 0.0008501660049660131s: False
+[2026-06-28 16:25:52,243: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[6a2c428c-3f3a-428c-8b33-9bca70dbb921] received
+[2026-06-28 16:25:52,268: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T10:55:52.268337Z"}
+[2026-06-28 16:25:52,269: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[6a2c428c-3f3a-428c-8b33-9bca70dbb921] succeeded in 0.025178374999086373s: 1
+[2026-06-28 17:25:52,288: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[551a2435-ef28-45c4-bed6-31c462523728] received
+[2026-06-28 17:25:52,440: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T11:55:52.439303Z"}
+[2026-06-28 17:25:52,448: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[551a2435-ef28-45c4-bed6-31c462523728] succeeded in 0.13914041699899826s: 1
+[2026-06-28 18:25:52,254: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[8ba91eaf-2e10-44e2-9087-576360318779] received
+[2026-06-28 18:25:52,289: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T12:55:52.289570Z"}
+[2026-06-28 18:25:52,292: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[8ba91eaf-2e10-44e2-9087-576360318779] succeeded in 0.03454641600546893s: 1
+[2026-06-28 20:26:38,533: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[8d152f41-4ef7-4031-9d50-0c25e45b578c] received
+[2026-06-28 20:26:38,566: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T14:56:38.566294Z"}
+[2026-06-28 20:26:38,567: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[8d152f41-4ef7-4031-9d50-0c25e45b578c] succeeded in 0.03281254199100658s: 1
+[2026-06-28 21:31:29,790: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[be357ad9-488c-4f87-ba25-d991b24e5631] received
+[2026-06-28 21:31:29,793: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[4a9536c7-51fc-4c6c-92f7-41eb4618f350] received
+[2026-06-28 21:31:29,844: WARNING/ForkPoolWorker-2] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-28T16:01:29.843971Z"}
+[2026-06-28 21:31:29,844: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_all_developers[be357ad9-488c-4f87-ba25-d991b24e5631] succeeded in 0.05300916699343361s: 1
+[2026-06-28 21:31:29,846: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[9ce2d967-c5da-42b4-8205-b6d4588fdd64] received
+[2026-06-28 21:31:29,869: WARNING/ForkPoolWorker-1] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T16:01:29.869175Z"}
+[2026-06-28 21:31:29,872: INFO/ForkPoolWorker-1] Task ingestion.tasks.scan_dead_letters[4a9536c7-51fc-4c6c-92f7-41eb4618f350] succeeded in 0.05898358300328255s: 1
+[2026-06-28 21:31:34,516: INFO/ForkPoolWorker-2] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-28 21:31:34,520: WARNING/ForkPoolWorker-2] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-28T16:01:34.520575Z"}
+[2026-06-28 21:31:34,523: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2aed8d93-8337-47ce-b423-d06f11b35c9b] received
+[2026-06-28 21:31:34,543: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2aed8d93-8337-47ce-b423-d06f11b35c9b] succeeded in 0.019827458992949687s: False
+[2026-06-28 21:31:34,546: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5edd48c8-8871-40ea-b88a-8755481ef8d5] received
+[2026-06-28 21:31:34,550: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5edd48c8-8871-40ea-b88a-8755481ef8d5] succeeded in 0.002692499998374842s: False
+[2026-06-28 21:31:34,551: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d5110661-3854-447f-b187-93889d1696d7] received
+[2026-06-28 21:31:34,553: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d5110661-3854-447f-b187-93889d1696d7] succeeded in 0.0016408329975092784s: False
+[2026-06-28 21:31:34,554: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ac3aaa1c-0065-41b9-a036-9b7c25426601] received
+[2026-06-28 21:31:34,556: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ac3aaa1c-0065-41b9-a036-9b7c25426601] succeeded in 0.0019221250113332644s: False
+[2026-06-28 21:31:34,557: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3376d6f0-d226-4f89-a85e-1014f0d945f6] received
+[2026-06-28 21:31:34,559: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3376d6f0-d226-4f89-a85e-1014f0d945f6] succeeded in 0.0013681250129593536s: False
+[2026-06-28 21:31:34,560: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5ca1ef29-3b6c-4a34-b633-2563521f4384] received
+[2026-06-28 21:31:34,562: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5ca1ef29-3b6c-4a34-b633-2563521f4384] succeeded in 0.0012332909973338246s: False
+[2026-06-28 21:31:34,563: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fc3ed632-96ea-4a4a-a805-0f236cbf92a0] received
+[2026-06-28 21:31:34,564: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[fc3ed632-96ea-4a4a-a805-0f236cbf92a0] succeeded in 0.0012992499978281558s: False
+[2026-06-28 21:31:34,565: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6691730e-fc30-46ce-85d6-f4224bd752fe] received
+[2026-06-28 21:31:34,567: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6691730e-fc30-46ce-85d6-f4224bd752fe] succeeded in 0.001311333995545283s: False
+[2026-06-28 21:31:34,567: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_developer_github[9ce2d967-c5da-42b4-8205-b6d4588fdd64] succeeded in 4.719524083993747s: {'enqueued': 58, 'fetched': 58}
+[2026-06-28 21:31:34,568: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f90c1ae0-5a47-4eaf-9852-45470b336adc] received
+[2026-06-28 21:31:34,568: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[382131da-ee52-4e22-a24c-cf201b55eff3] received
+[2026-06-28 21:31:34,569: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f90c1ae0-5a47-4eaf-9852-45470b336adc] succeeded in 0.0013483749935403466s: False
+[2026-06-28 21:31:34,570: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[382131da-ee52-4e22-a24c-cf201b55eff3] succeeded in 0.0012629169941646978s: False
+[2026-06-28 21:31:34,571: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c4ac95e1-0395-4d8e-a6d2-8f3e3b2b6580] received
+[2026-06-28 21:31:34,571: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9d6c3463-bdcf-437c-ade7-76878a15e873] received
+[2026-06-28 21:31:34,572: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[c4ac95e1-0395-4d8e-a6d2-8f3e3b2b6580] succeeded in 0.001249791996087879s: False
+[2026-06-28 21:31:34,572: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9d6c3463-bdcf-437c-ade7-76878a15e873] succeeded in 0.0011876250064233318s: False
+[2026-06-28 21:31:34,573: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[467e4c77-b8de-4ca4-af02-1c068892983e] received
+[2026-06-28 21:31:34,574: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[76107f87-ad00-4db1-8ca7-04e75ab86fdd] received
+[2026-06-28 21:31:34,574: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[467e4c77-b8de-4ca4-af02-1c068892983e] succeeded in 0.0011247079964959994s: False
+[2026-06-28 21:31:34,575: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[76107f87-ad00-4db1-8ca7-04e75ab86fdd] succeeded in 0.0010417080047773197s: False
+[2026-06-28 21:31:34,575: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a5b2add2-4e96-4298-b57c-a2b0420110e6] received
+[2026-06-28 21:31:34,576: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aafd2aed-643a-4649-8aff-3d82abd42098] received
+[2026-06-28 21:31:34,576: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a5b2add2-4e96-4298-b57c-a2b0420110e6] succeeded in 0.0010862080089282244s: False
+[2026-06-28 21:31:34,577: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5be87878-0545-48b5-bd79-d1d844f372e7] received
+[2026-06-28 21:31:34,577: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[aafd2aed-643a-4649-8aff-3d82abd42098] succeeded in 0.0010972500022035092s: False
+[2026-06-28 21:31:34,578: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8763a8ea-6070-407b-bbe5-9e2fe6dc61ce] received
+[2026-06-28 21:31:34,578: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[5be87878-0545-48b5-bd79-d1d844f372e7] succeeded in 0.0011048330052290112s: False
+[2026-06-28 21:31:34,579: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[454c4a2d-2fbe-454f-b315-4e2678c47abc] received
+[2026-06-28 21:31:34,579: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8763a8ea-6070-407b-bbe5-9e2fe6dc61ce] succeeded in 0.001082583999959752s: False
+[2026-06-28 21:31:34,580: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f8445388-800d-40e4-8ca0-ffb52103f634] received
+[2026-06-28 21:31:34,580: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[454c4a2d-2fbe-454f-b315-4e2678c47abc] succeeded in 0.001037790992995724s: False
+[2026-06-28 21:31:34,581: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[de630484-b17b-4954-b658-9376af70c047] received
+[2026-06-28 21:31:34,581: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f8445388-800d-40e4-8ca0-ffb52103f634] succeeded in 0.0010942500084638596s: False
+[2026-06-28 21:31:34,581: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a8106d0f-53b3-4238-8602-4a0b6399bcef] received
+[2026-06-28 21:31:34,582: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[de630484-b17b-4954-b658-9376af70c047] succeeded in 0.0010310420038877055s: False
+[2026-06-28 21:31:34,583: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a8106d0f-53b3-4238-8602-4a0b6399bcef] succeeded in 0.000967542000580579s: False
+[2026-06-28 21:31:34,583: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7ae97f09-8b49-4ef0-b670-f3ccc36bfeb4] received
+[2026-06-28 21:31:34,583: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[095475fb-9b0a-45b9-8e0f-c143ee8b62dd] received
+[2026-06-28 21:31:34,584: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7ae97f09-8b49-4ef0-b670-f3ccc36bfeb4] succeeded in 0.0010138329962501302s: False
+[2026-06-28 21:31:34,585: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9bacfe6e-317c-40d1-b93b-dc508b259096] received
+[2026-06-28 21:31:34,584: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[095475fb-9b0a-45b9-8e0f-c143ee8b62dd] succeeded in 0.0010035410086857155s: False
+[2026-06-28 21:31:34,585: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0a97ef5a-a7d1-4ee3-98d9-4680571ae215] received
+[2026-06-28 21:31:34,586: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[9bacfe6e-317c-40d1-b93b-dc508b259096] succeeded in 0.001010332998703234s: False
+[2026-06-28 21:31:34,586: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b0d6156e-97f9-40dc-8df9-2e678c701a19] received
+[2026-06-28 21:31:34,586: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0a97ef5a-a7d1-4ee3-98d9-4680571ae215] succeeded in 0.0009855410025920719s: False
+[2026-06-28 21:31:34,587: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[51812fda-dd5e-4890-b769-2239a87a4e4b] received
+[2026-06-28 21:31:34,587: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b0d6156e-97f9-40dc-8df9-2e678c701a19] succeeded in 0.0009873749950202182s: False
+[2026-06-28 21:31:34,588: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[51812fda-dd5e-4890-b769-2239a87a4e4b] succeeded in 0.0010305839969078079s: False
+[2026-06-28 21:31:34,588: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[286d3136-2f00-4108-b94e-17e7f5b55fa2] received
+[2026-06-28 21:31:34,589: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d1e1be30-1a06-45ed-baec-2ba9c4fdd7d8] received
+[2026-06-28 21:31:34,590: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[286d3136-2f00-4108-b94e-17e7f5b55fa2] succeeded in 0.0009798329992918298s: False
+[2026-06-28 21:31:34,590: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[db7629d6-41c7-47af-8cf2-29fc7b533451] received
+[2026-06-28 21:31:34,590: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[d1e1be30-1a06-45ed-baec-2ba9c4fdd7d8] succeeded in 0.0012013340019620955s: False
+[2026-06-28 21:31:34,591: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[60c130a0-1ba9-4f0b-a5eb-392e3b8e3bad] received
+[2026-06-28 21:31:34,591: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[db7629d6-41c7-47af-8cf2-29fc7b533451] succeeded in 0.0009522500040475279s: False
+[2026-06-28 21:31:34,592: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[cf69c6ee-ca06-43bc-81ab-899c58a533a1] received
+[2026-06-28 21:31:34,592: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[60c130a0-1ba9-4f0b-a5eb-392e3b8e3bad] succeeded in 0.0009450829966226593s: False
+[2026-06-28 21:31:34,593: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ae0a6b69-325f-4323-9c38-6120a00d6860] received
+[2026-06-28 21:31:34,593: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[cf69c6ee-ca06-43bc-81ab-899c58a533a1] succeeded in 0.0010125830012839288s: False
+[2026-06-28 21:31:34,594: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[80d72cb1-2eab-4abd-84e7-64e85e5592d8] received
+[2026-06-28 21:31:34,594: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[ae0a6b69-325f-4323-9c38-6120a00d6860] succeeded in 0.0009500409942120314s: False
+[2026-06-28 21:31:34,595: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[fb0b0799-da21-43f2-abfe-673865057579] received
+[2026-06-28 21:31:34,595: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[80d72cb1-2eab-4abd-84e7-64e85e5592d8] succeeded in 0.0009520830062683672s: False
+[2026-06-28 21:31:34,596: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3b6e27eb-d89d-4d57-b316-2d267155ad3e] received
+[2026-06-28 21:31:34,596: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[fb0b0799-da21-43f2-abfe-673865057579] succeeded in 0.0009282089886255562s: False
+[2026-06-28 21:31:34,596: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f84a00e7-4ac9-47eb-8858-e250df7d86c1] received
+[2026-06-28 21:31:34,597: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3b6e27eb-d89d-4d57-b316-2d267155ad3e] succeeded in 0.00094433399499394s: False
+[2026-06-28 21:31:34,597: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[d48abee5-807e-4ec0-a2a5-1ea18d457684] received
+[2026-06-28 21:31:34,597: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f84a00e7-4ac9-47eb-8858-e250df7d86c1] succeeded in 0.0009228749986505136s: False
+[2026-06-28 21:31:34,598: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4601d06b-6818-4574-b223-cd4e5d5fc32d] received
+[2026-06-28 21:31:34,598: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[d48abee5-807e-4ec0-a2a5-1ea18d457684] succeeded in 0.0009264580003218725s: False
+[2026-06-28 21:31:34,599: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aff73b9d-ed7f-4e2b-ae92-d5f36a249908] received
+[2026-06-28 21:31:34,599: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[4601d06b-6818-4574-b223-cd4e5d5fc32d] succeeded in 0.0009493749967077747s: False
+[2026-06-28 21:31:34,600: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9d202951-53d1-470a-8364-1f9566907c5f] received
+[2026-06-28 21:31:34,600: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[aff73b9d-ed7f-4e2b-ae92-d5f36a249908] succeeded in 0.0008995419921120629s: False
+[2026-06-28 21:31:34,601: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[61559f32-2b15-4b4f-8231-dfc90b1fcb74] received
+[2026-06-28 21:31:34,601: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9d202951-53d1-470a-8364-1f9566907c5f] succeeded in 0.0009045000042533502s: False
+[2026-06-28 21:31:34,601: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[0987553b-6cff-4518-85d7-4afad8112cec] received
+[2026-06-28 21:31:34,602: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[61559f32-2b15-4b4f-8231-dfc90b1fcb74] succeeded in 0.0008985830063465983s: False
+[2026-06-28 21:31:34,602: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[aa713ea4-0e6e-446b-824f-4340a08d4b64] received
+[2026-06-28 21:31:34,602: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[0987553b-6cff-4518-85d7-4afad8112cec] succeeded in 0.0008930420008255169s: False
+[2026-06-28 21:31:34,603: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8688313b-9808-4b9f-9957-7416bf88bfde] received
+[2026-06-28 21:31:34,603: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[aa713ea4-0e6e-446b-824f-4340a08d4b64] succeeded in 0.0008967500034486875s: False
+[2026-06-28 21:31:34,604: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[71697b9c-edf4-4f15-8e9e-fb7669a2c63f] received
+[2026-06-28 21:31:34,604: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8688313b-9808-4b9f-9957-7416bf88bfde] succeeded in 0.000923542000236921s: False
+[2026-06-28 21:31:34,604: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[eeeea230-39d9-4d8e-8386-3364142e9841] received
+[2026-06-28 21:31:34,605: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[71697b9c-edf4-4f15-8e9e-fb7669a2c63f] succeeded in 0.0008490420004818588s: False
+[2026-06-28 21:31:34,605: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[57c4fd9d-203a-4c97-b952-bc9f15af9285] received
+[2026-06-28 21:31:34,605: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[eeeea230-39d9-4d8e-8386-3364142e9841] succeeded in 0.0008682499901624396s: False
+[2026-06-28 21:31:34,606: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8d7928f0-3a94-4db5-92d6-59c9f578ff71] received
+[2026-06-28 21:31:34,606: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[57c4fd9d-203a-4c97-b952-bc9f15af9285] succeeded in 0.0008367920090677217s: False
+[2026-06-28 21:31:34,607: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[eb08e5a8-6f54-4a92-9e27-51644a5663e7] received
+[2026-06-28 21:31:34,607: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8d7928f0-3a94-4db5-92d6-59c9f578ff71] succeeded in 0.0008466669969493523s: False
+[2026-06-28 21:31:34,608: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[61e061b1-6177-4435-8382-c3a525eab305] received
+[2026-06-28 21:31:34,608: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[eb08e5a8-6f54-4a92-9e27-51644a5663e7] succeeded in 0.0008516670059179887s: False
+[2026-06-28 21:31:34,608: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3a1ff112-2665-4eb6-8933-1e1745ee8921] received
+[2026-06-28 21:31:34,608: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[61e061b1-6177-4435-8382-c3a525eab305] succeeded in 0.0008552500075893477s: False
+[2026-06-28 21:31:34,609: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6f0b8204-d017-4a8e-8eba-fb31f7bc1aef] received
+[2026-06-28 21:31:34,609: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3a1ff112-2665-4eb6-8933-1e1745ee8921] succeeded in 0.0008166249899659306s: False
+[2026-06-28 21:31:34,610: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b6e39946-d2ea-413a-8e72-a23381a11f0d] received
+[2026-06-28 21:31:34,610: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6f0b8204-d017-4a8e-8eba-fb31f7bc1aef] succeeded in 0.0008641660097055137s: False
+[2026-06-28 21:31:34,611: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[742aa4af-8fc3-4e69-87e2-7e267135c17a] received
+[2026-06-28 21:31:34,612: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b6e39946-d2ea-413a-8e72-a23381a11f0d] succeeded in 0.000836874998640269s: False
+[2026-06-28 21:31:34,612: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e4b674e1-56ed-414a-a055-bb43ed4517d4] received
+[2026-06-28 21:31:34,612: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[742aa4af-8fc3-4e69-87e2-7e267135c17a] succeeded in 0.0008640419982839376s: False
+[2026-06-28 21:31:34,613: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6523c48d-0e9f-400c-8f84-3c9e92e8f381] received
+[2026-06-28 21:31:34,613: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e4b674e1-56ed-414a-a055-bb43ed4517d4] succeeded in 0.0008637919963803142s: False
+[2026-06-28 21:31:34,614: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[6523c48d-0e9f-400c-8f84-3c9e92e8f381] succeeded in 0.0008467090083286166s: False
+[2026-06-28 22:31:29,794: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[1179392e-6e20-40a0-bab9-d15f95e3c642] received
+[2026-06-28 22:31:29,799: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T17:01:29.799619Z"}
+[2026-06-28 22:31:29,800: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[1179392e-6e20-40a0-bab9-d15f95e3c642] succeeded in 0.005284166996716522s: 1
+[2026-06-29 01:32:33,125: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[1c9d7cc5-5038-45e3-ba3f-d025842da9b6] received
+[2026-06-29 01:32:33,129: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T20:02:33.129696Z"}
+[2026-06-29 01:32:33,130: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[1c9d7cc5-5038-45e3-ba3f-d025842da9b6] succeeded in 0.003932541003450751s: 1
+[2026-06-29 02:32:33,122: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[d248456a-2495-4599-988f-d204bcfc139a] received
+[2026-06-29 02:32:33,127: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T21:02:33.127384Z"}
+[2026-06-29 02:32:33,128: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[d248456a-2495-4599-988f-d204bcfc139a] succeeded in 0.005110625002998859s: 1
+[2026-06-29 03:31:29,793: INFO/MainProcess] Task ingestion.tasks.sync_all_developers[5c73c484-2172-4bfe-937d-3297bfca3983] received
+[2026-06-29 03:31:29,801: INFO/MainProcess] Task ingestion.tasks.sync_developer_github[2249862d-0b20-4aa6-8006-e5f155b22fc5] received
+[2026-06-29 03:31:29,800: WARNING/ForkPoolWorker-2] {"developers": 1, "event": "beat.sync_all_enqueued", "level": "info", "timestamp": "2026-06-28T22:01:29.800700Z"}
+[2026-06-29 03:31:29,802: INFO/ForkPoolWorker-2] Task ingestion.tasks.sync_all_developers[5c73c484-2172-4bfe-937d-3297bfca3983] succeeded in 0.007404707997920923s: 1
+[2026-06-29 03:31:34,808: INFO/ForkPoolWorker-1] HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+[2026-06-29 03:31:34,848: WARNING/ForkPoolWorker-1] {"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-28T22:01:34.848746Z"}
+[2026-06-29 03:31:34,854: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[13bd6626-bbb8-4800-b891-55aaa95a59cb] received
+[2026-06-29 03:31:34,859: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[13bd6626-bbb8-4800-b891-55aaa95a59cb] succeeded in 0.004587415998685174s: False
+[2026-06-29 03:31:34,861: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b6369bb7-f03c-4047-8bff-270180a9a451] received
+[2026-06-29 03:31:34,864: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[b6369bb7-f03c-4047-8bff-270180a9a451] succeeded in 0.0026738750020740554s: False
+[2026-06-29 03:31:34,866: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[eaa2b35e-faea-476a-a17c-0c6bcbb742bb] received
+[2026-06-29 03:31:34,869: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[eaa2b35e-faea-476a-a17c-0c6bcbb742bb] succeeded in 0.0019998329953523353s: False
+[2026-06-29 03:31:34,870: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[af31d55f-0b2c-4139-8d5e-6c851a5f48fa] received
+[2026-06-29 03:31:34,872: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[af31d55f-0b2c-4139-8d5e-6c851a5f48fa] succeeded in 0.0016388750082114711s: False
+[2026-06-29 03:31:34,873: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ecd9e392-e7d7-4e36-a46e-e46312f734b0] received
+[2026-06-29 03:31:34,874: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ecd9e392-e7d7-4e36-a46e-e46312f734b0] succeeded in 0.0014881249953759834s: False
+[2026-06-29 03:31:34,875: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[ff46d89b-f175-4a8e-9309-776f17595e3e] received
+[2026-06-29 03:31:34,877: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[ff46d89b-f175-4a8e-9309-776f17595e3e] succeeded in 0.001453749995562248s: False
+[2026-06-29 03:31:34,878: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a515afdb-5977-41ff-bf15-e9fcfd4ed76d] received
+[2026-06-29 03:31:34,880: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a515afdb-5977-41ff-bf15-e9fcfd4ed76d] succeeded in 0.0013439589965855703s: False
+[2026-06-29 03:31:34,881: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f237c387-9f4f-412a-a495-2fb709b31df8] received
+[2026-06-29 03:31:34,883: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f237c387-9f4f-412a-a495-2fb709b31df8] succeeded in 0.0020842499943682924s: False
+[2026-06-29 03:31:34,884: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3a4d1b0d-38f2-4ca8-bb48-d3e8a06f1dce] received
+[2026-06-29 03:31:34,886: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3a4d1b0d-38f2-4ca8-bb48-d3e8a06f1dce] succeeded in 0.001644582996959798s: False
+[2026-06-29 03:31:34,888: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[46963dfc-d8a9-4d8f-9f0f-6862b48b6efb] received
+[2026-06-29 03:31:34,888: INFO/ForkPoolWorker-1] Task ingestion.tasks.sync_developer_github[2249862d-0b20-4aa6-8006-e5f155b22fc5] succeeded in 5.086908333993051s: {'enqueued': 58, 'fetched': 58}
+[2026-06-29 03:31:34,889: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[46963dfc-d8a9-4d8f-9f0f-6862b48b6efb] succeeded in 0.00151966699922923s: False
+[2026-06-29 03:31:34,890: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[98c1d10f-f973-4372-8237-53f19aa752f3] received
+[2026-06-29 03:31:34,891: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[5ddcd962-962f-45e0-b4df-58d420940db8] received
+[2026-06-29 03:31:34,891: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[98c1d10f-f973-4372-8237-53f19aa752f3] succeeded in 0.0015384590078610927s: False
+[2026-06-29 03:31:34,893: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3d427e8d-b368-45c5-a6fa-102cad8d723a] received
+[2026-06-29 03:31:34,892: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[5ddcd962-962f-45e0-b4df-58d420940db8] succeeded in 0.0016044579970184714s: False
+[2026-06-29 03:31:34,893: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8039412c-04f4-4140-b0fb-b9588c8538ad] received
+[2026-06-29 03:31:34,894: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[3d427e8d-b368-45c5-a6fa-102cad8d723a] succeeded in 0.00135087501257658s: False
+[2026-06-29 03:31:34,895: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[904fc3d5-c655-4106-908c-cd1e88c2bc10] received
+[2026-06-29 03:31:34,895: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[8039412c-04f4-4140-b0fb-b9588c8538ad] succeeded in 0.0014121669955784455s: False
+[2026-06-29 03:31:34,896: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[21035862-d05e-4104-98f7-c35bb4f358ba] received
+[2026-06-29 03:31:34,897: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[904fc3d5-c655-4106-908c-cd1e88c2bc10] succeeded in 0.001342542003840208s: False
+[2026-06-29 03:31:34,898: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e6e15086-4a23-41d2-9d21-003df19c9b4a] received
+[2026-06-29 03:31:34,898: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[21035862-d05e-4104-98f7-c35bb4f358ba] succeeded in 0.001454500001273118s: False
+[2026-06-29 03:31:34,899: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7db30447-5d80-4a3c-b81f-341991263993] received
+[2026-06-29 03:31:34,899: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e6e15086-4a23-41d2-9d21-003df19c9b4a] succeeded in 0.0012675410107476637s: False
+[2026-06-29 03:31:34,900: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[00c59036-41c3-4de5-b432-448993be1516] received
+[2026-06-29 03:31:34,900: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[7db30447-5d80-4a3c-b81f-341991263993] succeeded in 0.001208459012559615s: False
+[2026-06-29 03:31:34,901: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c0e41b7e-5315-4162-bc5f-73973d4f2f48] received
+[2026-06-29 03:31:34,901: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[00c59036-41c3-4de5-b432-448993be1516] succeeded in 0.0011304580111755058s: False
+[2026-06-29 03:31:34,902: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a9a4eb32-c5fc-4526-a9cf-5b3a52c17692] received
+[2026-06-29 03:31:34,902: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[c0e41b7e-5315-4162-bc5f-73973d4f2f48] succeeded in 0.0011492910125525668s: False
+[2026-06-29 03:31:34,903: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[928fca20-9894-4ab4-b93c-f0e16dea6c4e] received
+[2026-06-29 03:31:34,903: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a9a4eb32-c5fc-4526-a9cf-5b3a52c17692] succeeded in 0.0011506669980008155s: False
+[2026-06-29 03:31:34,904: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7a85c86e-9ad3-4fac-bd46-6ecff95d0a0d] received
+[2026-06-29 03:31:34,904: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[928fca20-9894-4ab4-b93c-f0e16dea6c4e] succeeded in 0.0011578749981708825s: False
+[2026-06-29 03:31:34,905: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a5cb41ae-19b0-4c26-b423-b0666b35dcb6] received
+[2026-06-29 03:31:34,906: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7a85c86e-9ad3-4fac-bd46-6ecff95d0a0d] succeeded in 0.0011577919940464199s: False
+[2026-06-29 03:31:34,906: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[20753572-8fd9-4e35-8556-a6616c286f05] received
+[2026-06-29 03:31:34,906: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[a5cb41ae-19b0-4c26-b423-b0666b35dcb6] succeeded in 0.0011847919959109277s: False
+[2026-06-29 03:31:34,907: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2a010ba0-e070-43bc-a171-6d58d731a6e6] received
+[2026-06-29 03:31:34,908: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[20753572-8fd9-4e35-8556-a6616c286f05] succeeded in 0.0011643340112641454s: False
+[2026-06-29 03:31:34,908: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[82bef36e-5fa8-452e-8bab-bc68ba351ecd] received
+[2026-06-29 03:31:34,909: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2a010ba0-e070-43bc-a171-6d58d731a6e6] succeeded in 0.0011356250033713877s: False
+[2026-06-29 03:31:34,909: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[72308e78-7881-4538-a936-61bb4814d36f] received
+[2026-06-29 03:31:34,910: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[82bef36e-5fa8-452e-8bab-bc68ba351ecd] succeeded in 0.0010877919994527474s: False
+[2026-06-29 03:31:34,910: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[1abcfac6-c565-4340-be40-b7de29d6860c] received
+[2026-06-29 03:31:34,911: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[72308e78-7881-4538-a936-61bb4814d36f] succeeded in 0.001077207998605445s: False
+[2026-06-29 03:31:34,911: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f231b4a4-065f-4440-94cd-6de0178262cf] received
+[2026-06-29 03:31:34,912: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[1abcfac6-c565-4340-be40-b7de29d6860c] succeeded in 0.0010532500018598512s: False
+[2026-06-29 03:31:34,912: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bc34b30a-b119-44f8-b18f-cec3b3be2015] received
+[2026-06-29 03:31:34,912: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f231b4a4-065f-4440-94cd-6de0178262cf] succeeded in 0.001069582998752594s: False
+[2026-06-29 03:31:34,913: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[b2608b49-0220-4d96-b9cf-d910610adf07] received
+[2026-06-29 03:31:34,914: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[bc34b30a-b119-44f8-b18f-cec3b3be2015] succeeded in 0.0010340419976273552s: False
+[2026-06-29 03:31:34,915: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4efabb3a-b469-40b8-9ca6-5eb1db544e3d] received
+[2026-06-29 03:31:34,915: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[b2608b49-0220-4d96-b9cf-d910610adf07] succeeded in 0.0011415420012781397s: False
+[2026-06-29 03:31:34,915: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f11bbc4d-90ec-416f-b9ac-d9a5d011aec3] received
+[2026-06-29 03:31:34,916: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[4efabb3a-b469-40b8-9ca6-5eb1db544e3d] succeeded in 0.001102209003875032s: False
+[2026-06-29 03:31:34,917: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2447e1ff-feb9-4087-be03-d01f7ea71994] received
+[2026-06-29 03:31:34,917: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[f11bbc4d-90ec-416f-b9ac-d9a5d011aec3] succeeded in 0.001076250002370216s: False
+[2026-06-29 03:31:34,917: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[9cf690c0-6f33-4739-84dd-129f6721e23d] received
+[2026-06-29 03:31:34,918: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[2447e1ff-feb9-4087-be03-d01f7ea71994] succeeded in 0.0009411250066477805s: False
+[2026-06-29 03:31:34,918: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[22405131-1385-480c-bbdc-784fab874e1d] received
+[2026-06-29 03:31:34,918: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[9cf690c0-6f33-4739-84dd-129f6721e23d] succeeded in 0.0009830420021899045s: False
+[2026-06-29 03:31:34,919: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[75c626e2-1f5b-4d4e-9f79-4b30772780d7] received
+[2026-06-29 03:31:34,919: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[22405131-1385-480c-bbdc-784fab874e1d] succeeded in 0.0009954589913832024s: False
+[2026-06-29 03:31:34,920: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e567a5a3-c4d0-44f6-a75a-71fe65313360] received
+[2026-06-29 03:31:34,920: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[75c626e2-1f5b-4d4e-9f79-4b30772780d7] succeeded in 0.0009882079903036356s: False
+[2026-06-29 03:31:34,921: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[72e24c82-b10b-40ef-abe9-785011cb74e9] received
+[2026-06-29 03:31:34,921: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[e567a5a3-c4d0-44f6-a75a-71fe65313360] succeeded in 0.0010025829978985712s: False
+[2026-06-29 03:31:34,922: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[bfb4c4ce-86fc-45f0-a0fb-600a71f6d6ab] received
+[2026-06-29 03:31:34,922: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[72e24c82-b10b-40ef-abe9-785011cb74e9] succeeded in 0.0009624999947845936s: False
+[2026-06-29 03:31:34,923: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[4fb1b5cb-a5b6-40c9-8b74-1f5de3c514bf] received
+[2026-06-29 03:31:34,923: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[bfb4c4ce-86fc-45f0-a0fb-600a71f6d6ab] succeeded in 0.0009847909968812019s: False
+[2026-06-29 03:31:34,924: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[79702f65-d3b5-4afe-a208-f3d808b3dd5b] received
+[2026-06-29 03:31:34,924: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[4fb1b5cb-a5b6-40c9-8b74-1f5de3c514bf] succeeded in 0.0009919159929268062s: False
+[2026-06-29 03:31:34,924: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[e17c8ad0-a0d0-4dd6-a3ab-3aec8c6b46b4] received
+[2026-06-29 03:31:34,925: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[79702f65-d3b5-4afe-a208-f3d808b3dd5b] succeeded in 0.0009700829978100955s: False
+[2026-06-29 03:31:34,926: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[6eba91f6-2b8e-4d49-a908-58294cac0122] received
+[2026-06-29 03:31:34,925: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[e17c8ad0-a0d0-4dd6-a3ab-3aec8c6b46b4] succeeded in 0.0009375000081490725s: False
+[2026-06-29 03:31:34,926: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3a3eb587-3548-4c86-be58-bbe0f0aadf11] received
+[2026-06-29 03:31:34,927: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[6eba91f6-2b8e-4d49-a908-58294cac0122] succeeded in 0.000899125006981194s: False
+[2026-06-29 03:31:34,930: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[f5d7b81f-0678-4aeb-a23f-556a17a808b4] received
+[2026-06-29 03:31:34,930: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3a3eb587-3548-4c86-be58-bbe0f0aadf11] succeeded in 0.0033075000101234764s: False
+[2026-06-29 03:31:34,930: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[3cc12194-5342-4a3a-b127-fb480cc55f09] received
+[2026-06-29 03:31:34,931: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[f5d7b81f-0678-4aeb-a23f-556a17a808b4] succeeded in 0.0010827500082086772s: False
+[2026-06-29 03:31:34,931: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[7720e15b-9833-4db1-8529-57ba0276e6fe] received
+[2026-06-29 03:31:34,931: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[3cc12194-5342-4a3a-b127-fb480cc55f09] succeeded in 0.0009817910031415522s: False
+[2026-06-29 03:31:34,932: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[80b6b1b2-b426-4eab-a2c5-1fa1439b3a0a] received
+[2026-06-29 03:31:34,933: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[7720e15b-9833-4db1-8529-57ba0276e6fe] succeeded in 0.0009517079888610169s: False
+[2026-06-29 03:31:34,933: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[8b724f1a-60cd-421f-bfa1-c3f194994587] received
+[2026-06-29 03:31:34,933: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[80b6b1b2-b426-4eab-a2c5-1fa1439b3a0a] succeeded in 0.0009044580074260011s: False
+[2026-06-29 03:31:34,934: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[2ddc3f0c-61af-4f45-a4b0-ffb99650aae0] received
+[2026-06-29 03:31:34,934: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[8b724f1a-60cd-421f-bfa1-c3f194994587] succeeded in 0.0009601250058040023s: False
+[2026-06-29 03:31:34,935: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[2ddc3f0c-61af-4f45-a4b0-ffb99650aae0] succeeded in 0.001021582997054793s: False
+[2026-06-29 03:31:34,938: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[36f8ebc6-04aa-4176-a212-e24e11011d7a] received
+[2026-06-29 03:31:34,939: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[c6b7cfbb-f235-4648-b6f7-951e3a7d14d9] received
+[2026-06-29 03:31:34,939: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[36f8ebc6-04aa-4176-a212-e24e11011d7a] succeeded in 0.0009645419922890142s: False
+[2026-06-29 03:31:34,940: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[c6b7cfbb-f235-4648-b6f7-951e3a7d14d9] succeeded in 0.000945583000429906s: False
+[2026-06-29 03:31:34,940: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[22562db3-aa64-443f-9498-aa403fc32c1c] received
+[2026-06-29 03:31:34,941: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[505776e8-7fe3-4ca8-a26b-36d4c8376227] received
+[2026-06-29 03:31:34,941: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[22562db3-aa64-443f-9498-aa403fc32c1c] succeeded in 0.0009854999952949584s: False
+[2026-06-29 03:31:34,942: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[a972026e-a9f6-4063-8d34-4c28510bc7e7] received
+[2026-06-29 03:31:34,942: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[505776e8-7fe3-4ca8-a26b-36d4c8376227] succeeded in 0.0009583750070305541s: False
+[2026-06-29 03:31:34,943: INFO/MainProcess] Task ingestion.tasks.summarise_and_index[71e666eb-6445-4a29-9145-30b3db952916] received
+[2026-06-29 03:31:34,943: INFO/ForkPoolWorker-2] Task ingestion.tasks.summarise_and_index[a972026e-a9f6-4063-8d34-4c28510bc7e7] succeeded in 0.0009420419955858961s: False
+[2026-06-29 03:31:34,944: INFO/ForkPoolWorker-1] Task ingestion.tasks.summarise_and_index[71e666eb-6445-4a29-9145-30b3db952916] succeeded in 0.0009540419996483251s: False
+[2026-06-29 03:32:33,125: INFO/MainProcess] Task ingestion.tasks.scan_dead_letters[44200ccd-e039-4fa7-97b1-36957c7b8a4d] received
+[2026-06-29 03:32:33,130: WARNING/ForkPoolWorker-2] {"depth": 1, "sample": ["b'{\"task\": \"ingestion.tasks.sync_developer_github\", \"args\": [\"f4f94a7f9235404a8e47573a2656acef\", \"HerenderKumar\"], \"error\": \"\"}'"], "event": "dlq.alert", "level": "warning", "timestamp": "2026-06-28T22:02:33.130560Z"}
+[2026-06-29 03:32:33,131: INFO/ForkPoolWorker-2] Task ingestion.tasks.scan_dead_letters[44200ccd-e039-4fa7-97b1-36957c7b8a4d] succeeded in 0.004958959005307406s: 1
+[2026-06-29 04:07:23,774: WARNING/MainProcess] consumer: Connection to broker lost. Trying to re-establish the connection...
+Traceback (most recent call last):
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1165, in <lambda>
+    lambda: command(*args, **kwargs),
+            ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1248, in try_read
+    return conn.read_response(
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1371, in read_response
+    response = self._parser.read_response(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/_parsers/resp3.py", line 40, in read_response
+    result = self._read_response(
+             ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/_parsers/resp3.py", line 65, in _read_response
+    raw = self._buffer.readline(timeout=timeout)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 117, in readline
+    self._read_from_socket(timeout=timeout)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/_parsers/socket.py", line 67, in _read_from_socket
+    raise ConnectionError(SERVER_CLOSED_CONNECTION_ERROR)
+redis.exceptions.ConnectionError: Connection closed by server.
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1033, in connect_check_health
+    sock = self._connect()
+           ^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1581, in _connect
+    raise err
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1565, in _connect
+    sock.connect(socket_address)
+ConnectionRefusedError: [Errno 61] Connection refused
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 346, in start
+    blueprint.start(self)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/celery/bootsteps.py", line 116, in start
+    step.start(parent)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py", line 788, in start
+    c.loop(*c.loop_args())
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/celery/worker/loops.py", line 97, in asynloop
+    next(loop)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/kombu/asynchronous/hub.py", line 377, in create_loop
+    cb(*cbargs)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 1394, in on_readable
+    self.cycle.on_readable(fileno)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 579, in on_readable
+    chan.handlers[type]()
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 931, in _receive
+    ret.append(self._receive_one(c))
+               ^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/kombu/transport/redis.py", line 941, in _receive_one
+    response = c.parse_response()
+               ^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1252, in parse_response
+    response = self._execute(conn, try_read)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1164, in _execute
+    response = conn.retry.call_with_retry(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/retry.py", line 127, in call_with_retry
+    fail(error, failures)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1161, in failure_callback
+    self._reconnect(conn, error, failure_count, start_time, command_name)
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/client.py", line 1135, in _reconnect
+    conn.connect()
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1006, in connect
+    self.retry.call_with_retry(
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/retry.py", line 132, in call_with_retry
+    raise error
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/retry.py", line 120, in call_with_retry
+    return do()
+           ^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1007, in <lambda>
+    lambda: self.connect_check_health(
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/redis/connection.py", line 1055, in connect_check_health
+    raise e
+redis.exceptions.ConnectionError: Error 61 connecting to localhost:6379. Connection refused.
+[2026-06-29 04:07:23,815: WARNING/MainProcess] /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/venv/lib/python3.11/site-packages/celery/worker/consumer/consumer.py:397: CPendingDeprecationWarning: 
+In Celery 5.1 we introduced an optional breaking change which
+on connection loss cancels all currently executed tasks with late acknowledgement enabled.
+These tasks cannot be acknowledged as the connection is gone, and the tasks are automatically redelivered
+back to the queue. You can enable this behavior using the worker_cancel_long_running_tasks_on_connection_loss
+setting. In Celery 5.1 it is set to False by default. The setting will be set to True by default in Celery 6.0.
+
+  warnings.warn(CANCEL_TASKS_BY_DEFAULT, CPendingDeprecationWarning)
+
+[2026-06-29 04:07:23,826: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/1: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 2.00 seconds... (1/100)
+
+[2026-06-29 04:07:25,834: ERROR/MainProcess] consumer: Cannot connect to redis://localhost:6379/1: Error 61 connecting to localhost:6379. Connection refused..
+Trying again in 4.00 seconds... (2/100)
+
+
+worker: Warm shutdown (MainProcess)

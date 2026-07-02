@@ -1,0 +1,5 @@
+{
+  "backend": "hashing",
+  "model": "hashing-384",
+  "dim": 384
+}

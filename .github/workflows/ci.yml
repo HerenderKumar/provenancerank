@@ -1,0 +1,74 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: pip install ruff
+      - run: ruff check .
+      - run: ruff format --check .
+
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - name: Install deps (skip the heavy optional ones)
+        run: |
+          grep -viE "sentence-transformers|google-generativeai|xgboost" requirements.txt > req.ci.txt
+          pip install -r req.ci.txt
+      - name: Unit + integration tests
+        run: python -m pytest -q
+
+  validate-submission:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: "3.11" }
+      - run: |
+          grep -viE "sentence-transformers|google-generativeai|xgboost" requirements.txt > req.ci.txt
+          pip install -r req.ci.txt
+      - name: Smoke rank + official validator (live path, 120-candidate sample)
+        run: |
+          python rank.py --smoke --candidates data/smoke_candidates.jsonl
+          python rank.py --candidates data/smoke_candidates.jsonl --out ci_submission.csv --top-k 100
+          python validate_submission.py ci_submission.csv
+      - name: Honeypot guard — none allowed in the top 100
+        run: |
+          python - <<'PY'
+          import csv, json
+          ids = {r["candidate_id"] for r in csv.DictReader(open("ci_submission.csv"))}
+          hp = 0
+          with open("data/smoke_candidates.jsonl") as f:
+              for line in f:
+                  c = json.loads(line)
+                  if c["candidate_id"] in ids:
+                      sk = [s for s in c["skills"]
+                            if s.get("proficiency") == "expert" and s.get("duration_months", 1) == 0]
+                      if len(sk) >= 3:
+                          hp += 1
+          assert hp == 0, f"{hp} honeypots leaked into top 100"
+          print("honeypot rate in top100: 0")
+          PY
+
+  docker-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: docker/setup-buildx-action@v3
+      - name: Build image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: false
+          tags: provenancerank:ci

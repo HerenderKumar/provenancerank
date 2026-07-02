@@ -1,0 +1,180 @@
+# Full stack: 2 API replicas behind nginx, Postgres + Redis, the offline
+# precompute job, and the observability trio (Prometheus, Grafana, Jaeger).
+#
+#   docker compose up --build
+#   open http://localhost:8080/docs        (API via nginx)
+#   open http://localhost:3000             (Grafana, admin/admin)
+#   open http://localhost:16686            (Jaeger)
+#
+# Bulkhead: `precompute` is a separate one-shot container; the API never runs
+# the heavy offline pipeline, it only reads the artifacts volume.
+
+x-api-env: &api-env
+  ENVIRONMENT: production
+  DATABASE_URL: postgresql+asyncpg://pruser:prpass@postgres:5432/provenancerank
+  REDIS_URL: redis://redis:6379/0
+  ARTIFACTS_DIR: /app/artifacts
+  JD_FILE: /app/data/job_description.txt
+  JWT_SECRET: ${JWT_SECRET:-change-me-to-a-32char-random-secret-string}
+  BOOTSTRAP_ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@provenancerank.local}
+  BOOTSTRAP_ADMIN_PASSWORD: ${ADMIN_PASSWORD:-changeme-admin}
+  OTEL_ENABLED: "true"
+  OTEL_EXPORTER_ENDPOINT: http://jaeger:4318/v1/traces
+  CORS_ORIGINS: http://localhost:5173,http://localhost:8080
+  # live ingestion layer
+  GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+  GOOGLE_API_KEY: ${GOOGLE_API_KEY:-}
+  NEO4J_ENABLED: "true"
+  NEO4J_URI: bolt://neo4j:7687
+  NEO4J_USER: neo4j
+  NEO4J_PASSWORD: provenancerank
+  CELERY_BROKER_URL: redis://redis:6379/1
+  CELERY_RESULT_BACKEND: redis://redis:6379/2
+  CELERY_TASK_ALWAYS_EAGER: "false"
+
+services:
+  postgres:
+    image: pgvector/pgvector:pg16  # postgres 16 + the vector extension (init.sql)
+    environment:
+      POSTGRES_USER: pruser
+      POSTGRES_PASSWORD: prpass
+      POSTGRES_DB: provenancerank
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U pruser -d provenancerank"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  redis:
+    image: redis:7-alpine
+    command: ["redis-server", "--maxmemory", "256mb", "--maxmemory-policy", "allkeys-lru"]
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # one-shot: build all artifacts into the shared volume, then exit
+  precompute:
+    build: .
+    command: ["python", "precompute.py", "--candidates", "/app/candidates.jsonl",
+              "--jd", "/app/data/job_description.txt", "--no-st", "--bm25-backend", "inverted",
+              "--resume"]   # artifacts persist in the named volume; reuse on re-up
+    volumes:
+      - artifacts:/app/artifacts
+      - ./candidates.jsonl:/app/candidates.jsonl:ro
+    restart: "no"
+
+  api1: &api
+    build: .
+    environment: *api-env
+    volumes: ["artifacts:/app/artifacts:ro"]
+    depends_on:
+      postgres: { condition: service_healthy }
+      redis: { condition: service_healthy }
+      neo4j: { condition: service_healthy }
+      precompute: { condition: service_completed_successfully }
+    expose: ["8000"]
+    restart: unless-stopped
+
+  api2:
+    <<: *api
+
+  # --- live ingestion layer ---
+  neo4j:
+    image: neo4j:5-community
+    environment:
+      NEO4J_AUTH: neo4j/provenancerank
+      NEO4J_PLUGINS: '["apoc"]'
+    ports: ["7474:7474", "7687:7687"]
+    volumes: ["neo4j_data:/data"]
+    healthcheck:
+      # cypher-shell is always in the neo4j image (wget often isn't); this also
+      # confirms the DB is actually queryable, not just that a port is open.
+      test: ["CMD-SHELL", "cypher-shell -u neo4j -p provenancerank 'RETURN 1' || exit 1"]
+      interval: 10s
+      timeout: 5s
+      retries: 15
+      start_period: 40s
+
+  # GitHub fetch workers (separate queue + container = bulkhead from below)
+  worker-ingestion:
+    build: .
+    command: ["celery", "-A", "core.celery_app", "worker", "-Q", "ingestion",
+              "--concurrency=4", "-n", "ingestion@%h"]
+    environment: *api-env
+    depends_on:
+      redis: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+      neo4j: { condition: service_healthy }
+    restart: unless-stopped
+
+  # summarise + extract + index workers
+  worker-intelligence:
+    build: .
+    command: ["celery", "-A", "core.celery_app", "worker", "-Q", "intelligence",
+              "--concurrency=2", "-n", "intelligence@%h"]
+    environment: *api-env
+    depends_on:
+      redis: { condition: service_healthy }
+      postgres: { condition: service_healthy }
+      neo4j: { condition: service_healthy }
+    restart: unless-stopped
+
+  # scheduler: 6-hourly developer re-sync + hourly dead-letter scan
+  beat:
+    build: .
+    # write the schedule db to /tmp: /app is root-owned but the container runs as
+    # the non-root 'app' user, so beat can't create celerybeat-schedule in the cwd.
+    command: ["celery", "-A", "core.celery_app", "beat", "--loglevel=info",
+              "--schedule=/tmp/celerybeat-schedule", "--pidfile=/tmp/celerybeat.pid"]
+    environment: *api-env
+    depends_on:
+      redis: { condition: service_healthy }
+    restart: unless-stopped
+
+  # API load balancer (the backend gateway the UI and clients talk to)
+  gateway:
+    image: nginx:1.27-alpine
+    volumes: ["./deploy/nginx/nginx.conf:/etc/nginx/nginx.conf:ro"]
+    ports: ["8080:80"]
+    depends_on: [api1, api2]
+    restart: unless-stopped
+
+  # React recruiter console (static build + /api proxy to the gateway)
+  frontend:
+    build: ./frontend
+    ports: ["3001:80"]
+    depends_on: [gateway]
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes: ["./deploy/prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro"]
+    ports: ["9090:9090"]
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:latest
+    environment:
+      GF_SECURITY_ADMIN_PASSWORD: admin
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+    volumes: ["./deploy/grafana/provisioning:/etc/grafana/provisioning:ro"]
+    ports: ["3000:3000"]
+    depends_on: [prometheus]
+    restart: unless-stopped
+
+  jaeger:
+    image: jaegertracing/all-in-one:1.57
+    environment:
+      COLLECTOR_OTLP_ENABLED: "true"
+    ports: ["16686:16686", "4318:4318"]
+    restart: unless-stopped
+
+volumes:
+  pgdata:
+  neo4j_data:
+  artifacts:

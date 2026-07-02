@@ -1,0 +1,69 @@
+# ProvenanceRank — full dependency set.
+#
+# The RANKING step (rank.py) only needs the "core ranking" block below; the
+# code degrades gracefully if any optional package is missing (see each
+# module's import guard). The offline precompute step and the sandbox API use
+# the remaining blocks. Pinned to compatible floors for reproducibility.
+
+# ---- core ranking (required at inference) ----
+numpy>=1.24,<3
+pandas>=2.0,<3
+joblib>=1.3
+
+# ---- structured config & logging ----
+pydantic>=2.5,<3
+pydantic-settings>=2.1
+structlog>=24.1
+PyYAML>=6.0
+
+# ---- retrieval / ML (graceful fallbacks exist for all of these) ----
+rank-bm25>=0.2.2
+scikit-learn>=1.3
+xgboost>=2.0          # primary ML fit scorer; falls back to sklearn, then formula
+scipy>=1.10           # Bradley-Terry tournament (offline only)
+tqdm>=4.66
+
+# ---- embeddings (offline precompute; falls back to a hashing embedder) ----
+sentence-transformers>=2.3.0
+
+# ---- JD deconstruction (OFFLINE ONLY — never imported by rank.py) ----
+google-generativeai>=0.5.0
+
+# ---- API serving layer (not needed to produce submission.csv) ----
+fastapi>=0.110
+uvicorn[standard]>=0.27
+gunicorn>=21.2
+sse-starlette>=2.0
+python-multipart>=0.0.9
+
+# ---- auth ----
+pyjwt>=2.8
+bcrypt>=4.1
+
+# ---- data layer ----
+sqlalchemy[asyncio]>=2.0
+asyncpg>=0.29          # prod Postgres driver
+aiosqlite>=0.19        # dev/test sqlite driver
+alembic>=1.13
+greenlet>=3.0
+
+# ---- cache / metrics ----
+redis>=5.0
+prometheus-client>=0.20
+
+# ---- observability (optional; tracing no-ops if absent) ----
+# opentelemetry-sdk>=1.24
+# opentelemetry-exporter-otlp-proto-http>=1.24
+# opentelemetry-instrumentation-fastapi>=0.45b0
+# opentelemetry-instrumentation-sqlalchemy>=0.45b0
+
+# ---- live ingestion layer (addendum) ----
+celery>=5.3              # ingestion + intelligence workers, beat scheduler
+neo4j>=5.14              # knowledge-graph driver (falls back to in-memory)
+# pypdf>=4.0             # optional: PDF resume parsing (docx works without it)
+# spacy>=3.7             # optional: NER (taxonomy alias-matching works without it)
+
+# ---- tests ----
+pytest>=8.0
+pytest-asyncio>=0.23
+httpx>=0.26

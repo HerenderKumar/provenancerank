@@ -1,0 +1,325 @@
+INFO:     Started server process [52682]
+INFO:     Waiting for application startup.
+{"env": "development", "version": "1.0.0", "event": "startup.begin", "level": "info", "timestamp": "2026-06-26T17:53:22.260831Z"}
+{"url": "sqlite+aiosqlite", "event": "db.engine_created", "level": "info", "timestamp": "2026-06-26T17:53:22.265914Z"}
+{"event": "db.models_ready", "level": "info", "timestamp": "2026-06-26T17:53:22.269101Z"}
+{"duration_ms": 180.54, "status": "ok", "n": 100000, "event": "ranker.load", "level": "info", "timestamp": "2026-06-26T17:53:22.455073Z"}
+{"candidates": 100000, "has_embeddings": false, "has_bm25": false, "event": "ranker.ready", "level": "info", "timestamp": "2026-06-26T17:53:22.455118Z"}
+{"url": "redis://localhost:6379/0", "event": "cache.redis_connected", "level": "info", "timestamp": "2026-06-26T17:53:22.473647Z"}
+{"event": "queue.worker_started", "level": "info", "timestamp": "2026-06-26T17:53:22.473696Z"}
+{"backend": "in-memory", "event": "graph.backend_ready", "level": "info", "timestamp": "2026-06-26T17:53:22.473713Z"}
+{"ranker_ready": true, "cache": "redis", "event": "startup.ready", "level": "info", "timestamp": "2026-06-26T17:53:22.473728Z"}
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://0.0.0.0:8000 (Press CTRL+C to quit)
+{"method": "GET", "path": "/health/ready", "status": 200, "duration_ms": 3.06, "request_id": "560300af7f354d0e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:53:23.688757Z"}
+INFO:     127.0.0.1:64326 - "GET /health/ready HTTP/1.1" 200 OK
+{"method": "GET", "path": "/health/ready", "status": 200, "duration_ms": 0.97, "request_id": "e5b2ed14614f4bb6", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:53:23.700792Z"}
+INFO:     127.0.0.1:64328 - "GET /health/ready HTTP/1.1" 200 OK
+{"method": "POST", "path": "/auth/login", "status": 200, "duration_ms": 198.24, "request_id": "00d57918bc5b45cb", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:54:37.680250Z"}
+INFO:     127.0.0.1:64352 - "POST /auth/login HTTP/1.1" 200 OK
+{"method": "POST", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync", "status": 202, "duration_ms": 6.38, "request_id": "8ecf71a01be64981", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:54:37.702566Z"}
+INFO:     127.0.0.1:64354 - "POST /developers/f4f94a7f9235404a8e47573a2656acef/sync HTTP/1.1" 202 Accepted
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 2.32, "request_id": "bdfb6fe024db4747", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:54:37.726464Z"}
+INFO:     127.0.0.1:64356 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.54, "request_id": "3d9a71814fd74cbe", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:54:40.758177Z"}
+INFO:     127.0.0.1:64360 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+{"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-26T17:54:42.021480Z"}
+{"developer": "f4f94a7f9235404a8e47573a2656acef", "indexed": 0, "skipped": 58, "fetched": 58, "event": "sync.complete", "level": "info", "timestamp": "2026-06-26T17:54:42.041020Z"}
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 2.97, "request_id": "12f3326d589a44ab", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:54:43.791289Z"}
+INFO:     127.0.0.1:64362 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/evidence-graph", "status": 200, "duration_ms": 2.4, "request_id": "42d6d3d9f1e748e7", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T17:55:08.070296Z"}
+INFO:     127.0.0.1:64367 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/evidence-graph HTTP/1.1" 200 OK
+{"method": "GET", "path": "/admin/artifacts", "status": 401, "duration_ms": 6.95, "request_id": "87fd2ddd81ee42ba", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T22:06:11.720231Z"}
+INFO:     127.0.0.1:49953 - "GET /admin/artifacts HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 3.04, "request_id": "22fc6722d35c4812", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T22:06:11.721029Z"}
+INFO:     127.0.0.1:49954 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/admin/artifacts", "status": 401, "duration_ms": 3.94, "request_id": "5f5d49a9b9054eec", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-26T22:17:26.850217Z"}
+INFO:     127.0.0.1:50504 - "GET /admin/artifacts HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/admin/artifacts", "status": 401, "duration_ms": 39.12, "request_id": "05bf9384c9524550", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:11:48.556391Z"}
+INFO:     127.0.0.1:56106 - "GET /admin/artifacts HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 8.65, "request_id": "2ef4cb79a7fc46ee", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:11:48.557586Z"}
+INFO:     127.0.0.1:56107 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.63, "request_id": "9fb3835b71944ae9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:11:49.564567Z"}
+INFO:     127.0.0.1:56111 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.09, "request_id": "497c32d3470f44a7", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:11:53.577184Z"}
+INFO:     127.0.0.1:56114 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.52, "request_id": "a418bd8eba1e4a90", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:11:54.583978Z"}
+INFO:     127.0.0.1:56117 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/developers/connect-github", "status": 401, "duration_ms": 12.71, "request_id": "c517593dbee24420", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:12:04.050643Z"}
+INFO:     127.0.0.1:56126 - "POST /developers/connect-github HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/developers/connect-github", "status": 401, "duration_ms": 10.99, "request_id": "c66453edb50b487e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:37.484457Z"}
+INFO:     127.0.0.1:56569 - "POST /developers/connect-github HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/developers/connect-github", "status": 401, "duration_ms": 5.91, "request_id": "6d98d1a7523f4c77", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:38.887043Z"}
+INFO:     127.0.0.1:56574 - "POST /developers/connect-github HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 3.3, "request_id": "e8b5c28adc3a4297", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:40.871232Z"}
+INFO:     127.0.0.1:56585 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 0.34, "request_id": "21672e6feff047ce", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:40.875822Z"}
+INFO:     127.0.0.1:56587 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/auth/login", "status": 200, "duration_ms": 224.35, "request_id": "4c5558ffcb4f42f1", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:47.469440Z"}
+INFO:     127.0.0.1:56590 - "POST /auth/login HTTP/1.1" 200 OK
+{"method": "GET", "path": "/auth/me", "status": 200, "duration_ms": 6.46, "request_id": "9fff99a345ca4429", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:47.481460Z"}
+INFO:     127.0.0.1:56593 - "GET /auth/me HTTP/1.1" 200 OK
+{"method": "GET", "path": "/admin/artifacts", "status": 200, "duration_ms": 10.07, "request_id": "b4ae4c75c8644209", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:47.517498Z"}
+INFO:     127.0.0.1:56597 - "GET /admin/artifacts HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 4.33, "request_id": "79bf430de8ba4b48", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:47.520927Z"}
+INFO:     127.0.0.1:56599 - "GET /rank HTTP/1.1" 200 OK
+{"method": "POST", "path": "/developers/connect-github", "status": 202, "duration_ms": 12.75, "request_id": "185031a964004712", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:26:56.458594Z"}
+INFO:     127.0.0.1:56603 - "POST /developers/connect-github HTTP/1.1" 202 Accepted
+HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+{"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-27T20:27:01.159561Z"}
+{"developer": "f4f94a7f9235404a8e47573a2656acef", "indexed": 0, "skipped": 58, "fetched": 58, "event": "sync.complete", "level": "info", "timestamp": "2026-06-27T20:27:01.182076Z"}
+/Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank/graph/natural_language_query.py:69: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  "Parse this recruiter query into STRICT JSON with keys: skill_names "
+{"query": "who", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:28:44.746779Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 3671.41, "request_id": "b1d13225964e465f", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:28:44.747385Z"}
+INFO:     127.0.0.1:56644 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:28:46.913430Z"}
+{"query": "who debuuged", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:28:46.914460Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 763.26, "request_id": "f5b48d14845b4c94", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:28:46.914984Z"}
+INFO:     127.0.0.1:56650 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"method": "GET", "path": "/admin/artifacts", "status": 200, "duration_ms": 1.02, "request_id": "3b03e20c26ea487e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:04.558603Z"}
+INFO:     127.0.0.1:56664 - "GET /admin/artifacts HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 2.69, "request_id": "46d28cbea62946c9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:04.563371Z"}
+INFO:     127.0.0.1:56667 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 2.73, "request_id": "2c59b5c548334948", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:08.572458Z"}
+INFO:     127.0.0.1:56675 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.06, "request_id": "a1fde50d6e634a83", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:12.580866Z"}
+INFO:     127.0.0.1:56678 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.26, "request_id": "fdbc73865dfd4b9e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:16.595025Z"}
+INFO:     127.0.0.1:56681 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.22, "request_id": "67612e36fb8d4a0f", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:20.612040Z"}
+INFO:     127.0.0.1:56684 - "GET /rank HTTP/1.1" 200 OK
+{"method": "POST", "path": "/rank", "status": 202, "duration_ms": 8.84, "request_id": "de02625b222146bf", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:23.399936Z"}
+INFO:     127.0.0.1:56687 - "POST /rank HTTP/1.1" 202 Accepted
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 6.33, "request_id": "375e257304514e24", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:23.413190Z"}
+INFO:     127.0.0.1:56690 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 3.09, "request_id": "4015779e2571462d", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:23.413843Z"}
+INFO:     127.0.0.1:56693 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 1.65, "request_id": "a0c69053ac0f401b", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:23.417885Z"}
+INFO:     127.0.0.1:56696 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 1.74, "request_id": "f662615fd9534ff2", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:23.421271Z"}
+INFO:     127.0.0.1:56699 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 0.99, "request_id": "39d34e3a7b9e4633", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:24.029292Z"}
+INFO:     127.0.0.1:56702 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 2.73, "request_id": "c972e61b4f2d495d", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:24.425631Z"}
+INFO:     127.0.0.1:56705 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 4.54, "request_id": "fb64d3ca5a454dc3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:24.655101Z"}
+INFO:     127.0.0.1:56708 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"iterations": 0, "exit_reason": "confident", "pool_size": 16893, "coverage": {"retrieval_experience": 1.0, "llm_experience": 1.0, "production_evidence": 1.0, "product_company": 1.0, "available": 1.0}, "event": "loop_agent.done", "level": "info", "timestamp": "2026-06-27T20:30:24.675443Z"}
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3", "status": 200, "duration_ms": 2.69, "request_id": "823e662f873f4054", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:25.274155Z"}
+INFO:     127.0.0.1:56711 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3 HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/cdc139d66d8d440fba0b744dcff435a3/results", "status": 200, "duration_ms": 6.64, "request_id": "5f68d05ce7b24949", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:30:25.287366Z"}
+INFO:     127.0.0.1:56714 - "GET /rank/cdc139d66d8d440fba0b744dcff435a3/results HTTP/1.1" 200 OK
+{"method": "POST", "path": "/developers/connect-github", "status": 202, "duration_ms": 25.9, "request_id": "20f11734fcfb4fc9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:44:53.107501Z"}
+INFO:     127.0.0.1:56916 - "POST /developers/connect-github HTTP/1.1" 202 Accepted
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.2, "request_id": "aa967800ceed4dc3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:44:53.167812Z"}
+INFO:     127.0.0.1:56919 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.24, "request_id": "1afd43e7eaee4d0f", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:44:55.622819Z"}
+INFO:     127.0.0.1:56923 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+{"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-27T20:44:56.293604Z"}
+{"developer": "f4f94a7f9235404a8e47573a2656acef", "indexed": 0, "skipped": 58, "fetched": 58, "event": "sync.complete", "level": "info", "timestamp": "2026-06-27T20:44:56.317443Z"}
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.94, "request_id": "ab3f94ac37df4f74", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:44:58.122755Z"}
+INFO:     127.0.0.1:56926 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.03, "request_id": "676874f164e74426", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:00.620833Z"}
+INFO:     127.0.0.1:56929 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.95, "request_id": "58d367bc09f74286", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:03.115986Z"}
+INFO:     127.0.0.1:56932 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.46, "request_id": "261bc7d4478b427a", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:05.617748Z"}
+INFO:     127.0.0.1:56935 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.31, "request_id": "9349fe06a0264ce4", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:08.114489Z"}
+INFO:     127.0.0.1:56938 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 7.27, "request_id": "f61b5cd17e2148e6", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:10.619433Z"}
+INFO:     127.0.0.1:56941 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 6.24, "request_id": "cb63924dbeb44579", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:13.116183Z"}
+INFO:     127.0.0.1:56948 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:13.499227Z"}
+{"query": "is there", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:13.500400Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 1477.07, "request_id": "0420489ee7204f6e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:13.501610Z"}
+INFO:     127.0.0.1:56944 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:14.424650Z"}
+{"query": "is there any", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:14.425997Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 802.21, "request_id": "5fb5b5e8f3354161", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:14.426579Z"}
+INFO:     127.0.0.1:56951 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.61, "request_id": "c28d2bb7f7e6479c", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:15.615145Z"}
+INFO:     127.0.0.1:56959 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:16.264639Z"}
+{"query": "is there any a", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:16.265708Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 923.78, "request_id": "97a580a59f714df9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:16.266204Z"}
+INFO:     127.0.0.1:56955 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:17.364842Z"}
+{"query": "is there any ai ci", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:17.366270Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 704.08, "request_id": "1035ca22f3d2497d", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:17.366904Z"}
+INFO:     127.0.0.1:56962 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.65, "request_id": "305c9ee4b42b48c4", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:18.114946Z"}
+INFO:     127.0.0.1:56974 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:18.310344Z"}
+{"query": "is there any ai co", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:18.311394Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 470.69, "request_id": "ab989ec374544e94", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:18.311849Z"}
+INFO:     127.0.0.1:56970 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"reason": "429 You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.goo", "event": "nlq.gemini_fallback", "level": "warning", "timestamp": "2026-06-27T20:45:20.379794Z"}
+{"query": "is there any ai copilot", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:20.380626Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 842.24, "request_id": "3b8eb44c1e8f4937", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:20.381207Z"}
+INFO:     127.0.0.1:56977 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 6.29, "request_id": "d62f3a1089744714", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:20.614146Z"}
+INFO:     127.0.0.1:56981 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.75, "request_id": "00e04d235ee24bb9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:23.114711Z"}
+INFO:     127.0.0.1:56984 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.24, "request_id": "045663d199c54638", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:25.613697Z"}
+INFO:     127.0.0.1:56987 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.19, "request_id": "86216a774db245ba", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:28.114747Z"}
+INFO:     127.0.0.1:56992 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"query": "is there any ai c", "hits": 0, "event": "search.nl", "level": "info", "timestamp": "2026-06-27T20:45:28.307375Z"}
+{"method": "POST", "path": "/search/natural-language", "status": 200, "duration_ms": 11131.33, "request_id": "ceb8145054c042b0", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:28.307748Z"}
+INFO:     127.0.0.1:56966 - "POST /search/natural-language HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.52, "request_id": "390f81dd9ff84921", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:30.615030Z"}
+INFO:     127.0.0.1:56998 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.26, "request_id": "a27b045187c94338", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:33.108667Z"}
+INFO:     127.0.0.1:57001 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.16, "request_id": "ffdc65f3bede48a4", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:35.610753Z"}
+INFO:     127.0.0.1:57004 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 2.19, "request_id": "371000fc22a84ca1", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:38.108625Z"}
+INFO:     127.0.0.1:57007 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.92, "request_id": "5eedc0538e834470", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:40.611750Z"}
+INFO:     127.0.0.1:57010 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.42, "request_id": "efc83c4f584e47b8", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:43.109702Z"}
+INFO:     127.0.0.1:57013 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.36, "request_id": "18c650fce638479e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:45.613846Z"}
+INFO:     127.0.0.1:57016 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.65, "request_id": "59d8947eea664c4c", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:48.113258Z"}
+INFO:     127.0.0.1:57019 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.56, "request_id": "4442d9e8f9914154", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:50.610152Z"}
+INFO:     127.0.0.1:57022 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.57, "request_id": "42d1769ba7174297", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:53.108193Z"}
+INFO:     127.0.0.1:57025 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.22, "request_id": "576c5e49232d4a09", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:55.611336Z"}
+INFO:     127.0.0.1:57028 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.45, "request_id": "be118e2e7ed04b48", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:45:58.110937Z"}
+INFO:     127.0.0.1:57031 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.35, "request_id": "aa502dfefe524207", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:00.614113Z"}
+INFO:     127.0.0.1:57037 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 6.19, "request_id": "9f4b56c9bb634cf1", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:03.113004Z"}
+INFO:     127.0.0.1:57040 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.37, "request_id": "f9a779d147bf412a", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:05.613316Z"}
+INFO:     127.0.0.1:57043 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.29, "request_id": "907e4006b6f545d3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:08.112219Z"}
+INFO:     127.0.0.1:57046 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.25, "request_id": "1ef38eef169c4631", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:10.613080Z"}
+INFO:     127.0.0.1:57050 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.98, "request_id": "7c2bc3cdabb24f5d", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:13.109165Z"}
+INFO:     127.0.0.1:57055 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.52, "request_id": "177269b88d064f1f", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:15.610341Z"}
+INFO:     127.0.0.1:57058 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 6.24, "request_id": "a39ae3d1c83c4ab3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:18.114239Z"}
+INFO:     127.0.0.1:57061 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 4.72, "request_id": "3022390c44044bc9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:20.611375Z"}
+INFO:     127.0.0.1:57064 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.27, "request_id": "6481b870f1524088", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:23.113109Z"}
+INFO:     127.0.0.1:57067 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.72, "request_id": "91796c5b80bf42c7", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:25.613960Z"}
+INFO:     127.0.0.1:57070 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.66, "request_id": "22a8a2b8345b44e9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:28.113555Z"}
+INFO:     127.0.0.1:57074 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 5.28, "request_id": "fc9ad9380ae946a1", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:30.612564Z"}
+INFO:     127.0.0.1:57081 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/developers/f4f94a7f9235404a8e47573a2656acef/sync-status", "status": 200, "duration_ms": 3.12, "request_id": "64ef65178d1048d8", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T20:46:33.107799Z"}
+INFO:     127.0.0.1:57084 - "GET /developers/f4f94a7f9235404a8e47573a2656acef/sync-status HTTP/1.1" 200 OK
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 7.25, "request_id": "61a29629c04541a9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T21:29:24.632868Z"}
+INFO:     127.0.0.1:57697 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 0.6, "request_id": "b72399cfa5af4800", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-27T21:29:24.639357Z"}
+INFO:     127.0.0.1:57699 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/auth/login", "status": 401, "duration_ms": 214.01, "request_id": "ba6ecda284af4112", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:32.739362Z"}
+INFO:     127.0.0.1:58986 - "POST /auth/login HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/auth/login", "status": 200, "duration_ms": 213.85, "request_id": "41874b159d954b07", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:37.483299Z"}
+INFO:     127.0.0.1:58988 - "POST /auth/login HTTP/1.1" 200 OK
+{"method": "GET", "path": "/auth/me", "status": 200, "duration_ms": 0.93, "request_id": "6cd668d9021b4d8c", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:37.489058Z"}
+INFO:     127.0.0.1:58991 - "GET /auth/me HTTP/1.1" 200 OK
+{"method": "GET", "path": "/admin/artifacts", "status": 200, "duration_ms": 1.22, "request_id": "e7dbb6a144ef4ef6", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:37.515169Z"}
+INFO:     127.0.0.1:58997 - "GET /admin/artifacts HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.25, "request_id": "5e087ec4403040b4", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:37.516474Z"}
+INFO:     127.0.0.1:58996 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 5.23, "request_id": "27b21ac465674e4a", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:41.527278Z"}
+INFO:     127.0.0.1:59002 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.22, "request_id": "de5e015ea0f84554", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:45.538148Z"}
+INFO:     127.0.0.1:59005 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 2.0, "request_id": "642b7570c76944a0", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:49.546606Z"}
+INFO:     127.0.0.1:59008 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 3.57, "request_id": "673eb6b57427426d", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.557565Z"}
+INFO:     127.0.0.1:59013 - "GET /rank HTTP/1.1" 200 OK
+{"method": "POST", "path": "/rank", "status": 202, "duration_ms": 8.35, "request_id": "33a6722487554cb9", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.574748Z"}
+INFO:     127.0.0.1:59016 - "POST /rank HTTP/1.1" 202 Accepted
+{"method": "GET", "path": "/rank/e5df31c2b4a24b7cbe5ab01d688ce74e", "status": 200, "duration_ms": 29.48, "request_id": "5363ac84d4d24d2b", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.617460Z"}
+INFO:     127.0.0.1:59022 - "GET /rank/e5df31c2b4a24b7cbe5ab01d688ce74e HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank", "status": 200, "duration_ms": 44.6, "request_id": "4bfa17c24ed24062", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.624155Z"}
+INFO:     127.0.0.1:59019 - "GET /rank HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/e5df31c2b4a24b7cbe5ab01d688ce74e", "status": 200, "duration_ms": 0.98, "request_id": "27ebebdbf5f94b48", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.627304Z"}
+INFO:     127.0.0.1:59025 - "GET /rank/e5df31c2b4a24b7cbe5ab01d688ce74e HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/e5df31c2b4a24b7cbe5ab01d688ce74e", "status": 200, "duration_ms": 0.91, "request_id": "26496dfdd8c44d87", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:53.629908Z"}
+INFO:     127.0.0.1:59028 - "GET /rank/e5df31c2b4a24b7cbe5ab01d688ce74e HTTP/1.1" 200 OK
+{"iterations": 0, "exit_reason": "confident", "pool_size": 16893, "coverage": {"retrieval_experience": 1.0, "llm_experience": 1.0, "production_evidence": 1.0, "product_company": 1.0, "available": 1.0}, "event": "loop_agent.done", "level": "info", "timestamp": "2026-06-28T10:55:53.936100Z"}
+{"method": "GET", "path": "/rank/e5df31c2b4a24b7cbe5ab01d688ce74e", "status": 200, "duration_ms": 2.38, "request_id": "a13b6184fa5647a5", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:54.238743Z"}
+INFO:     127.0.0.1:59031 - "GET /rank/e5df31c2b4a24b7cbe5ab01d688ce74e HTTP/1.1" 200 OK
+{"method": "GET", "path": "/rank/e5df31c2b4a24b7cbe5ab01d688ce74e/results", "status": 200, "duration_ms": 4.69, "request_id": "97b98b37012b4119", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:55:54.249399Z"}
+INFO:     127.0.0.1:59034 - "GET /rank/e5df31c2b4a24b7cbe5ab01d688ce74e/results HTTP/1.1" 200 OK
+{"method": "POST", "path": "/developers/connect-github", "status": 202, "duration_ms": 4.86, "request_id": "b94dc9057ea54619", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T10:56:09.122554Z"}
+INFO:     127.0.0.1:59040 - "POST /developers/connect-github HTTP/1.1" 202 Accepted
+HTTP Request: POST https://api.github.com/graphql "HTTP/1.1 200 OK"
+{"user": "HerenderKumar", "artifacts": 58, "event": "github.fetched", "level": "info", "timestamp": "2026-06-28T10:56:21.789049Z"}
+{"developer": "f4f94a7f9235404a8e47573a2656acef", "indexed": 0, "skipped": 58, "fetched": 58, "event": "sync.complete", "level": "info", "timestamp": "2026-06-28T10:56:21.811224Z"}
+{"method": "GET", "path": "/admin/artifacts", "status": 401, "duration_ms": 44.41, "request_id": "20337da702924cb3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:43.275971Z"}
+INFO:     127.0.0.1:61522 - "GET /admin/artifacts HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 21.92, "request_id": "c501c8784b6f4629", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:43.278271Z"}
+INFO:     127.0.0.1:61524 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.46, "request_id": "209320305f5f4dcc", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:44.295200Z"}
+INFO:     127.0.0.1:61527 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/rank", "status": 401, "duration_ms": 5.61, "request_id": "4478f7191afa4c9a", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:45.390730Z"}
+INFO:     127.0.0.1:61530 - "POST /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.18, "request_id": "33fe9cd2d3894b91", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:48.304520Z"}
+INFO:     127.0.0.1:61533 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.31, "request_id": "63eaec98db1d46da", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:49.317228Z"}
+INFO:     127.0.0.1:61536 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.92, "request_id": "6bbc8c04f7df4dbe", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:53.329104Z"}
+INFO:     127.0.0.1:61539 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/rank", "status": 401, "duration_ms": 1.23, "request_id": "a972ad92ae564cb1", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:53.685623Z"}
+INFO:     127.0.0.1:61542 - "POST /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 4.02, "request_id": "ebe3f30b8ca24b1f", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:43:54.339303Z"}
+INFO:     127.0.0.1:61545 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "POST", "path": "/developers/connect-github", "status": 401, "duration_ms": 7.14, "request_id": "8ef807f423124a44", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:05.406767Z"}
+INFO:     127.0.0.1:61560 - "POST /developers/connect-github HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/admin/artifacts", "status": 401, "duration_ms": 8.71, "request_id": "0489180470ff40d6", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:08.391123Z"}
+INFO:     127.0.0.1:61564 - "GET /admin/artifacts HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.71, "request_id": "e73fb0c47ffc4416", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:08.391757Z"}
+INFO:     127.0.0.1:61566 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.4, "request_id": "a7efcedea7b34f3b", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:09.401880Z"}
+INFO:     127.0.0.1:61569 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.81, "request_id": "d5992870a0604efd", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:13.409828Z"}
+INFO:     127.0.0.1:61574 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.94, "request_id": "d2601114813e4d71", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:14.421640Z"}
+INFO:     127.0.0.1:61577 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.3, "request_id": "1dffcd056601405c", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:18.429512Z"}
+INFO:     127.0.0.1:61580 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.88, "request_id": "e2484a8ec4f947e3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:19.437021Z"}
+INFO:     127.0.0.1:61583 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 0.84, "request_id": "c47420e0e6c8454e", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:23.449511Z"}
+INFO:     127.0.0.1:61586 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/rank", "status": 401, "duration_ms": 1.24, "request_id": "c1d350bd48dc47f3", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T12:44:24.712078Z"}
+INFO:     127.0.0.1:61589 - "GET /rank HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 0.67, "request_id": "2615f03715fd4b45", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T13:12:07.583180Z"}
+INFO:     127.0.0.1:62016 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+{"method": "GET", "path": "/auth/me", "status": 401, "duration_ms": 0.86, "request_id": "eddc01fdb03c48c8", "trace_id": null, "event": "http.request", "level": "info", "timestamp": "2026-06-28T13:12:07.586276Z"}
+INFO:     127.0.0.1:62018 - "GET /auth/me HTTP/1.1" 401 Unauthorized
+INFO:     Shutting down
+INFO:     Waiting for application shutdown.
+{"event": "shutdown.begin", "level": "info", "timestamp": "2026-06-28T22:37:29.950380Z"}
+{"event": "queue.worker_stopped", "level": "info", "timestamp": "2026-06-28T22:37:29.951636Z"}
+{"event": "shutdown.done", "level": "info", "timestamp": "2026-06-28T22:37:29.967678Z"}
+INFO:     Application shutdown complete.
+INFO:     Finished server process [52682]

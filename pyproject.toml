@@ -1,0 +1,36 @@
+[project]
+name = "provenancerank"
+version = "1.0.0"
+description = "AI-native candidate ranking engine + production serving layer"
+requires-python = ">=3.10"
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+# validate_submission.py ships from Redrob unmodified — never lint/format it.
+extend-exclude = ["alembic", "frontend", ".venv", "artifacts", "validate_submission.py"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "C4"]
+ignore = [
+    "E501",   # line length handled by formatter, prose comments may run long
+    "B008",   # FastAPI Depends() in defaults is the intended pattern
+    "C401", "C408",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/*" = ["B", "F841"]
+"__init__.py" = ["F401"]
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+follow_imports = "silent"
+warn_unused_ignores = false
+disable_error_code = ["import-untyped", "annotation-unchecked"]
+exclude = ["alembic/", "tests/", "frontend/"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning", "ignore::FutureWarning"]

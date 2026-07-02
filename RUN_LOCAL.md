@@ -11,7 +11,7 @@ Prereqs: **Python 3.11+**, and for the UI **Node 18+**. `python3 --version`.
 ## 0. One-time setup
 
 ```bash
-cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
+cd provenancerank
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -29,7 +29,7 @@ inside the zip the organisers gave you:
 
 ```bash
 # adjust the source path to wherever you unzipped the challenge bundle
-cp "/Users/herender/Desktop/iCode/LinkedIn_finder/.../candidates.jsonl" ./candidates.jsonl
+cp /path/to/candidates.jsonl ./candidates.jsonl
 # or symlink it:
 # ln -s /absolute/path/to/candidates.jsonl ./candidates.jsonl
 ```

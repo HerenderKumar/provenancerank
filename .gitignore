@@ -33,3 +33,10 @@ frontend/dist/
 # local deliverables (not for the repo)
 submission.xlsx
 *.pptx
+
+# runtime logs & local db
+*.log
+*.db
+*.db-shm
+*.db-wal
+celerybeat-schedule.db

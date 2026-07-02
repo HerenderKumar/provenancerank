@@ -27,7 +27,7 @@ The lite stack is 6 containers instead of 14 - far less disk/RAM and far fewer
 ways to fail. If a previous run got into a bad state, start clean:
 
 ```bash
-cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
+cd provenancerank
 
 # 1. dataset must be a real FILE at the repo root (one-time)
 [ -f candidates.jsonl ] || unzip -p "../[PUB] India_runs_data_and_ai_challenge.zip" \
@@ -62,7 +62,7 @@ Prometheus/Grafana/Jaeger), run these **in order**, once:
 
 ```bash
 # 1. go to the repo
-cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
+cd provenancerank
 
 # 2. make sure the dataset is a real FILE at the repo root (one-time).
 #    If you see a "candidates.jsonl" *directory*, remove it first: rm -rf candidates.jsonl
@@ -100,7 +100,7 @@ caveat are in **Section 10**.
 ## 0. One-time setup
 
 ```bash
-cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
+cd provenancerank
 
 python3 -m venv .venv
 source .venv/bin/activate
@@ -396,7 +396,7 @@ python -m pytest tests/test_graph_rag.py -q     # baseline vs hybrid, asserts th
 Needs **Docker Desktop**. Brings up 13 services.
 
 ```bash
-cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
+cd provenancerank
 # candidates.jsonl must be a real FILE at the repo root (see Section 0) -
 # if it's missing, Docker creates an empty *directory* and precompute fails.
 docker compose up --build           #  make up   /   make down to stop

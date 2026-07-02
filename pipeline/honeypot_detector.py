@@ -2,7 +2,7 @@
 tier 0). Ranking them costs us, and >10% in the top-100 is an instant DQ, so
 we flag them during feature engineering and force their score to zero.
 
-Rules are deliberately conservative — each one is an actual impossibility, not
+Rules are deliberately conservative - each one is an actual impossibility, not
 just a "weak" profile. I'd rather miss a few honeypots (scoring buries them
 anyway) than wrongly drop a real candidate. Every flag carries a reason string
 so exclusions show up in the rejection registry.
@@ -97,7 +97,7 @@ def detect_honeypot(candidate: dict) -> tuple[bool, list[str]]:
     # NOTE: "many AI keywords on a non-technical career" is the *keyword
     # stuffer* trap, not an impossible profile. It is handled with high recall
     # by ``keyword_stuffer_flag`` in feature_engineering (a heavy penalty),
-    # NOT here, because those profiles are possible — just mismatched.
+    # NOT here, because those profiles are possible - just mismatched.
     return (len(flags) > 0, flags)
 
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Phase 2 — produce submission.csv. No network, CPU only, < 5 min for 100K.
+"""Phase 2 - produce submission.csv. No network, CPU only, < 5 min for 100K.
 
     python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 
 Two ways in:
-  * fast path  — precomputed artifacts exist and cover the candidates -> read the
+  * fast path  - precomputed artifacts exist and cover the candidates -> read the
                  feature matrix, re-run retrieval over the cached index/embeddings,
                  predict, merge. This is the Stage-3 reproduction path.
-  * live path  — no artifacts (or a fresh small sample, e.g. the sandbox upload)
+  * live path  - no artifacts (or a fresh small sample, e.g. the sandbox upload)
                  -> compute features + an ephemeral index for just those
                  candidates. Slower per candidate but trivial at sandbox sizes.
 
@@ -265,7 +265,7 @@ def smoke_test(candidates_file: str | None = None, n: int = 150) -> int:
 def main(argv: list[str] | None = None) -> int:
     configure()
     s = get_settings()
-    ap = argparse.ArgumentParser(description="ProvenanceRank — produce submission.csv")
+    ap = argparse.ArgumentParser(description="ProvenanceRank - produce submission.csv")
     ap.add_argument("--candidates", default=s.candidates_file)
     ap.add_argument("--out", default="./submission.csv")
     ap.add_argument("--artifacts", default=s.artifacts_dir)

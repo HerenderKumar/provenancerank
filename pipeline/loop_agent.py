@@ -1,9 +1,9 @@
-"""Lightweight plan/retrieve/reflect loop. No LLM, no network — it just reads
+"""Lightweight plan/retrieve/reflect loop. No LLM, no network - it just reads
 the precomputed feature matrix and relaxes a fit threshold until the shortlist
 pool has enough candidates covering each JD dimension (retrieval, LLM,
 production evidence, product-company, availability).
 
-The point isn't to "find" candidates — scoring does that. It's to guarantee the
+The point isn't to "find" candidates - scoring does that. It's to guarantee the
 pool we hand to final scoring isn't accidentally starved of, say, anyone with
 real retrieval experience, and to produce the coverage numbers the UI shows.
 """

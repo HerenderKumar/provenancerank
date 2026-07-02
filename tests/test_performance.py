@@ -1,6 +1,6 @@
 """Performance levers: device selection, the focused rerank text, the training
 downsample, and the content-hash cache. None of these change *which* features
-run — they make the same work cheaper — so the tests assert behaviour is
+run - they make the same work cheaper - so the tests assert behaviour is
 preserved, not that a particular backend was chosen."""
 
 from __future__ import annotations

@@ -1,4 +1,4 @@
-"""Final-score merge — shared by rank.py and precompute so the formula lives in
+"""Final-score merge - shared by rank.py and precompute so the formula lives in
 exactly one place.
 
     core   = 0.40*ml_fit + 0.35*retrieval + 0.25*behavioural
@@ -20,7 +20,7 @@ absent so the graded submission.csv is unchanged with the extras switched off:
     losing their ordering. Outside the head both columns are 0; absent entirely,
     the core keeps its full weight.
   * the evidence bonus is how the live ingestion layer surfaces verified
-    developers above identical static-only ones — an additive term that's 0 for
+    developers above identical static-only ones - an additive term that's 0 for
     every candidate without graph-backed evidence.
 """
 

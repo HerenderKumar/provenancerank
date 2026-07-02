@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
-Validate submission CSV per challenge rules (sections 2–3).
-Row 1 = header. Rows 2–101 = exactly 100 data rows. CSV only.
+Validate submission CSV per challenge rules (sections 2-3).
+Row 1 = header. Rows 2-101 = exactly 100 data rows. CSV only.
 """
 
 import csv
@@ -59,7 +59,7 @@ def validate_submission(csv_path):
     if n != EXPECTED_DATA_ROWS:
         errors.append(
             f"After the header (row 1), there must be exactly {EXPECTED_DATA_ROWS} "
-            f"data rows (rows {DATA_ROW_START}–{DATA_ROW_START + EXPECTED_DATA_ROWS - 1}); "
+            f"data rows (rows {DATA_ROW_START}-{DATA_ROW_START + EXPECTED_DATA_ROWS - 1}); "
             f"found {n}."
         )
 
@@ -104,7 +104,7 @@ def validate_submission(csv_path):
             else:
                 seen_ranks.add(rank)
         except ValueError:
-            errors.append(f"Row {row_num}: rank must be an integer (1–100).")
+            errors.append(f"Row {row_num}: rank must be an integer (1-100).")
             rank = None
 
         try:
@@ -119,7 +119,7 @@ def validate_submission(csv_path):
     missing = set(range(1, 101)) - seen_ranks
     if missing:
         errors.append(
-            f"Each rank 1–100 must appear exactly once; missing: {sorted(missing)}"
+            f"Each rank 1-100 must appear exactly once; missing: {sorted(missing)}"
         )
 
     by_rank.sort(key=lambda x: x[0])

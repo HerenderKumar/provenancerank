@@ -1,5 +1,5 @@
 """Alembic environment (async). URL comes from core.config so migrations target
-whatever DATABASE_URL points at — Postgres in prod, sqlite locally."""
+whatever DATABASE_URL points at - Postgres in prod, sqlite locally."""
 
 from __future__ import annotations
 

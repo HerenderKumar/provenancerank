@@ -4,7 +4,7 @@ Two queues so a GitHub rate-limit stall can't starve summarisation (bulkhead):
   - ingestion    : GitHub/SO fetch
   - intelligence : summarise + extract + index
 
-Default is eager mode — tasks run inline in the calling process, no broker or
+Default is eager mode - tasks run inline in the calling process, no broker or
 worker needed. That keeps dev + tests simple and means the API can fire a task
 without a Celery cluster behind it. In prod you set CELERY_TASK_ALWAYS_EAGER=
 false and run the worker/beat containers from docker-compose.

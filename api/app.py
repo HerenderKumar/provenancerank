@@ -2,7 +2,7 @@
 
 Lifespan wires the process together once: create tables, bootstrap an admin if
 the user table is empty, load the ranker warm, connect the cache, build the job
-manager, and start tracing. Missing artifacts don't stop the app from booting —
+manager, and start tracing. Missing artifacts don't stop the app from booting -
 it comes up "not ready" so an operator can trigger precompute and the LB simply
 won't route to it until /health/ready passes.
 """
@@ -49,7 +49,7 @@ async def _bootstrap_admin() -> None:
     except IntegrityError:
         # Two API replicas can boot at the same instant against a fresh DB and
         # both pass the count()==0 check, then both insert the admin. The loser
-        # hits a unique violation — which is fine, the admin exists either way.
+        # hits a unique violation - which is fine, the admin exists either way.
         log.info("bootstrap.admin_exists_race")
 
 
@@ -63,7 +63,7 @@ async def lifespan(app: FastAPI):
         await init_models()
     except Exception as exc:
         # create_all is not atomic across replicas; if another replica created the
-        # tables a microsecond earlier we'd see "already exists" — harmless.
+        # tables a microsecond earlier we'd see "already exists" - harmless.
         log.warning("startup.init_models_concurrent", reason=str(exc)[:120])
     await _bootstrap_admin()
 

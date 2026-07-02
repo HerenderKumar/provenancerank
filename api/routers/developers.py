@@ -1,10 +1,10 @@
-"""Developer endpoints — connect a GitHub account, watch the sync, read the
+"""Developer endpoints - connect a GitHub account, watch the sync, read the
 evidence graph.
 
 connect-github kicks the ingestion off in the background (the API never blocks
 on a GitHub crawl). We use an asyncio task here rather than Celery .delay() to
 avoid nesting event loops in eager mode; in a real deployment you'd point this
-at the Celery task instead — same sync_developer core either way.
+at the Celery task instead - same sync_developer core either way.
 """
 
 from __future__ import annotations

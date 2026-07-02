@@ -54,7 +54,7 @@ def client_ip(request: Request) -> str:
 
 
 # Accept either an API key (X-API-Key) or a JWT bearer token. API keys win if
-# both are present — they're for machine clients.
+# both are present - they're for machine clients.
 async def authenticate(
     request: Request, session: AsyncSession = Depends(get_session)
 ) -> AuthContext:

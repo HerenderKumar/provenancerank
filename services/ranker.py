@@ -1,4 +1,4 @@
-"""RankerService — the engine, loaded once and kept warm.
+"""RankerService - the engine, loaded once and kept warm.
 
 The CLI (`rank.py`) loads artifacts per invocation; a service can't afford that,
 so this loads the feature matrix, embeddings, BM25 index and model a single time

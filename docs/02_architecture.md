@@ -1,17 +1,17 @@
-# 02 — Architecture
+# 02 - Architecture
 
 ## The one idea that makes everything work: two phases
 
 The graded ranking step has to run with **no network, on CPU, in under 5
-minutes**. But the *smart* parts of ranking — embedding 100,000 profiles with a
-neural model, training a gradient-boosted ranker, running a cross-encoder — are
+minutes**. But the *smart* parts of ranking - embedding 100,000 profiles with a
+neural model, training a gradient-boosted ranker, running a cross-encoder - are
 slow and sometimes need the network. You can't do both in one step.
 
 So the system is split in two:
 
 ```
             ┌────────────────────────────────────────────────────────┐
- PHASE 1    │  precompute.py   (OFFLINE — slow is OK, network is OK)  │
+ PHASE 1    │  precompute.py   (OFFLINE - slow is OK, network is OK)  │
  (offline)  │                                                        │
             │  candidates.jsonl + job_description.txt                │
             │        │                                               │
@@ -25,7 +25,7 @@ So the system is split in two:
             └───────────────────────────┬────────────────────────────┘
                                         │  (cached files on disk)
             ┌───────────────────────────▼────────────────────────────┐
- PHASE 2    │  rank.py   (ONLINE — no network, CPU, < 5 min)         │
+ PHASE 2    │  rank.py   (ONLINE - no network, CPU, < 5 min)         │
  (graded)   │                                                        │
             │  read artifacts ─ merge scores ─ drop honeypots ─      │
             │  take top 100 ─ write reasons ─ validate               │
@@ -38,7 +38,7 @@ So the system is split in two:
 Everything expensive happens in **Phase 1** and is written to the `artifacts/`
 folder. **Phase 2** only *reads* those files and does cheap arithmetic, so it
 comfortably meets the constraints. This is why adding more "intelligence" (a
-reranker, a tournament, GitHub evidence) never slows down the graded step — it all
+reranker, a tournament, GitHub evidence) never slows down the graded step - it all
 lands in Phase 1.
 
 ## Phase 1 in detail (`precompute.py`)
@@ -83,9 +83,9 @@ lands in Phase 1.
 
 There are actually two ways into Phase 2:
 
-- **Fast path** — the requested candidates are already in the precomputed matrix,
+- **Fast path** - the requested candidates are already in the precomputed matrix,
   so it just reads cached features. This is the graded path (milliseconds).
-- **Live path** — brand-new candidates not seen at precompute time (e.g. an API
+- **Live path** - brand-new candidates not seen at precompute time (e.g. an API
   caller submits fresh profiles). It computes their features on the fly. Slower,
   but flexible. The fast path falls back to this automatically.
 
@@ -146,7 +146,7 @@ GET /rank/jobs/{id}/stream  ──►  Server-Sent Events stream progress + the 
 
 The worker is **idempotent** (a duplicate message for a finished job is a no-op)
 and **at-least-once** (failures retry, then dead-letter). At scale, the worker
-moves to its own machine fleet without changing the API — that's the whole point
+moves to its own machine fleet without changing the API - that's the whole point
 of putting a queue in the middle.
 
 ## The graceful-degradation ladder
@@ -154,20 +154,20 @@ of putting a queue in the middle.
 Every external dependency is optional. The system picks the best available option
 and silently drops to the next:
 
-| Capability | Best | → | → | Floor |
+| Capability | Best | -> | -> | Floor |
 |---|---|---|---|---|
-| Embeddings | sentence-transformers (GPU) | (CPU) | — | NumPy hashing embedder |
-| Keyword search | rank-bm25 | — | — | hand-written inverted index |
+| Embeddings | sentence-transformers (GPU) | (CPU) | - | NumPy hashing embedder |
+| Keyword search | rank-bm25 | - | - | hand-written inverted index |
 | ML ranker | XGBoost LambdaMART | LightGBM | scikit-learn | linear formula |
-| Reranker | CrossEncoder (GPU/ONNX) | (CPU) | — | lexical BM25-style scorer |
-| JD parsing / labels | Gemini LLM | — | — | rule-based heuristics |
-| Database | Postgres (asyncpg) | — | — | SQLite (aiosqlite) |
-| Cache | Redis | — | — | in-memory LRU |
-| Knowledge graph | Neo4j | — | — | in-memory graph store |
-| Background jobs | Celery + Redis | — | — | run inline (eager) |
+| Reranker | CrossEncoder (GPU/ONNX) | (CPU) | - | lexical BM25-style scorer |
+| JD parsing / labels | Gemini LLM | - | - | rule-based heuristics |
+| Database | Postgres (asyncpg) | - | - | SQLite (aiosqlite) |
+| Cache | Redis | - | - | in-memory LRU |
+| Knowledge graph | Neo4j | - | - | in-memory graph store |
+| Background jobs | Celery + Redis | - | - | run inline (eager) |
 
 This is why the project runs end-to-end in a bare sandbox with only NumPy and
-pandas, *and* scales up to a full GPU + Postgres + Redis + Neo4j deployment — same
+pandas, *and* scales up to a full GPU + Postgres + Redis + Neo4j deployment - same
 code, different rungs of the ladder.
 
 Continue to [03_features.md](03_features.md) for each feature and the tech behind

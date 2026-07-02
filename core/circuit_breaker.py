@@ -1,7 +1,7 @@
 """A small async circuit breaker.
 
 Wrap calls to a flaky dependency (Neo4j, GitHub, Gemini). After N consecutive
-failures the breaker opens and short-circuits further calls for a cooldown —
+failures the breaker opens and short-circuits further calls for a cooldown -
 the caller gets a fast CircuitOpen instead of piling up on a dead service. After
 the cooldown it goes half-open and lets one probe through; success closes it,
 failure re-opens it. This is what stops one broken service from cascading into

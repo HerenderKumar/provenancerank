@@ -1,8 +1,8 @@
-"""Pairwise tournament re-ordering of the head — our own ranking algorithm.
+"""Pairwise tournament re-ordering of the head - our own ranking algorithm.
 
 Pointwise scoring (hand every candidate a number, sort) has a blind spot: the
 numbers come from features on different scales, and one noisy column can drag a
-great candidate down. Recruiters don't think pointwise — they think "between
+great candidate down. Recruiters don't think pointwise - they think "between
 these two, who's better?". So for the very top of the list we run an actual
 round-robin tournament:
 
@@ -10,7 +10,7 @@ round-robin tournament:
   * a match is judged on several JD-relevant criteria (fit, proven skills,
     assessments, production signal, behaviour, live evidence). A beats B on a
     criterion by being *ordinally* better, and the match result is the weighted
-    share of criteria A won — a soft 0..1 outcome, not just win/lose;
+    share of criteria A won - a soft 0..1 outcome, not just win/lose;
   * a round-robin contains cycles (A>B>C>A), so we resolve the whole thing with a
     Bradley-Terry model fit by MM iteration (Hunter, 2004): the maximum-
     likelihood global strength that best explains every pairwise result.
@@ -32,7 +32,7 @@ log = get_logger("pipeline.tournament")
 
 # Criterion column -> weight. Only columns actually present in the matrix are
 # used (rerank_score / evidence appear once their stages have run), and the kept
-# weights are renormalised — so this degrades cleanly if a stage was skipped.
+# weights are renormalised - so this degrades cleanly if a stage was skipped.
 _CRITERIA: dict[str, float] = {
     "jd_fit_score": 0.26,
     "rerank_score": 0.20,
@@ -50,7 +50,7 @@ def _soft_outcomes(values: np.ndarray, weights: np.ndarray) -> np.ndarray:
     """W[i, j] = weighted share of criteria on which i beats j (ties split).
 
     ``values`` is (N, C); ``weights`` is (C,) summing to 1. Vectorised per
-    criterion via broadcasting — N is small (top-N), so the N*N matrices are cheap.
+    criterion via broadcasting - N is small (top-N), so the N*N matrices are cheap.
     """
     n = values.shape[0]
     wins = np.zeros((n, n), dtype=float)

@@ -1,14 +1,14 @@
 """BM25 keyword index over candidate text.
 
 BM25 is the half of retrieval that catches exact technical terms the embeddings
-smear together — "Qdrant", "NDCG", "LoRA", "OpenSearch". Uses rank-bm25 when
+smear together - "Qdrant", "NDCG", "LoRA", "OpenSearch". Uses rank-bm25 when
 installed; otherwise a small inverted-index BM25 in numpy that scores only the
 query terms (cheaper at query time and what we actually rely on in the sandbox).
 Either object pickles to artifacts/bm25_index.pkl.
 
 The inverted index builds in two streaming passes (document frequencies first,
 then postings only for terms that survive the high-DF cut) so it never holds the
-whole tokenized corpus in memory — that matters at 100K docs on a 16GB box.
+whole tokenized corpus in memory - that matters at 100K docs on a 16GB box.
 """
 
 from __future__ import annotations
@@ -64,7 +64,7 @@ class InvertedBM25:
         self.n_docs = n
         self.doc_len = np.zeros(n, dtype=np.float32)
 
-        # pass 1 — document frequencies + lengths (no postings held yet)
+        # pass 1 - document frequencies + lengths (no postings held yet)
         df: dict[str, int] = defaultdict(int)
         for i, text in enumerate(corpus):
             toks = tok(text)[:max_tokens] if max_tokens else tok(text)
@@ -75,7 +75,7 @@ class InvertedBM25:
         cutoff = max_df_ratio * n
         keep = {t for t, c in df.items() if c <= cutoff}
 
-        # pass 2 — postings, but only for the terms we kept
+        # pass 2 - postings, but only for the terms we kept
         postings: dict[str, list[tuple[int, int]]] = defaultdict(list)
         for i, text in enumerate(corpus):
             toks = tok(text)[:max_tokens] if max_tokens else tok(text)

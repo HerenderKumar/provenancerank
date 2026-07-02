@@ -4,7 +4,7 @@ structured, queryable SummaryResult.
 Gemini Flash in JSON mode does the real work when a key is set. Without one we
 fall back to a deterministic heuristic so the whole pipeline still runs offline
 (and so tests don't need a network). Either way the content_hash is the SHA-256
-of the raw content — the cryptographic anchor that makes the evidence tamper-
+of the raw content - the cryptographic anchor that makes the evidence tamper-
 evident and the indexing step idempotent.
 """
 

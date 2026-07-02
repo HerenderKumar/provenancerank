@@ -1,7 +1,7 @@
 """All tunables in one place, read from env / .env.
 
 Uses pydantic-settings when it's available, otherwise a small dataclass that
-reads os.environ directly — same field names either way. get_settings() is
+reads os.environ directly - same field names either way. get_settings() is
 cached so we read the environment once.
 """
 
@@ -16,7 +16,7 @@ REPO_ROOT = Path(__file__).resolve().parent.parent
 ARTIFACTS_DEFAULT = str(REPO_ROOT / "artifacts")
 
 _FIELDS: dict[str, object] = {
-    # ---- LLM (offline precompute only — never used during ranking) ----
+    # ---- LLM (offline precompute only - never used during ranking) ----
     "google_api_key": "",
     "jd_deconstruct_model": "gemini-1.5-flash",
     # ---- Embedding model (local, no API) ----
@@ -126,7 +126,7 @@ _FIELDS: dict[str, object] = {
     "pseudo_label_llm_timeout": 30,  # seconds per Gemini grading call
     "reranker_enabled": True,
     "reranker_model": "cross-encoder/ms-marco-MiniLM-L-6-v2",
-    "rerank_top_k": 300,  # rerank only the head — that's where NDCG@10/50 lives
+    "rerank_top_k": 300,  # rerank only the head - that's where NDCG@10/50 lives
     "rerank_weight": 0.15,  # blend weight where a rerank score exists
     "tournament_enabled": True,
     "tournament_top_n": 60,  # pairwise Bradley-Terry over the very top

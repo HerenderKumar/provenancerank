@@ -3,7 +3,7 @@
 Neither half is enough on its own. BM25 nails exact jargon; cosine catches the
 paraphrases ("recommendation engine" ~ "recommender system"). RRF lets them
 vote without having to put their very different score scales on the same axis.
-All vectorised — a JD query over 100K candidates is a fraction of a second.
+All vectorised - a JD query over 100K candidates is a fraction of a second.
 """
 
 from __future__ import annotations

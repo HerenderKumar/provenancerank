@@ -1,6 +1,6 @@
 # This is the file that decides ranking quality, so the thresholds here were
 # tuned against the real candidates.jsonl, not guessed. The output DataFrame is
-# pickled once (artifacts/feature_matrix.pkl) and only *read* at ranking time —
+# pickled once (artifacts/feature_matrix.pkl) and only *read* at ranking time -
 # that's what keeps the 5-minute budget realistic.
 #
 # What the JD actually rewards, after reading between the lines:
@@ -221,7 +221,7 @@ def compute_skill_features(candidate: dict, career: dict) -> dict:
     max_dur = max((int(s.get("duration_months", 0) or 0) for s in matched), default=0)
 
     # keyword stuffer (high recall): AI skills on a non-technical current title
-    # with zero technical roles ever — the HR-Manager-with-9-AI-skills trap.
+    # with zero technical roles ever - the HR-Manager-with-9-AI-skills trap.
     nontech_current = _title_relevance_factor(profile.get("current_title", "")) == 0.0
     no_tech_roles = career["_technical_role_count"] == 0
     keyword_stuffer = bool(len(matched) >= 3 and nontech_current and no_tech_roles) or bool(
@@ -418,7 +418,7 @@ def build_feature_row(candidate: dict) -> dict:
     row["recruiter_response_rate"] = signal["_recruiter_response_rate"]
     row["preferred_work_mode"] = sig.get("preferred_work_mode", "")
     row["willing_to_relocate"] = bool(sig.get("willing_to_relocate"))
-    # live-evidence columns — 0 unless a developer profile is linked (see
+    # live-evidence columns - 0 unless a developer profile is linked (see
     # apply_live_signals). Present here so the scorer can always read them.
     row["has_live_evidence"] = 0.0
     row["evidence_confidence_bonus"] = 0.0
@@ -426,7 +426,7 @@ def build_feature_row(candidate: dict) -> dict:
 
 
 # ---------------------------------------------------------------------------
-# Live ingestion bridge — verified evidence overrides self-reported confidence.
+# Live ingestion bridge - verified evidence overrides self-reported confidence.
 # These run only for candidates that have a linked developer profile; for the
 # static dataset they're never invoked, so the submission is unchanged.
 # ---------------------------------------------------------------------------

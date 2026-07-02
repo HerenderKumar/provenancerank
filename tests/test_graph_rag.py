@@ -1,13 +1,13 @@
 """Graph RAG: prove hybrid (skill + vector) retrieval beats skill-only, measured
 on a gold set with the graph eval harness.
 
-The point of the whole change is recall on *paraphrased* queries — questions whose
+The point of the whole change is recall on *paraphrased* queries - questions whose
 words don't map to a canonical skill tag, so the exact graph traversal returns
 nothing, but whose meaning matches an evidence summary. We seed a small graph,
 label which developers each query should return, and check the numbers move.
 
 Runs offline: the vector index uses the NumPy hashing embedder (no model), so the
-'semantic' match here is really lexical overlap — still enough to catch the
+'semantic' match here is really lexical overlap - still enough to catch the
 paraphrases. With sentence-transformers installed it becomes true semantic match.
 """
 

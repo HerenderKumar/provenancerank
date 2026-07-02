@@ -1,4 +1,4 @@
-"""core.llm — provider selection + robust JSON parsing. No real LLM needed: the
+"""core.llm - provider selection + robust JSON parsing. No real LLM needed: the
 Ollama HTTP call is monkeypatched, so this proves the wiring (request shape,
 response parsing, fallback) without a running model."""
 

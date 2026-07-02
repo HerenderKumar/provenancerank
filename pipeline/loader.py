@@ -2,7 +2,7 @@
 
 Reads ``candidates.jsonl`` in bounded batches so the 100K-record, ~480 MB file
 never lands in memory all at once (functional requirement #1 / DO-NOT #2).
-Malformed lines are skipped and logged rather than crashing the run — a single
+Malformed lines are skipped and logged rather than crashing the run - a single
 bad record must not abort a 100K-candidate job (resilience requirement).
 """
 
@@ -92,7 +92,7 @@ def corpus_text(candidate: dict) -> str:
 
 def rerank_text(candidate: dict) -> str:
     """A tight projection for the cross-encoder: title, headline, the most recent
-    role, and the top endorsed skills — not the whole career history.
+    role, and the top endorsed skills - not the whole career history.
 
     The reranker reads the JD and this together in one transformer pass, and
     attention cost grows with sequence length, so a focused ~100-token document is

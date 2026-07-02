@@ -9,7 +9,7 @@ provider is chosen in exactly one place.
     export OLLAMA_MODEL=llama3.1:8b     # local fallback (run `ollama serve`)
     # force one provider with LLM_PROVIDER=glm|ollama|gemini|none
 
-GLM is OpenAI-compatible, so `_glm` is really an OpenAI chat-completions call —
+GLM is OpenAI-compatible, so `_glm` is really an OpenAI chat-completions call -
 point `GLM_BASE_URL` at any compatible endpoint to use a different one. If no
 provider is reachable, both functions return None and every caller falls back to
 its deterministic heuristic, so the pipeline always runs offline.

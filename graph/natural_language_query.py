@@ -79,7 +79,7 @@ async def _llm_intent(query: str) -> dict | None:
 
 
 def _rrf(rankings: list[list[str]], k: int = 60) -> dict[str, float]:
-    """Reciprocal Rank Fusion of several ranked id lists — the same trick the main
+    """Reciprocal Rank Fusion of several ranked id lists - the same trick the main
     ranker uses for BM25 + embeddings. Combines *ranks*, so the two retrievers'
     incomparable scores (graph confidence vs. cosine similarity) don't need to be
     on the same scale."""

@@ -1,4 +1,4 @@
-"""OpenTelemetry tracing — optional.
+"""OpenTelemetry tracing - optional.
 
 If the OTel packages are installed and otel_enabled is on, we export spans to
 the configured OTLP endpoint (Jaeger in the compose stack) and auto-instrument

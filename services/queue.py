@@ -151,13 +151,13 @@ class QueueWorker:
         log.info("queue.worker_stopped")
 
 
-# Redis Streams backend — the multi-node, restart-surviving version of the above.
+# Redis Streams backend - the multi-node, restart-surviving version of the above.
 
 
 class RedisStreamQueue:
     """At-least-once delivery via a Redis Stream + consumer group. Messages that
     exceed max_attempts are XADDed to a dead-letter stream. Survives restarts
-    and fans out across worker nodes — the multi-node version of the above."""
+    and fans out across worker nodes - the multi-node version of the above."""
 
     name = "redis-streams"
 

@@ -1,4 +1,4 @@
-"""Repository layer — all DB access goes through here, so routers/services never
+"""Repository layer - all DB access goes through here, so routers/services never
 hand-write SQL and the query surface stays in one place.
 """
 

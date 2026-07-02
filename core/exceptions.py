@@ -37,7 +37,7 @@ class ArtifactError(ProvenanceError):
 
 
 class ArtifactChecksumError(ArtifactError):
-    """Artifact on disk doesn't match the manifest hash — refuse to serve it."""
+    """Artifact on disk doesn't match the manifest hash - refuse to serve it."""
 
     code = "artifact_checksum_mismatch"
     http_status = 503

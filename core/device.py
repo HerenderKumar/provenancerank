@@ -1,11 +1,11 @@
 """Pick the fastest compute we can actually use for the transformer models, and
-optionally the ONNX/int8 backend — both best-effort, both with safe fallbacks.
+optionally the ONNX/int8 backend - both best-effort, both with safe fallbacks.
 
 torch may be absent (the sandbox), MPS/CUDA may be missing, onnxruntime may not
 be installed. Nothing here raises: device detection falls back to "cpu", and the
 ONNX path is offered as a *list of attempts* (most-optimised first) that the
 model constructors walk until one works, ending at plain torch. Same graceful-
-degradation contract as the rest of the pipeline — we never silently drop to the
+degradation contract as the rest of the pipeline - we never silently drop to the
 hashing/lexical floor just because an optimisation was unavailable.
 """
 
@@ -19,7 +19,7 @@ from core.logging import get_logger
 log = get_logger("core.device")
 
 # Quantised ONNX weights published alongside these models on the Hub. Used only
-# as a hint — if the file isn't there, the constructor falls back a rung.
+# as a hint - if the file isn't there, the constructor falls back a rung.
 _KNOWN_QUANTIZED = {
     "all-MiniLM-L6-v2": "onnx/model_qint8_avx512_vnni.onnx",
     "sentence-transformers/all-MiniLM-L6-v2": "onnx/model_qint8_avx512_vnni.onnx",
@@ -80,7 +80,7 @@ def construct(cls, model_name: str, *, allow_onnx: bool = True, **extra):
     """Build ``cls(model_name, ...)`` walking the optimised->plain attempts.
 
     Returns ``(instance, runtime_label)``. Raises only if even the plain-torch
-    attempt fails — that's a genuine "the library isn't usable" signal the caller
+    attempt fails - that's a genuine "the library isn't usable" signal the caller
     turns into its own floor (hashing embedder / lexical reranker)."""
     last_exc: Exception | None = None
     for label, kwargs in transformer_attempts(model_name, allow_onnx=allow_onnx):

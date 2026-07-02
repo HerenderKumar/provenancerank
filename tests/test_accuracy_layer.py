@@ -1,8 +1,8 @@
 """Accuracy layer: eval harness, graded pseudo-labels, cross-encoder rerank
 (lexical fallback), the Bradley-Terry tournament, and the scorer head-blend.
 
-These run with only numpy/pandas installed — the ranker falls back to the proxy
-formula and the reranker to its lexical scorer — so they pin the *plumbing and
+These run with only numpy/pandas installed - the ranker falls back to the proxy
+formula and the reranker to its lexical scorer - so they pin the *plumbing and
 the maths*, not the heavy models (which plug in on the deployment box)."""
 
 from __future__ import annotations
@@ -153,7 +153,7 @@ def test_tournament_dominant_candidate_wins():
 
 
 def test_tournament_resolves_a_cycle_without_crashing():
-    # rock-paper-scissors across two criteria — no Condorcet winner
+    # rock-paper-scissors across two criteria - no Condorcet winner
     df = pd.DataFrame(
         {
             "candidate_id": ["a", "b", "c"],

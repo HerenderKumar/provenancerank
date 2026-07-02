@@ -1,4 +1,4 @@
-"""Hard gate filter — runs at ranking time, vectorised, no LLM, no network.
+"""Hard gate filter - runs at ranking time, vectorised, no LLM, no network.
 
 Only HARD disqualifiers exclude a candidate here (honeypot, all-consulting
 career, keyword stuffer, dead-and-unresponsive). Notice period, location and

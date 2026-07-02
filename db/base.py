@@ -1,7 +1,7 @@
 """Async SQLAlchemy engine + session.
 
 One engine per process, created lazily from ``DATABASE_URL``. SQLite (dev/test)
-and Postgres (prod) both work — pool sizing is only applied to real servers,
+and Postgres (prod) both work - pool sizing is only applied to real servers,
 SQLite uses the default pool. ``get_session`` is the FastAPI dependency;
 ``session_scope`` is the same thing for background workers and scripts.
 """

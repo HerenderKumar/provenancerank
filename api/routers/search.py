@@ -2,7 +2,7 @@
 ask in English, get developers back with the exact artifacts that prove it.
 
 If the graph backend is Neo4j and its circuit breaker is open, CircuitOpen maps
-to a clean 503 — the recruiter sees "graph unavailable", the rest of the API
+to a clean 503 - the recruiter sees "graph unavailable", the rest of the API
 (ranking, auth) keeps working. That's the isolation guarantee in action.
 """
 

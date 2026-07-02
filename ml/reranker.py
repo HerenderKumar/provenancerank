@@ -2,10 +2,10 @@
 
 First-stage retrieval (BM25 + embeddings + GBDT) is recall-oriented: it's fast,
 but it scores the query and each document *independently*, so it misses the
-fine-grained interactions that decide the top of the list — "led" vs
+fine-grained interactions that decide the top of the list - "led" vs
 "contributed to", "shipped a production LLM service" vs "took an LLM course". A
 cross-encoder reads the JD and a profile together in a single transformer pass
-and scores the pair. Far more precise, far too slow to run on 100K — so we only
+and scores the pair. Far more precise, far too slow to run on 100K - so we only
 rerank the top-K from stage one, which is exactly where NDCG@10/@50 is decided.
 
 This runs *offline* in precompute: the rerank score is cached onto the feature
@@ -48,7 +48,7 @@ def _minmax(x: np.ndarray) -> np.ndarray:
 
 
 # ---------------------------------------------------------------------------
-# Lexical fallback — a BM25-flavoured overlap of JD terms with each profile,
+# Lexical fallback - a BM25-flavoured overlap of JD terms with each profile,
 # scored only over the (small) head set so IDF reflects what's actually in play.
 # ---------------------------------------------------------------------------
 
@@ -94,7 +94,7 @@ def _lexical_scores(jd_text: str, docs: list[str]) -> np.ndarray:
 def _load_cross_encoder(model_name: str):
     """Return a loaded CrossEncoder, or None if unavailable (no package / no
     weights / offline). Cached because construction downloads + warms the model.
-    Runs on the best device, optionally via ONNX/int8 — both fall back to plain
+    Runs on the best device, optionally via ONNX/int8 - both fall back to plain
     torch, and only a genuine load failure returns None (-> lexical floor)."""
     try:
         from sentence_transformers import CrossEncoder

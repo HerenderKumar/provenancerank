@@ -17,10 +17,10 @@ python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install --upgrade pip
 
-# Full deps (includes sentence-transformers/torch — large, best quality):
+# Full deps (includes sentence-transformers/torch - large, best quality):
 pip install -r requirements.txt
 
-# …OR lean + fast (skip the heavy optional libs; code falls back gracefully):
+# ...OR lean + fast (skip the heavy optional libs; code falls back gracefully):
 # grep -viE "sentence-transformers|google-generativeai" requirements.txt > req.lean.txt && pip install -r req.lean.txt
 ```
 
@@ -36,7 +36,7 @@ cp "/Users/herender/Desktop/iCode/LinkedIn_finder/.../candidates.jsonl" ./candid
 
 ---
 
-## Path A — produce submission.csv (the graded output)
+## Path A - produce submission.csv (the graded output)
 
 ```bash
 # 1. one-time, offline: features + embeddings + BM25 + the fit model + the
@@ -45,7 +45,7 @@ python precompute.py --candidates ./candidates.jsonl --jd ./data/job_description
 #   (add --no-st --bm25-backend inverted to skip torch and run in ~30s)
 #   (add --no-accuracy to ship the original proxy-regressor behaviour instead)
 
-# 2. the graded step — no network, < 5 min
+# 2. the graded step - no network, < 5 min
 python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 
 # 3. verify with the official validator
@@ -65,20 +65,20 @@ python -m pytest -q          # 42 tests
 
 ---
 
-## Path B — run the full app locally (no Docker)
+## Path B - run the full app locally (no Docker)
 
 The API auto-falls back to **SQLite + in-memory cache/graph/queue**, so you need
-**nothing else installed** — no Postgres, Redis, or Neo4j.
+**nothing else installed** - no Postgres, Redis, or Neo4j.
 
 ```bash
-# Terminal 1 — API (sqlite file is created automatically)
+# Terminal 1 - API (sqlite file is created automatically)
 source .venv/bin/activate
 uvicorn api.main:app --reload --port 8000
 #   open http://localhost:8000/docs   (Swagger UI for every endpoint)
 ```
 
 ```bash
-# Terminal 2 — the React console
+# Terminal 2 - the React console
 cd frontend
 npm install
 npm run dev
@@ -90,7 +90,7 @@ Log in with the bootstrap admin (created on first boot):
 - email: `admin@provenancerank.local`
 - password: `changeme-admin`
 
-Then: **Dashboard → Run ranking** (needs the artifacts from Path A step 1), and
+Then: **Dashboard -> Run ranking** (needs the artifacts from Path A step 1), and
 **Evidence Search** to try the live layer. To try GitHub ingestion for real, set
 `GITHUB_TOKEN` before starting uvicorn:
 
@@ -101,7 +101,7 @@ export GOOGLE_API_KEY=AIza_xxx         # optional; enables Gemini summaries, els
 
 ---
 
-## Path C — the full production stack (Docker)
+## Path C - the full production stack (Docker)
 
 Needs **Docker Desktop**. Brings up Postgres + Redis + Neo4j + 2 API replicas +
 nginx + Celery workers + Prometheus + Grafana + Jaeger + the UI (14 services).
@@ -127,11 +127,11 @@ Stop with `docker compose down` (add `-v` to wipe data volumes).
 
 ## Gotchas
 
-- **`candidates.jsonl` missing** → Path A errors with "feature matrix missing";
+- **`candidates.jsonl` missing** -> Path A errors with "feature matrix missing";
   make sure you copied it to the repo root.
-- **torch install is slow/big** → use the lean install and `precompute --no-st`.
-- **Apple Silicon** → everything works; torch has arm64 wheels.
-- **Port already in use** → change `--port` (API) or vite's port in
+- **torch install is slow/big** -> use the lean install and `precompute --no-st`.
+- **Apple Silicon** -> everything works; torch has arm64 wheels.
+- **Port already in use** -> change `--port` (API) or vite's port in
   `frontend/vite.config.ts`.
-- **Reset local DB** → `rm provenancerank.db*` (Path B re-creates it).
+- **Reset local DB** -> `rm provenancerank.db*` (Path B re-creates it).
 ```

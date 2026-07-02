@@ -1,8 +1,8 @@
-"""Semantic (vector) index over evidence summaries — the second half of hybrid
+"""Semantic (vector) index over evidence summaries - the second half of hybrid
 graph retrieval.
 
 The structured graph query is exact: it finds developers whose evidence is tagged
-with a *canonical* skill. That's precise but brittle — ask for "real-time event
+with a *canonical* skill. That's precise but brittle - ask for "real-time event
 streaming" and, if nobody's evidence is tagged with the canonical skill `kafka`,
 you get nothing, even though someone's commit summary literally says "streaming
 Kafka consumer for live events". This index fixes that: it embeds every evidence
@@ -13,7 +13,7 @@ The two are then fused (see natural_language_query.py) so you keep the precision
 of exact-skill matches and gain the recall of semantic matches.
 
 Embeddings reuse the same `make_embedder` as the main ranker: sentence-transformers
-when installed, a deterministic NumPy hashing embedder otherwise — so this runs
+when installed, a deterministic NumPy hashing embedder otherwise - so this runs
 offline and in tests with no model.
 """
 
@@ -38,7 +38,7 @@ def _embedder():
 
 def _evidence_text(ev: dict) -> str:
     """What we embed per evidence: the summary, its source, and the skills it
-    demonstrates — so both the prose and the tags contribute to a match."""
+    demonstrates - so both the prose and the tags contribute to a match."""
     parts = [
         str(ev.get("summary", "")),
         str(ev.get("source_type", "")),

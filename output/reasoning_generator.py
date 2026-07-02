@@ -1,15 +1,15 @@
 """Turn a feature row into a 1-2 sentence justification.
 
 Stage 4 reads these by hand, so they have to be specific, honest, and clearly
-different from each other — no templated name-swapping. Rules I'm holding to:
+different from each other - no templated name-swapping. Rules I'm holding to:
 
   * only name skills the candidate actually has (top_jd_skills comes straight
-    from their matched skills — never invent one)
+    from their matched skills - never invent one)
   * say the real concern out loud (notice period, gone quiet, outside India,
     CV/speech tilt) so the tone matches the rank
   * vary the wording so ten sampled rows don't read identically
 
-Everything comes from precomputed values — no model call at ranking time.
+Everything comes from precomputed values - no model call at ranking time.
 """
 
 from __future__ import annotations
@@ -78,7 +78,7 @@ def generate_reasoning(row: Mapping, rank: int) -> str:
     if notice <= 30 and rank <= 60:
         strengths.append("short notice")
 
-    # ...then the honest concerns — graders specifically check we flag these
+    # ...then the honest concerns - graders specifically check we flag these
     concerns: list[str] = []
     if notice > 60:
         concerns.append(f"{notice:.0f}-day notice")
@@ -92,7 +92,7 @@ def generate_reasoning(row: Mapping, rank: int) -> str:
         concerns.append("adjacent rather than core fit")
 
     head = ", ".join(strengths[:3]) if strengths else "adjacent skill set"
-    sentence = f"{lead} — {head}."
+    sentence = f"{lead} - {head}."
     if concerns:
         sentence += f" Watch-out: {concerns[0]}."
     return sentence

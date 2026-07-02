@@ -1,13 +1,13 @@
 """Candidate / JD embeddings.
 
 Default backend is sentence-transformers (all-MiniLM-L6-v2, 384-dim, CPU). If
-it can't be loaded — not installed, or no cached model and we're not allowed to
-download — we fall back to a hashing embedder built on numpy alone. Same dim
+it can't be loaded - not installed, or no cached model and we're not allowed to
+download - we fall back to a hashing embedder built on numpy alone. Same dim
 either way, so the rest of the pipeline doesn't care which one ran.
 
 The backend choice is written to artifacts/embedding_meta.json at precompute
 time. rank.py reads it and rebuilds the *same* embedder so the JD query vector
-lives in the same space as the stored candidate vectors — and it does this with
+lives in the same space as the stored candidate vectors - and it does this with
 no network (a cached ST model loads fine offline; otherwise hashing).
 """
 
@@ -36,7 +36,7 @@ def _tokenize(text: str) -> list[str]:
 class HashingEmbedder:
     """Feature-hashing embedder. Each token gets a (bucket, sign) from a crc32
     hash; we tf-weight with bincount and L2-normalise. Cosine of two of these
-    tracks shared vocabulary — coarser than a real model but deterministic,
+    tracks shared vocabulary - coarser than a real model but deterministic,
     offline, and quick enough to embed 100K docs in a few seconds when torch
     isn't around. Token hashes are cached, so a big corpus only pays the hash
     cost once per distinct word.
@@ -115,7 +115,7 @@ def make_embedder(prefer_st: bool = True):
             log.info("embedder.ready", backend=emb.backend, model=emb.name, dim=emb.dim)
             return emb
         except Exception as exc:
-            # offline sandbox / no torch — totally fine, hashing it is.
+            # offline sandbox / no torch - totally fine, hashing it is.
             log.warning("embedder.st_unavailable", reason=str(exc)[:140])
     emb = HashingEmbedder(s.embedding_dim)
     log.info("embedder.ready", backend=emb.backend, dim=emb.dim)
@@ -149,7 +149,7 @@ def load_embedder_from_meta(path: str | Path):
             os.environ.setdefault("HF_HUB_OFFLINE", "1")
             os.environ.setdefault("TRANSFORMERS_OFFLINE", "1")
             # rank.py is the no-network path: device is fine, ONNX (which may
-            # export/download on load) is not — so disable it here.
+            # export/download on load) is not - so disable it here.
             return SentenceTransformerEmbedder(meta["model"], meta["dim"], allow_onnx=False)
         except Exception as exc:
             log.warning("embedder.meta_st_unavailable", reason=str(exc)[:140])

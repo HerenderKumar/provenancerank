@@ -1,6 +1,6 @@
 """Pull text + canonical skills out of a resume (PDF or docx).
 
-Resume claims are the weakest evidence (source_weight 0.2) — this exists so a
+Resume claims are the weakest evidence (source_weight 0.2) - this exists so a
 developer's self-reported skills seed the graph and then get *overwritten* by
 real work artifacts. docx uses python-docx; PDF uses pypdf if present, else we
 return what we can and flag it.

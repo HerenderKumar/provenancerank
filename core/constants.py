@@ -314,7 +314,7 @@ PREFERRED_LOCATIONS: frozenset[str] = frozenset(
 INDIA_TOKENS: frozenset[str] = frozenset({"india"})
 
 # ---------------------------------------------------------------------------
-# Feature matrix column order — the contract between feature engineering and ML.
+# Feature matrix column order - the contract between feature engineering and ML.
 # Keeping this explicit makes the materialised view reproducible and the model
 # input deterministic across runs.
 # ---------------------------------------------------------------------------

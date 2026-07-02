@@ -11,7 +11,7 @@ def _fake_scored(n=120):
             {
                 "candidate_id": f"CAND_{i:07d}",
                 "final_score": round(1.0 - (i // 3) * 0.01, 4),  # forces score ties
-                "reasoning": f"Candidate {i} — retrieval/IR depth, at product companies.",
+                "reasoning": f"Candidate {i} - retrieval/IR depth, at product companies.",
             }
         )
     return pd.DataFrame(rows).sample(frac=1, random_state=1).reset_index(drop=True)

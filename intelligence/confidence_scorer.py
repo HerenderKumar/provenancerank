@@ -4,7 +4,7 @@ This is the whole point of the live layer. A skill proven by 20 recent
 production commit diffs should crush the same skill typed into a resume. The
 formula encodes three things: where the evidence came from (a commit diff beats
 a self-claim), how hard it was (a race-condition fix beats a typo), and how
-recent it is (skills rot — exponential decay, 1-year half-life).
+recent it is (skills rot - exponential decay, 1-year half-life).
 
     score(skill) = clamp( Σ  source_weight · (complexity/5) · 2^(-age_days/365)
                           ----------------------------------------------------- , 0, 1)

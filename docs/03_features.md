@@ -1,4 +1,4 @@
-# 03 — Features (and the technology behind each)
+# 03 - Features (and the technology behind each)
 
 Every feature below lists **what it does**, the **tech** it uses, **how it
 works**, and its **fallback** (the pure-Python path used when a heavy dependency
@@ -16,8 +16,8 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
   focused string (title + recent role + top skills) for the cross-encoder.
 - **Files:** `pipeline/loader.py`.
 
-### A2. Feature engineering — 40 numeric features
-- **What:** turns each messy profile into a fixed vector of 40 numbers — the
+### A2. Feature engineering - 40 numeric features
+- **What:** turns each messy profile into a fixed vector of 40 numbers - the
   single contract every model in the system agrees on.
 - **Tech:** pandas, NumPy; date math for tenure/recency.
 - **How:** `build_feature_row()` computes things like years of experience, average
@@ -29,7 +29,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 
 ### A3. Honeypot detection
 - **What:** catches the ~80 fake "trap" profiles (impossible career arithmetic).
-- **Tech:** rule-based, vectorised pandas — chosen deliberately over ML for
+- **Tech:** rule-based, vectorised pandas - chosen deliberately over ML for
   **high precision** (we must not flag real people).
 - **How:** a few strict rules (e.g. total role durations exceed the person's age,
   or experience that can't fit a plausible timeline). Honeypots are *kept* in the
@@ -43,7 +43,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 - **Tech:** **Gemini** (`google-generativeai`) *optionally*, offline only.
 - **How:** if an API key is set, an LLM extracts structured requirements; otherwise
   a keyword/rule parser does it. This is the **only** place an LLM may run, and
-  only in Phase 1 — so the graded Phase 2 never needs the network.
+  only in Phase 1 - so the graded Phase 2 never needs the network.
 - **Files:** `pipeline/jd_deconstructor.py`.
 
 ### A5. Gate filter
@@ -60,24 +60,24 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 - **Tech:** **sentence-transformers** (`all-MiniLM-L6-v2`).
 - **How:** `embed_corpus()` encodes every profile; the JD is encoded the same way;
   cosine similarity ranks profiles by semantic closeness to the JD.
-- **Fallback:** a **NumPy feature-hashing embedder** — hashes tokens into buckets
+- **Fallback:** a **NumPy feature-hashing embedder** - hashes tokens into buckets
   with signs and L2-normalises. Deterministic, offline, no torch. Coarser, but the
   rest of the pipeline can't tell the difference (same 384 dims).
 - **Files:** `pipeline/embedder.py`.
 
 ### A7. BM25 keyword index (sparse retrieval)
-- **What:** classic keyword relevance — which profiles literally contain the JD's
+- **What:** classic keyword relevance - which profiles literally contain the JD's
   important terms, weighted by rarity.
 - **Tech:** **rank-bm25** (Okapi BM25).
 - **How:** builds an index over all profile texts, scores the JD query against it.
 - **Fallback:** a hand-written **two-pass streaming inverted index** with
-  document-frequency pruning — built to keep memory low on 100K docs (this is what
+  document-frequency pruning - built to keep memory low on 100K docs (this is what
   fixed an out-of-memory problem; see [04](04_file_by_file.md)).
 - **Files:** `pipeline/bm25_indexer.py`.
 
 ### A8. Hybrid retrieval (Reciprocal Rank Fusion)
 - **What:** combines keyword (BM25) and semantic (embedding) rankings into one.
-- **Tech:** **Reciprocal Rank Fusion (RRF)** — a simple, robust rank-combining
+- **Tech:** **Reciprocal Rank Fusion (RRF)** - a simple, robust rank-combining
   formula: `score = Σ 1/(k + rank_in_each_list)`.
 - **How:** each method ranks the candidates; RRF blends the *ranks* (not the raw
   scores, which are on different scales). The result is the `retrieval_score`.
@@ -90,7 +90,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
   hand-tuned linear **formula**.
 - **How:** the model is trained in Phase 1 (see A11) and saved with **joblib**;
   `predict_fit()` loads it and produces a normalised `ml_fit` score per candidate.
-  If the model file is missing or won't load, it returns the formula directly — the
+  If the model file is missing or won't load, it returns the formula directly - the
   ranker still works.
 - **Files:** `ml/trainer.py`, `ml/predictor.py`.
 
@@ -98,14 +98,14 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 
 ## B. The accuracy layer (sharpening the top of the list)
 
-### B1. Graded pseudo-labels → LambdaMART
+### B1. Graded pseudo-labels -> LambdaMART
 - **What:** the dataset has no "hire/reject" labels, so we *manufacture* graded
-  relevance labels (tier 0–5) and train a learning-to-rank model to optimise the
+  relevance labels (tier 0-5) and train a learning-to-rank model to optimise the
   contest metric directly.
 - **Tech:** percentile bucketing (pandas/NumPy); optionally **Gemini** to grade a
   sample; **XGBRanker** with `objective="rank:ndcg"` (LambdaMART).
 - **How:** a richer-than-proxy composite is bucketed into tiers (a few "5"s, more
-  "3"s, lots of "0"s — like real relevance). If a key is set, Gemini grades the
+  "3"s, lots of "0"s - like real relevance). If a key is set, Gemini grades the
   top ~1,500 against the JD and overrides the heuristic for that slice. The ranker
   then learns the *actual* definition of relevance, not a proxy.
 - **Fallback:** heuristic tiers (no LLM) and the regressor/formula (no XGBoost).
@@ -113,17 +113,17 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 
 ### B2. Cross-encoder reranker
 - **What:** re-scores the *top ~300* candidates by reading the JD and a profile
-  **together** in one transformer pass — far more precise than scoring them apart.
+  **together** in one transformer pass - far more precise than scoring them apart.
 - **Tech:** **sentence-transformers** `CrossEncoder` (`ms-marco-MiniLM-L-6-v2`).
 - **How:** only the head is reranked (that's where NDCG@10/@50 is decided);
   reranking all 100K would be too slow. The result is cached as `rerank_score`.
 - **Fallback:** a **lexical** BM25-flavoured overlap of JD terms with each profile
-  — pure NumPy, still a real signal.
+  - pure NumPy, still a real signal.
 - **Files:** `ml/reranker.py`.
 
 ### B3. Bradley-Terry tournament (our differentiator)
-- **What:** for the very top (~60), runs an actual **round-robin tournament** —
-  "between these two, who's better?" — and resolves it into a globally consistent
+- **What:** for the very top (~60), runs an actual **round-robin tournament** -
+  "between these two, who's better?" - and resolves it into a globally consistent
   ranking.
 - **Tech:** **NumPy**; Bradley-Terry maximum-likelihood via MM iteration
   (Hunter, 2004).
@@ -136,7 +136,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 
 ### B4. LLM head-scoring (the smartest signal)
 - **What:** an LLM reads each *top ~250* candidate against the JD and scores fit
-  0–100 — judgment the GBDT can't do (it reads the career narrative, not just
+  0-100 - judgment the GBDT can't do (it reads the career narrative, not just
   numbers).
 - **Tech:** GLM / Ollama / Gemini via `core/llm.py`; runs **offline in precompute**,
   batched (~20 candidates per call), cached as `llm_fit_score`.
@@ -144,7 +144,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
   blended into the head like the rerank/tournament signals. `rank.py` reads the
   cached column, so it stays no-network/<5min.
 - **Fallback:** off by default (`LLM_HEAD_SCORING_ENABLED=true` to enable). With no
-  LLM reachable it scores nothing and the scorer adds nothing — baseline unchanged.
+  LLM reachable it scores nothing and the scorer adds nothing - baseline unchanged.
 - **Files:** `ml/llm_scorer.py`, `pipeline/scorer.py`, `precompute.py`.
 
 ### B5. Evaluation harness
@@ -161,8 +161,8 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 - **How:** `core = 0.40·ml_fit + 0.35·retrieval + 0.25·behavioural`; the rerank and
   tournament signals fold into the head as a **convex blend** (so scores stay in
   [0,1] and don't saturate); then `× location_factor × signal_modifier +
-  evidence_bonus`. Honeypots/gated → 0. When the extra columns are absent, the
-  formula is exactly the original — so the add-ons are invisible by default.
+  evidence_bonus`. Honeypots/gated -> 0. When the extra columns are absent, the
+  formula is exactly the original - so the add-ons are invisible by default.
 - **Files:** `pipeline/scorer.py`, `pipeline/signal_scorer.py`.
 
 ---
@@ -186,9 +186,9 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 ### C3. Coverage loop agent
 - **What:** a lightweight "are we missing anything?" check over the shortlist.
 - **Tech:** pure Python (no LLM, no network).
-- **How:** a plan→retrieve→reflect loop reports coverage across dimensions
+- **How:** a plan->retrieve->reflect loop reports coverage across dimensions
   (retrieval, LLM experience, production evidence, availability). It's
-  informational — it does not change the final order.
+  informational - it does not change the final order.
 - **Files:** `pipeline/loop_agent.py`.
 
 ---
@@ -242,7 +242,7 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 ### D6. Observability & resilience
 - **What:** metrics, logs, traces, and failure isolation.
 - **Tech:** **prometheus-client**, **structlog** (JSON), **OpenTelemetry**
-  (→ Jaeger), a custom async **circuit breaker**.
+  (-> Jaeger), a custom async **circuit breaker**.
 - **How:** middleware records request metrics and a request-id on every log line;
   spans trace requests when tracing is enabled; the circuit breaker stops hammering
   a failing dependency (e.g. the GitHub API) and recovers automatically.
@@ -284,22 +284,22 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
   fusing exact graph traversal with semantic search for better recall.
 - **Tech:** **Neo4j** (with an in-memory graph fallback); SHA-256 anchoring;
   embeddings (sentence-transformers or the NumPy hashing fallback); RRF fusion.
-- **How:** developers → skills → evidence are nodes/edges; each evidence node is
+- **How:** developers -> skills -> evidence are nodes/edges; each evidence node is
   content-hashed so it's *verifiable* (tamper-evident). A query runs **two**
   retrievers and fuses them by rank (RRF, like the main ranker):
-  1. **structured skill traversal** — precise: developers tagged with the
+  1. **structured skill traversal** - precise: developers tagged with the
      canonical skill (e.g. the 3-hop "production debuggers" query);
-  2. **semantic vector search** over evidence summaries — recall: catches
-     paraphrases the skill tag misses ("real-time event streaming" → a "Kafka"
+  2. **semantic vector search** over evidence summaries - recall: catches
+     paraphrases the skill tag misses ("real-time event streaming" -> a "Kafka"
      developer whose commit says "streaming telemetry consumer").
   Confidence **accumulates** across evidence; each result is tagged `match_via`
   (skill / semantic / both).
-- **Measured:** on a gold-set A/B, hybrid lifts recall@5 from 0.6 → 1.0 and MRR
-  0.6 → 1.0 vs skill-only (it answers the paraphrased queries that returned
-  nothing before), trading some precision@k — the usual recall/precision balance.
+- **Measured:** on a gold-set A/B, hybrid lifts recall@5 from 0.6 -> 1.0 and MRR
+  0.6 -> 1.0 vs skill-only (it answers the paraphrased queries that returned
+  nothing before), trading some precision@k - the usual recall/precision balance.
 - **Why not "full Graph RAG":** the LLM is used to *parse* the query and to
   *summarise* evidence at ingestion, not to generate the final answer at query
-  time — so this is graph-RAG-style retrieval, not generative Graph RAG.
+  time - so this is graph-RAG-style retrieval, not generative Graph RAG.
 - **Files:** `graph/schema.py`, `graph/queries.py`, `graph/vector_index.py`,
   `graph/natural_language_query.py`, `graph/evaluate.py`.
 
@@ -325,15 +325,15 @@ is missing). File references point you to [04_file_by_file.md](04_file_by_file.m
 ---
 
 ## G. Performance layer (speed, no feature loss)
-- **Device auto-detect** — runs the transformers on Apple **MPS** / **CUDA** when
+- **Device auto-detect** - runs the transformers on Apple **MPS** / **CUDA** when
   available, else CPU. `core/device.py`.
-- **ONNX + int8 toggle** — optional ONNX Runtime backend with quantised weights
-  (~2–4× on CPU), with onnx→torch fallback. `core/device.py`.
-- **Leaner LambdaMART** — trains on all positives + a sampled set of negatives,
+- **ONNX + int8 toggle** - optional ONNX Runtime backend with quantised weights
+  (~2-4× on CPU), with onnx->torch fallback. `core/device.py`.
+- **Leaner LambdaMART** - trains on all positives + a sampled set of negatives,
   histogram tree method, early stopping. `ml/trainer.py`.
-- **Focused rerank text** — the cross-encoder reads a tight projection, not the
+- **Focused rerank text** - the cross-encoder reads a tight projection, not the
   full blob. `pipeline/loader.rerank_text`.
-- **Content-hash cache** — `--resume` reuses embeddings / model / rerank scores
+- **Content-hash cache** - `--resume` reuses embeddings / model / rerank scores
   when their inputs are unchanged; change only the JD and the 100K embeddings are
   reused. `core/artifact_cache.py`.
 

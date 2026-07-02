@@ -29,3 +29,7 @@ frontend/dist/
 
 # os
 .DS_Store
+
+# local deliverables (not for the repo)
+submission.xlsx
+*.pptx

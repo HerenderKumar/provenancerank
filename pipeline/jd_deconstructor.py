@@ -1,10 +1,10 @@
-"""JD deconstruction — the ONLY place an LLM may be called, and only offline.
+"""JD deconstruction - the ONLY place an LLM may be called, and only offline.
 
 Produces a structured ``JobSpec`` saved to ``artifacts/jd_spec.json``. At
 ranking time the gate filter and scorers read this JSON; rank.py never imports
 this module, guaranteeing zero network during ranking.
 
-Reliability pattern — Circuit Breaker:
+Reliability pattern - Circuit Breaker:
     The single Gemini Flash call is wrapped with bounded retries. After the
     breaker opens (repeated failures) OR when no API key is configured, we fall
     back to a hand-derived ``JobSpec`` built from a careful reading of the real
@@ -201,7 +201,7 @@ def fallback_job_spec() -> JobSpec:
 
 
 # ---------------------------------------------------------------------------
-# Optional LLM path (local Ollama / Gemini, via core.llm) — enriches the
+# Optional LLM path (local Ollama / Gemini, via core.llm) - enriches the
 # deterministic fallback. Never required; absent it, the rules-based spec stands.
 # ---------------------------------------------------------------------------
 

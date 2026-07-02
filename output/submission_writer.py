@@ -2,7 +2,7 @@
 
 The fiddly bit is the tie-break rule. The validator wants scores non-increasing
 by rank AND, for equal scores, candidate_id ascending. Float scores rarely tie
-until you round them to 4 dp for the file — at which point neighbours can become
+until you round them to 4 dp for the file - at which point neighbours can become
 equal. So: round first, THEN sort by (score desc, candidate_id asc), then assign
 ranks. That ordering satisfies both checks no matter how the rounding lands.
 """
@@ -33,7 +33,7 @@ def build_submission(
     clean top-k frame with rank/score/reasoning, ordered and tie-broken."""
     work = df[["candidate_id", score_col, reasoning_col]].copy()
     work["score"] = work[score_col].astype(float).round(SCORE_DP)
-    # round, then order by score desc and id asc — this is what makes the
+    # round, then order by score desc and id asc - this is what makes the
     # validator's tie-break check pass.
     work = work.sort_values(["score", "candidate_id"], ascending=[False, True])
     work = work.head(top_k).reset_index(drop=True)

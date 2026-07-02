@@ -7,8 +7,8 @@ whole point of the queue: at scale the worker moves to its own fleet, unchanged.
 
 Results are cached read-through by request hash, persisted to the DB, and
 progress is published to in-memory channels the SSE endpoint subscribes to. The
-consumer is idempotent — a duplicate delivery for an already-finished job is a
-no-op — so at-least-once delivery is safe.
+consumer is idempotent - a duplicate delivery for an already-finished job is a
+no-op - so at-least-once delivery is safe.
 """
 
 from __future__ import annotations

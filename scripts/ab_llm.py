@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""A/B the LLM head-scoring contribution — one command, prints the metric delta.
+"""A/B the LLM head-scoring contribution - one command, prints the metric delta.
 
 First build the matrix WITH the LLM column (precompute caches llm_fit_score):
 
@@ -10,8 +10,8 @@ Then:
 
     python scripts/ab_llm.py
 
-It computes two rankings from that ONE matrix — with and without `llm_fit_score`
-(everything else identical) — scores both against the graded pseudo-labels, prints
+It computes two rankings from that ONE matrix - with and without `llm_fit_score`
+(everything else identical) - scores both against the graded pseudo-labels, prints
 the metric delta + head churn, and writes `submission_base.csv` / `submission_llm.csv`
 so you can eyeball the actual top names.
 
@@ -66,7 +66,7 @@ def main(argv=None) -> int:
 
     mp = Path(args.artifacts) / "feature_matrix.pkl"
     if not mp.exists():
-        print(f"feature matrix missing at {mp} — run precompute.py first.")
+        print(f"feature matrix missing at {mp} - run precompute.py first.")
         return 1
     df = pd.read_pickle(mp).reset_index(drop=True)
     if "llm_fit_score" not in df.columns:
@@ -108,9 +108,9 @@ def main(argv=None) -> int:
         f"  top-20 reordered: {moved}/20   "
         f"top-{k} membership overlap: {len(set(base_ids) & set(llm_ids))}/{k}"
     )
-    print("\n  Wrote submission_base.csv and submission_llm.csv — compare the top names by eye.")
+    print("\n  Wrote submission_base.csv and submission_llm.csv - compare the top names by eye.")
     print(
-        "  NOTE: scored against heuristic pseudo-labels (a proxy, not ground truth) — treat the\n"
+        "  NOTE: scored against heuristic pseudo-labels (a proxy, not ground truth) - treat the\n"
         "  delta as directional; the real test is the hidden leaderboard, so trust your eyes too."
     )
     return 0

@@ -1,11 +1,11 @@
-"""Offline ranking metrics — the same ones the hackathon grades on, so we can
+"""Offline ranking metrics - the same ones the hackathon grades on, so we can
 measure every change instead of guessing.
 
     composite = 0.50*NDCG@10 + 0.30*NDCG@50 + 0.15*MAP + 0.05*P@10
 
 Relevance is graded 0..5; "relevant" for MAP/P@k means tier >= 3 (the spec's
 definition). We don't have the hidden ground truth, so we run this against the
-pseudo-labels (ml/pseudo_labels.py) on a held-out slice — that's how we prove a
+pseudo-labels (ml/pseudo_labels.py) on a held-out slice - that's how we prove a
 change actually helps rather than just feels better.
 """
 

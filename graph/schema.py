@@ -5,11 +5,11 @@ Graph shape (same nodes/edges whether we're on Neo4j or in-memory):
     (Developer)-[:HAS_SKILL {confidence, evidence_count, last_seen}]->(Skill)
     (Developer)-[:PRODUCED]->(Artifact)-[:DEMONSTRATES]->(Skill)
 
-The in-memory backend is the default — it makes the whole feature run and test
+The in-memory backend is the default - it makes the whole feature run and test
 without a Neo4j server, and it's the fallback if Neo4j is down. It implements
 the same async interface the Neo4j backend does, so callers don't care which is
 behind them. The "production debugger" query is the one that justifies a graph:
-it's a 3-hop traversal (Developer→Artifact→Skill with predicates) that's ugly in
+it's a 3-hop traversal (Developer->Artifact->Skill with predicates) that's ugly in
 SQL and natural here.
 """
 
@@ -154,7 +154,7 @@ class InMemoryGraphStore:
         return rows[:limit]
 
     async def all_evidence(self) -> list[dict]:
-        """Every artifact joined with the skills it demonstrates — the corpus the
+        """Every artifact joined with the skills it demonstrates - the corpus the
         semantic (vector) index embeds for hybrid retrieval."""
         skills_by_art: dict[str, list[str]] = {}
         for art_id, sk in self.demonstrates:

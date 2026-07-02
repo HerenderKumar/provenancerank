@@ -2,7 +2,7 @@
 
 Backend is Neo4j in prod, in-memory otherwise. Every Neo4j call goes through a
 circuit breaker so a flaky graph DB degrades to fast failures instead of hanging
-the API — and the factory falls back to in-memory if Neo4j can't be reached at
+the API - and the factory falls back to in-memory if Neo4j can't be reached at
 startup, so a dead graph never takes down ranking.
 """
 
@@ -183,7 +183,7 @@ class GraphQuerier:
         return await self.b.developer_subgraph(developer_id)
 
     async def skill_confidence(self, developer_id: str, skill_name: str) -> float | None:
-        """Used by the ranking override — current graph confidence for one skill."""
+        """Used by the ranking override - current graph confidence for one skill."""
         try:
             rows = await self.b.find_by_skill(skill_name, min_confidence=0.0, limit=10000)
         except Exception:

@@ -1,4 +1,4 @@
-"""Exception handlers — turn domain errors and validation failures into clean
+"""Exception handlers - turn domain errors and validation failures into clean
 JSON with the right status, instead of leaking tracebacks."""
 
 from __future__ import annotations

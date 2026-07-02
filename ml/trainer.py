@@ -3,8 +3,8 @@
 There are no hire/reject labels in the data, so we build a proxy relevance
 target from the features we trust most and fit a gradient-boosted regressor to
 it. Why bother, if we already have the formula? Because the tree model picks up
-interactions the linear proxy can't — e.g. "retrieval skills only count when the
-title is actually technical" — and it smooths the final ordering.
+interactions the linear proxy can't - e.g. "retrieval skills only count when the
+title is actually technical" - and it smooths the final ordering.
 
 Model pick is whatever's installed: XGBoost -> LightGBM -> sklearn HistGBR ->
 plain formula (predictor falls back to the proxy directly). Same feature
@@ -125,7 +125,7 @@ def train_fit_scorer(df: pd.DataFrame, out_path: str | Path) -> dict:
 
 # ---------------------------------------------------------------------------
 # Learning-to-rank head (LambdaMART). Trains on graded 0..5 pseudo-labels with
-# an NDCG objective — optimising the metric the contest grades directly, rather
+# an NDCG objective - optimising the metric the contest grades directly, rather
 # than regressing a proxy. Same artifact shape, so predict_fit is unchanged.
 # ---------------------------------------------------------------------------
 
@@ -145,7 +145,7 @@ def _make_ranker():
 
         return XGBRanker(
             objective="rank:ndcg",
-            tree_method="hist",  # histogram split-finding — the fast path on CPU
+            tree_method="hist",  # histogram split-finding - the fast path on CPU
             n_estimators=500,
             max_depth=6,
             learning_rate=0.05,
@@ -178,7 +178,7 @@ def _synthetic_groups(n: int, n_groups: int, seed: int = 42):
     Every candidate is scored against the *same* JD, so semantically there is one
     query. Feeding one giant group is valid but slow and prone to overfitting the
     pairwise structure; splitting into many balanced mini-rankings is cheaper and
-    acts as a mild regulariser. Returns (row order, per-group sizes) — the ranker
+    acts as a mild regulariser. Returns (row order, per-group sizes) - the ranker
     wants rows grouped contiguously.
     """
     rng = np.random.default_rng(seed)
@@ -267,7 +267,7 @@ def train_ranker(
                     model, backend = _make_ranker()  # fresh, no early-stop state
                     model.fit(X_grouped, y_grouped, group=list(sizes))
             except Exception as exc:
-                # a ranker lib is present but rejected the fit — don't crash the
+                # a ranker lib is present but rejected the fit - don't crash the
                 # whole precompute, drop to the regressor on the graded labels.
                 log.warning("ml.ranker_fit_failed_fallback", error=str(exc)[:140])
                 model, backend = _make_regressor()
@@ -275,7 +275,7 @@ def train_ranker(
                     model.fit(X, y)
             in_sample = _safe_corr(model.predict(X_full), y_full) if model is not None else 1.0
         else:
-            # no ranker lib at all — regress the graded labels, then formula
+            # no ranker lib at all - regress the graded labels, then formula
             model, backend = _make_regressor()
             if model is not None:
                 model.fit(X, y)

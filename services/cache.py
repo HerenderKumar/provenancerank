@@ -1,6 +1,6 @@
 """Cache abstraction with a Redis backend and an in-memory fallback.
 
-The API never imports redis directly — it asks for a cache and gets whichever
+The API never imports redis directly - it asks for a cache and gets whichever
 backend is reachable. If Redis is down or not configured we transparently fall
 back to an in-process dict so dev and tests don't need a running Redis, and a
 Redis blip in prod degrades to local caching instead of erroring (the
@@ -32,9 +32,9 @@ class InMemoryCache:
     Redis (prod) does eviction for us (the compose file sets
     ``allkeys-lru``); this class mirrors that locally so the fallback behaves
     the same and stays memory-safe. Policies:
-      * ``lru`` — evict least-recently-used (default; matches Redis allkeys-lru)
-      * ``lfu`` — evict least-frequently-used (good when some keys are hot)
-      * ``fifo`` — evict oldest inserted
+      * ``lru`` - evict least-recently-used (default; matches Redis allkeys-lru)
+      * ``lfu`` - evict least-frequently-used (good when some keys are hot)
+      * ``fifo`` - evict oldest inserted
     """
 
     backend = "memory"

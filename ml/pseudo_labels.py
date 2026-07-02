@@ -1,10 +1,10 @@
 """Graded relevance labels (tier 0..5) for learning-to-rank.
 
 The dataset ships no hire/reject labels, so the GBDT was fitting a hand-written
-proxy — which caps accuracy. Here we build *graded* labels two ways:
+proxy - which caps accuracy. Here we build *graded* labels two ways:
 
   * Gemini grades a sample of candidates 0..5 against the JD (offline, one-time,
-    cached). This is the real signal — the model learns the actual relevance
+    cached). This is the real signal - the model learns the actual relevance
     definition, not our formula.
   * Without an API key we fall back to a graded heuristic: a richer composite
     than the GBDT proxy, bucketed into tiers by percentile so the label
@@ -54,7 +54,7 @@ def _bucket_to_tiers(relevance: pd.Series) -> pd.Series:
     """Map a continuous relevance to integer tiers 0..5 by percentile.
 
     Assign from the lowest cutoff up so higher tiers overwrite lower ones for the
-    very top rows — otherwise the last (lowest) band would clobber the elite tiers
+    very top rows - otherwise the last (lowest) band would clobber the elite tiers
     and everything collapses to tier 1.
     """
     tiers = pd.Series(0, index=relevance.index, dtype=int)
@@ -109,7 +109,7 @@ def _llm_grade(candidates: list[dict], jd_text: str) -> dict[str, int] | None:
 def generate_pseudo_labels(df: pd.DataFrame, candidates: list[dict] | None = None,
                            jd_text: str | None = None, sample_size: int = 1500) -> pd.Series:
     """Graded 0..5 labels aligned to df. An LLM (Ollama/Gemini) grades a sample
-    when enabled, heuristic for the rest — so every row gets a tier."""
+    when enabled, heuristic for the rest - so every row gets a tier."""
     with log_duration(log, "pseudo_labels.generate") as m:
         labels = heuristic_pseudo_labels(df)
         source = "heuristic"

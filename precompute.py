@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Phase 1 — offline. Builds everything rank.py reads. Can be slow (embedding
+"""Phase 1 - offline. Builds everything rank.py reads. Can be slow (embedding
 100K candidates is the bottleneck); that's fine, it runs once.
 
     python precompute.py --candidates ./candidates.jsonl --jd ./data/job_description.txt
@@ -92,8 +92,8 @@ def _build_accuracy_layer(df, rerank_corpus, jd_text, args, s, art, data_hash, j
       2. cross-encoder rerank of the head -> ``rerank_score`` column;
       3. Bradley-Terry tournament of the very top -> ``tournament_score`` column.
 
-    Each stage degrades independently — a failure in one is logged and skipped,
-    never aborting the precompute — and rank.py only ever reads the columns. The
+    Each stage degrades independently - a failure in one is logged and skipped,
+    never aborting the precompute - and rank.py only ever reads the columns. The
     model and the (expensive) rerank pass are content-cached, so an unchanged
     re-run reuses them instead of recomputing.
     """
@@ -169,7 +169,7 @@ def _build_accuracy_layer(df, rerank_corpus, jd_text, args, s, art, data_hash, j
         except Exception:
             log.exception("accuracy.tournament_failed_skipping")
 
-    # 4. LLM head-scoring (offline, cached) — the smartest signal, head only.
+    # 4. LLM head-scoring (offline, cached) - the smartest signal, head only.
     if s.llm_head_scoring_enabled and valid > 1:
         try:
             from ml.llm_scorer import score_head
@@ -233,11 +233,11 @@ def main(argv: list[str] | None = None) -> int:
     jd_hash = hashlib.sha256(jd_text.encode()).hexdigest()[:16] if jd_text else "no-jd"
 
     # whole-run skip only when *both* the candidates and the JD are unchanged.
-    # If just the JD changed, we still proceed — the per-stage cache reuses the
+    # If just the JD changed, we still proceed - the per-stage cache reuses the
     # embeddings/BM25 and only the JD-dependent work reruns.
     # Only skip when the inputs match AND the final artifact is actually present.
     # A leftover manifest from a partial/failed run (e.g. the disk filled mid-build)
-    # must NOT trick us into skipping — that leaves the API with no feature matrix.
+    # must NOT trick us into skipping - that leaves the API with no feature matrix.
     matrix_exists = (art / "feature_matrix.pkl").exists()
     if args.resume and manifest_path.exists() and matrix_exists:
         prev = json.loads(manifest_path.read_text())

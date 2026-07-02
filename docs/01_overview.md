@@ -1,18 +1,18 @@
-# 01 — Overview
+# 01 - Overview
 
 ## The problem
 
 You're given:
 
-- **`candidates.jsonl`** — 100,000 anonymised candidate profiles, one JSON object
+- **`candidates.jsonl`** - 100,000 anonymised candidate profiles, one JSON object
   per line. Each has a profile (headline, summary, title, location, years of
   experience), a career history (roles, companies, durations, descriptions),
   skills (with endorsements and self-rated proficiency), behavioural signals
   (activity, recruiter responses, assessment scores), and verification flags.
-- **A job description (JD)** — for the hackathon, a "Senior AI Engineer — Founding
+- **A job description (JD)** - for the hackathon, a "Senior AI Engineer - Founding
   Team" role.
 
-You must produce **`submission.csv`** — the **top 100** candidates ranked best-fit
+You must produce **`submission.csv`** - the **top 100** candidates ranked best-fit
 first, each with a `score` and a one-sentence `reasoning`.
 
 ### The hard constraints (these shape every design decision)
@@ -20,7 +20,7 @@ first, each with a `score` and a one-sentence `reasoning`.
 1. **No network and no GPU during ranking.**
 2. **CPU only, ≤ 16 GB RAM, under 5 minutes** for the ranking step.
 3. **Exactly 100 rows**, valid against the organiser's `validate_submission.py`.
-4. The dataset hides **~80 "honeypot" profiles** — deliberately impossible resumes
+4. The dataset hides **~80 "honeypot" profiles** - deliberately impossible resumes
    (e.g. 40 years of experience at age 25) that you must detect and exclude.
 5. The official score is a weighted blend of ranking-quality metrics:
 
@@ -28,7 +28,7 @@ first, each with a `score` and a one-sentence `reasoning`.
    score = 0.50·NDCG@10 + 0.30·NDCG@50 + 0.15·MAP + 0.05·P@10
    ```
 
-   (Don't worry if those are unfamiliar — they're all defined in
+   (Don't worry if those are unfamiliar - they're all defined in
    [06_glossary.md](06_glossary.md). In short: did you put the right people near
    the top?)
 
@@ -60,7 +60,7 @@ gracefully if its dependencies aren't installed.
    evidence, scores how much that evidence is worth (with recency decay), stores
    it in a SHA-256-anchored "proof-of-work" knowledge graph, and lets a recruiter
    query it in plain English. It composes with the static ranker through a small
-   additive "evidence bonus" — it never overrides the graded submission.
+   additive "evidence bonus" - it never overrides the graded submission.
 
 5. **The performance layer.** Speed levers that make the offline phase cheaper
    without weakening any feature: GPU auto-detection, an ONNX/int8 toggle, leaner
@@ -76,7 +76,7 @@ gracefully if its dependencies aren't installed.
 | Keyword search | **rank-bm25** (Okapi BM25) | Falls back to a hand-written streaming inverted index |
 | Semantic search | **sentence-transformers** (MiniLM, 384-dim) | Falls back to a NumPy feature-hashing embedder |
 | Fusion | **Reciprocal Rank Fusion** (custom) | Combines keyword + semantic ranks |
-| ML model | **XGBoost** (`XGBRanker`, LambdaMART) | Falls back to LightGBM → scikit-learn → a formula |
+| ML model | **XGBoost** (`XGBRanker`, LambdaMART) | Falls back to LightGBM -> scikit-learn -> a formula |
 | Reranker | **sentence-transformers** `CrossEncoder` | Falls back to a lexical BM25-style scorer |
 | Tournament | **NumPy** (Bradley-Terry MLE) | `scipy` listed but the core is pure NumPy |
 | Model I/O | **joblib** | Saves/loads the trained model artifact |

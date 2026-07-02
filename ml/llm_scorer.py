@@ -1,11 +1,11 @@
-"""LLM head-scoring — the smartest ranking signal, computed offline.
+"""LLM head-scoring - the smartest ranking signal, computed offline.
 
 The GBDT, retrieval and behavioural signals are fast but shallow; they can't read
 a career narrative and tell "shipped a production RAG service at scale" from "took
 an LLM course". An LLM can. So in precompute we let the LLM (GLM via core.llm)
 read each *top-of-the-list* candidate against the JD and score fit 0-100.
 
-We only score the **head** (top ~250) — that's where NDCG@10/@50 is decided —
+We only score the **head** (top ~250) - that's where NDCG@10/@50 is decided -
 batch the candidates per call to keep it cheap (~a dozen calls, not 100K), cache
 the result, and blend it into the final score like the cross-encoder rerank.
 rank.py never calls the LLM; it reads the cached column, so the no-network / <5min
@@ -56,7 +56,7 @@ def score_head(
             batch = items[start : start + batch_size]
             data = complete_json(_prompt(jd_text, batch), timeout=timeout)
             if not data:
-                break  # no provider / failure — keep whatever we have
+                break  # no provider / failure - keep whatever we have
             for cid, sc in data.items():
                 try:
                     out[cid] = max(0.0, min(float(sc) / 100.0, 1.0))

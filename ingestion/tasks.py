@@ -1,14 +1,14 @@
 """Celery task definitions.
 
 In prod (real broker + workers) sync_developer_github fans out one
-summarise_and_index task per artifact onto the intelligence queue — 200 commits
+summarise_and_index task per artifact onto the intelligence queue - 200 commits
 become 200 independent jobs processed concurrently, and a GitHub stall on the
 ingestion queue can't block summarisation. In eager mode (dev/tests) there's no
 broker, so we run the whole thing inline via the shared async core instead of
 nesting event loops.
 
 Failures retry up to max_retries; a task that's still failing is pushed to a
-Redis dead-letter list that scan_dead_letters sweeps hourly — no silent drops.
+Redis dead-letter list that scan_dead_letters sweeps hourly - no silent drops.
 """
 
 from __future__ import annotations

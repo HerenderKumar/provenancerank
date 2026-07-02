@@ -1,17 +1,17 @@
-"""Offline metrics for the evidence-graph search — so "more precise" is measured,
+"""Offline metrics for the evidence-graph search - so "more precise" is measured,
 not asserted.
 
 We don't have production ground truth, so (like the ranking side) we evaluate
 against a small **gold set**: a list of natural-language queries each paired with
-the developer ids that genuinely match. With that we can A/B any change —
+the developer ids that genuinely match. With that we can A/B any change -
 skill-only vs. hybrid graph+vector retrieval, a new query parser, a different
-confidence formula — and see whether precision/recall actually moved.
+confidence formula - and see whether precision/recall actually moved.
 
 Metrics, all standard for retrieval:
-  * precision@k — of the top k we returned, what fraction are relevant
-  * recall@k    — of all relevant developers, what fraction we surfaced in top k
-  * MRR         — 1 / rank of the first relevant hit (how high the first good one is)
-  * hit@k       — did at least one relevant developer appear in the top k
+  * precision@k - of the top k we returned, what fraction are relevant
+  * recall@k    - of all relevant developers, what fraction we surfaced in top k
+  * MRR         - 1 / rank of the first relevant hit (how high the first good one is)
+  * hit@k       - did at least one relevant developer appear in the top k
 """
 
 from __future__ import annotations

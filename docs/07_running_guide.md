@@ -1,17 +1,17 @@
-# 07 — Running guide (every section, one by one)
+# 07 - Running guide (every section, one by one)
 
-How to actually run each part of ProvenanceRank — the ranking engine, the tests,
+How to actually run each part of ProvenanceRank - the ranking engine, the tests,
 the accuracy + performance layers, the API, the frontend, the live GitHub layer,
 the graph RAG search, the full Docker stack, and observability. Copy-paste
 commands throughout.
 
 There are three "levels" and you can stop at whichever you need:
 
-- **Level 1 — the engine only** (Sections 1–5): produces the graded
+- **Level 1 - the engine only** (Sections 1-5): produces the graded
   `submission.csv`. Needs only Python.
-- **Level 2 — the app, no Docker** (Sections 6–9): the API + UI on SQLite +
+- **Level 2 - the app, no Docker** (Sections 6-9): the API + UI on SQLite +
   in-memory fallbacks. Needs Python + Node.
-- **Level 3 — the full stack** (Section 10): Postgres, Redis, Neo4j, workers,
+- **Level 3 - the full stack** (Section 10): Postgres, Redis, Neo4j, workers,
   nginx, Prometheus, Grafana, Jaeger, the UI. Needs Docker.
 
 > **Shortcut:** a `Makefile` wraps the common commands. Run `make help` to list
@@ -19,11 +19,11 @@ There are three "levels" and you can stop at whichever you need:
 
 ---
 
-## Quick start — Docker Desktop (the fewest steps)
+## Quick start - Docker Desktop (the fewest steps)
 
 ### Recommended on a laptop: the lite stack, from a clean state
 
-The lite stack is 6 containers instead of 14 — far less disk/RAM and far fewer
+The lite stack is 6 containers instead of 14 - far less disk/RAM and far fewer
 ways to fail. If a previous run got into a bad state, start clean:
 
 ```bash
@@ -37,7 +37,7 @@ cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
 docker system prune -af
 docker compose -f docker-compose.lite.yml down -v
 
-# 3. (optional) live-layer tokens — set BEFORE 'up'
+# 3. (optional) live-layer tokens - set BEFORE 'up'
 export GITHUB_TOKEN=ghp_xxx
 export GOOGLE_API_KEY=AIza_xxx
 
@@ -52,7 +52,7 @@ curl -s localhost:8080/health/ready          # ok = ready
 Stop it with `docker compose -f docker-compose.lite.yml down`.
 
 > Don't click **Run ranking** until `feature_matrix.pkl` exists and
-> `/health/ready` is ok — otherwise it ranks 0 candidates and fails.
+> `/health/ready` is ok - otherwise it ranks 0 candidates and fails.
 > Check: `docker compose -f docker-compose.lite.yml exec api1 ls -lh /app/artifacts | grep feature_matrix`
 
 ### Full stack (all 14 services)
@@ -69,7 +69,7 @@ cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
 [ -f candidates.jsonl ] || unzip -p "../[PUB] India_runs_data_and_ai_challenge.zip" \
   "*/candidates.jsonl" > candidates.jsonl
 
-# 3. (optional) tokens for the live layer — set BEFORE 'up'
+# 3. (optional) tokens for the live layer - set BEFORE 'up'
 export GITHUB_TOKEN=ghp_xxx        # GitHub ingestion
 export GOOGLE_API_KEY=AIza_xxx     # Gemini JD parse + summaries
 
@@ -86,7 +86,7 @@ Then just open:
 | http://localhost:7474 | Neo4j browser (`neo4j` / `provenancerank`) |
 | http://localhost:3000 | Grafana · http://localhost:16686 Jaeger · :9090 Prometheus |
 
-You do **not** run `precompute`, `uvicorn`, or `npm` yourself — the stack runs the
+You do **not** run `precompute`, `uvicorn`, or `npm` yourself - the stack runs the
 `precompute` container automatically and starts all 13 services. Stop with
 `docker compose down` (add `-v` to wipe data). Full details + the lean-image
 caveat are in **Section 10**.
@@ -115,7 +115,7 @@ cp /path/to/candidates.jsonl ./candidates.jsonl
 ls -la candidates.jsonl     # must be a FILE (not a directory), ~480 MB
 ```
 
-Every heavy dependency is optional — without them the code uses a pure-Python
+Every heavy dependency is optional - without them the code uses a pure-Python
 fallback (see [02_architecture.md](02_architecture.md), the degradation ladder).
 For a fast, lean install that skips torch/Gemini:
 
@@ -126,17 +126,17 @@ pip install -r req.lean.txt
 
 ---
 
-## 1. The ranking engine → `submission.csv`  (the graded core)
+## 1. The ranking engine -> `submission.csv`  (the graded core)
 
 Two phases. **Phase 1** (offline, slow OK) builds artifacts; **Phase 2** (the
 graded step: no network, CPU, < 5 min) reads them.
 
 ```bash
-# Phase 1 — build features, embeddings, BM25, the model, rerank + tournament
+# Phase 1 - build features, embeddings, BM25, the model, rerank + tournament
 python precompute.py --candidates ./candidates.jsonl --jd ./data/job_description.txt
 #   make precompute
 
-# Phase 2 — the graded step
+# Phase 2 - the graded step
 python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 #   make rank
 
@@ -159,18 +159,18 @@ Fast offline run: `python precompute.py --candidates ./candidates.jsonl --jd ./d
 ### Do I need to re-run precompute every time?
 
 **No.** Precompute is a one-time build per *(dataset, JD)*. It writes everything to
-`artifacts/`; after that, run `rank.py` as many times as you like — it just reads
+`artifacts/`; after that, run `rank.py` as many times as you like - it just reads
 the cache and finishes in ~2 seconds. You only re-run `precompute` when an **input
 changes**:
 
 | What changed | Re-run precompute? | Cost (with `--resume`) |
 |---|---|---|
-| Nothing | No — just run `rank.py` | — |
-| The job description only | Yes, with `--resume` | seconds — reuses the 100K embeddings + the trained model, only redoes retrieval/rerank/tournament |
+| Nothing | No - just run `rank.py` | - |
+| The job description only | Yes, with `--resume` | seconds - reuses the 100K embeddings + the trained model, only redoes retrieval/rerank/tournament |
 | The candidate dataset | Yes, with `--resume` | rebuilds (inputs changed) |
 | Engine code / config | Yes | rebuilds the affected parts |
 
-**Always add `--resume`** after the first build — it hashes the inputs and recomputes
+**Always add `--resume`** after the first build - it hashes the inputs and recomputes
 only what actually changed (and skips entirely, ~1s, if nothing did). So your
 slow 8-minute embedding step is paid **once**:
 
@@ -291,12 +291,12 @@ curl -s -X POST localhost:8000/auth/api-keys -H "Authorization: Bearer $TOKEN" \
 | `GET /health`, `/health/live`, `/health/ready` | liveness / readiness |
 | `POST /auth/login`, `/auth/register`, `GET /auth/me` | auth |
 | `POST /auth/api-keys`, `GET /auth/api-keys` | API keys |
-| `POST /rank` | submit a ranking job → `job_id` |
+| `POST /rank` | submit a ranking job -> `job_id` |
 | `GET /rank`, `GET /rank/{job_id}` | list / status |
 | `GET /rank/{job_id}/results` | the ranked top-100 |
 | `GET /rank/{job_id}/submission.csv` | download the CSV |
 | `GET /rank/{job_id}/stream` | live progress (SSE) |
-| `POST /developers/connect-github` | live layer — ingest a developer |
+| `POST /developers/connect-github` | live layer - ingest a developer |
 | `GET /developers/{id}/sync-status` | real sync status + counts |
 | `GET /developers/{id}/evidence-graph` | the proof-of-work subgraph |
 | `POST /search/natural-language` | graph RAG search (English) |
@@ -346,7 +346,7 @@ uvicorn api.main:app --reload --port 8000             # restart so it sees the t
 python -c "from core.config import get_settings; print('token seen:', bool(get_settings().github_token))"
 ```
 
-Then ingest and check the **real** status (don't trust the UI's "Syncing…" label):
+Then ingest and check the **real** status (don't trust the UI's "Syncing..." label):
 
 ```bash
 # connect a developer
@@ -397,7 +397,7 @@ Needs **Docker Desktop**. Brings up 13 services.
 
 ```bash
 cd /Users/herender/Desktop/iCode/LinkedIn_finder/provenancerank
-# candidates.jsonl must be a real FILE at the repo root (see Section 0) —
+# candidates.jsonl must be a real FILE at the repo root (see Section 0) -
 # if it's missing, Docker creates an empty *directory* and precompute fails.
 docker compose up --build           #  make up   /   make down to stop
 ```
@@ -427,7 +427,7 @@ data volumes.
 ### 10b. Lite stack (6 containers instead of 14)
 
 On a smaller machine the full 14-container stack is heavy. `docker-compose.lite.yml`
-runs the **same app** with far fewer moving parts — great for demos and laptops:
+runs the **same app** with far fewer moving parts - great for demos and laptops:
 
 ```bash
 docker compose -f docker-compose.lite.yml up --build
@@ -439,7 +439,7 @@ It keeps Postgres, Redis, precompute, one API, the nginx gateway, and the UI.
 It drops **neo4j** (graph falls back to the in-memory store), the **Celery
 workers + beat** (ingestion runs inside the API; only the auto-scheduled re-sync
 is gone), and **Prometheus/Grafana/Jaeger** (the API still emits metrics/logs/
-traces — you just don't run the dashboards). **No product feature is lost** and
+traces - you just don't run the dashboards). **No product feature is lost** and
 the graded `submission.csv` is unaffected. Switch back to the full stack any time
 with the normal `docker compose up`.
 
@@ -469,12 +469,12 @@ export DATABASE_URL="postgresql+asyncpg://user:pass@localhost:5432/provenanceran
 
 ---
 
-## LLM provider — GLM first, local Ollama fallback
+## LLM provider - GLM first, local Ollama fallback
 
-All four LLM touchpoints — JD parsing, evidence summaries, pseudo-label grading,
-and natural-language query parsing — go through one helper (`core/llm.py`). In the
-default `auto` mode it tries, in order: **GLM** (your Z.ai/Zhipu key) → **local
-Ollama** → **Gemini** → the deterministic heuristic. So your GLM key is used
+All four LLM touchpoints - JD parsing, evidence summaries, pseudo-label grading,
+and natural-language query parsing - go through one helper (`core/llm.py`). In the
+default `auto` mode it tries, in order: **GLM** (your Z.ai/Zhipu key) -> **local
+Ollama** -> **Gemini** -> the deterministic heuristic. So your GLM key is used
 first, and if a call fails or the key is unset it falls back to a local model.
 
 ```bash
@@ -497,7 +497,7 @@ any compatible API.
 
 Beyond JD parsing, the LLM can directly score the **top of the candidate list**.
 Enabled, precompute has the LLM read the top ~250 candidates against the JD, score
-fit 0–100, cache it as `llm_fit_score`, and the scorer blends it into the head
+fit 0-100, cache it as `llm_fit_score`, and the scorer blends it into the head
 (weight `LLM_SCORE_WEIGHT`, default 0.15). `rank.py` only reads the cached column,
 so it stays no-network/<5min.
 
@@ -512,7 +512,7 @@ python scripts/ab_llm.py
 ```
 
 `ab_llm.py` scores with-vs-without the LLM column against the graded pseudo-labels
-and prints `composite` / `ndcg@10` lift + head churn — so you only keep it if it
+and prints `composite` / `ndcg@10` lift + head churn - so you only keep it if it
 actually helps. It costs ~a dozen LLM calls offline; with no LLM reachable the
 whole thing is a silent no-op.
 
@@ -533,14 +533,14 @@ docker compose -f docker-compose.lite.yml up --build
 
 | Variable | Default | Controls |
 |---|---|---|
-| `GITHUB_TOKEN` | — | live-layer GitHub ingestion (required for it) |
-| `LLM_PROVIDER` | `auto` | which LLM to use: `auto` (GLM → Ollama → Gemini) / `glm` / `ollama` / `gemini` / `none` |
-| `GLM_API_KEY` | — | Z.ai / Zhipu **GLM** key — used **first** in `auto` when set |
+| `GITHUB_TOKEN` | - | live-layer GitHub ingestion (required for it) |
+| `LLM_PROVIDER` | `auto` | which LLM to use: `auto` (GLM -> Ollama -> Gemini) / `glm` / `ollama` / `gemini` / `none` |
+| `GLM_API_KEY` | - | Z.ai / Zhipu **GLM** key - used **first** in `auto` when set |
 | `GLM_MODEL` | `glm-5.2` | GLM model name |
 | `GLM_BASE_URL` | `https://api.z.ai/api/paas/v4` | any OpenAI-compatible endpoint |
 | `OLLAMA_BASE_URL` | `http://localhost:11434` | local Ollama fallback (Docker: `http://host.docker.internal:11434`) |
 | `OLLAMA_MODEL` | `llama3.1:8b` | any model you've `ollama pull`-ed |
-| `GOOGLE_API_KEY` | — | Gemini (last resort if neither GLM nor Ollama is available) |
+| `GOOGLE_API_KEY` | - | Gemini (last resort if neither GLM nor Ollama is available) |
 | `PSEUDO_LABEL_LLM_ENABLED` | `false` | opt in to LLM *label grading* in precompute (slower; off by default) |
 | `LLM_HEAD_SCORING_ENABLED` | `false` | opt in to LLM *fit-scoring* the top ~250 (blended into the ranking) |
 | `LLM_SCORE_WEIGHT` | `0.15` | blend weight for `llm_fit_score` in the head |
@@ -549,13 +549,13 @@ docker compose -f docker-compose.lite.yml up --build
 | `NEO4J_ENABLED` | `false` | use Neo4j (else in-memory graph) |
 | `GRAPH_HYBRID_ENABLED` | `true` | hybrid graph+vector search |
 | `DATABASE_URL` | sqlite | DB connection (Postgres in prod) |
-| `REDIS_URL` | redis://… | cache + rate-limit + queue (falls back in-memory) |
+| `REDIS_URL` | redis://... | cache + rate-limit + queue (falls back in-memory) |
 | `CELERY_TASK_ALWAYS_EAGER` | `true` | run background tasks inline (no worker) |
 | `OTEL_ENABLED` | `false` | OpenTelemetry tracing |
 | `JWT_SECRET` | dev value | **change in production** |
-| `BOOTSTRAP_ADMIN_EMAIL/PASSWORD` | admin@… / changeme-admin | first admin user |
+| `BOOTSTRAP_ADMIN_EMAIL/PASSWORD` | admin@... / changeme-admin | first admin user |
 
-(Anything in `core/config.py` can be set this way — the env var is the
+(Anything in `core/config.py` can be set this way - the env var is the
 upper-cased field name.)
 
 ---
@@ -564,8 +564,8 @@ upper-cased field name.)
 
 | Symptom | Cause & fix |
 |---|---|
-| `IsADirectoryError: '/app/candidates.jsonl'` (Docker) | No dataset file at the repo root → Docker made an empty dir. `docker compose down`, `rm -rf candidates.jsonl`, copy the real file, `up` again. |
-| UI stuck on "Syncing…" | Cosmetic — the page doesn't poll. Check the **real** status at `/developers/{id}/sync-status` or the server log (`sync.complete` vs `developer.sync_failed`). |
+| `IsADirectoryError: '/app/candidates.jsonl'` (Docker) | No dataset file at the repo root -> Docker made an empty dir. `docker compose down`, `rm -rf candidates.jsonl`, copy the real file, `up` again. |
+| UI stuck on "Syncing..." | Cosmetic - the page doesn't poll. Check the **real** status at `/developers/{id}/sync-status` or the server log (`sync.complete` vs `developer.sync_failed`). |
 | `GITHUB_TOKEN not configured` in logs | The server process can't see the token. Export it in the **same shell** that runs uvicorn (or the compose env) and restart. Verify with the one-liner in Section 8. |
 | `rank.py` errors "feature matrix missing" | Run `precompute.py` first (Section 1). |
 | torch install slow/large | Use the lean install (Section 0) + `precompute --no-st`. |

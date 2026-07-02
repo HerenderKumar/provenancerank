@@ -3,13 +3,13 @@
 ``--resume`` already skips *everything* when the candidates file is unchanged.
 This is finer-grained: each expensive stage records a key derived from its own
 inputs, so a re-run recomputes only what actually changed. The headline case:
-swap the JD and we reuse the 100K embeddings (and the BM25 index) untouched —
+swap the JD and we reuse the 100K embeddings (and the BM25 index) untouched -
 only retrieval, rerank and the tournament rerun.
 
 A stage writes its artifact plus a sidecar ``<artifact>.key`` holding the hash of
 its inputs. On the next run it loads the artifact iff the file exists, the key
 file exists, and the recomputed key matches. Anything else (missing file, stale
-key, unreadable artifact) is a clean miss that triggers recompute — so a bad
+key, unreadable artifact) is a clean miss that triggers recompute - so a bad
 cache can never produce a wrong result, only a slower run.
 """
 

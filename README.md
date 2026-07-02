@@ -1,5 +1,50 @@
 # ProvenanceRank
 
+## Logging in & testing the API
+
+The API creates an admin account automatically on first boot, so there's no
+separate sign-up step needed to get started.
+
+```bash
+# start the API (from the repo root)
+uvicorn api.main:app --port 8000
+# then open the interactive docs:  http://localhost:8000/docs
+```
+
+**Default admin (dev credentials):**
+
+- email: `admin@provenancerank.local`
+- password: `changeme-admin`
+
+Log in and test the JWT flow with curl:
+
+```bash
+# 1) log in -> get a JWT
+TOKEN=$(curl -s -X POST localhost:8000/auth/login \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"admin@provenancerank.local","password":"changeme-admin"}' \
+  | python3 -c "import sys,json;print(json.load(sys.stdin)['access_token'])")
+
+# 2) call an authenticated endpoint
+curl -s localhost:8000/auth/me -H "Authorization: Bearer $TOKEN"
+
+# 3) as admin, create another account (recruiter or admin)
+curl -s -X POST localhost:8000/auth/register -H "Authorization: Bearer $TOKEN" \
+  -H 'Content-Type: application/json' \
+  -d '{"email":"newuser@example.com","password":"newpass123","role":"recruiter"}'
+```
+
+Registration is admin-only by design, so the default admin above is how you get
+your first token; from there you can create more recruiter or admin accounts.
+Prefer the browser? Use the **Authorize** button in `/docs`, or the React UI
+(`cd frontend && npm install && npm run dev` -> http://localhost:5173).
+
+> Security note: `changeme-admin` and the default `JWT_SECRET` are dev defaults -
+> fine for local evaluation. Before any public deployment, set a strong
+> `JWT_SECRET` and override `BOOTSTRAP_ADMIN_EMAIL` / `BOOTSTRAP_ADMIN_PASSWORD`.
+
+---
+
 A candidate ranking engine for the Redrob "Intelligent Candidate Discovery &
 Ranking" challenge (Track 1). It reads the 100K-profile `candidates.jsonl`,
 scores every candidate against the Senior AI Engineer JD, and writes a top-100
@@ -7,7 +52,7 @@ scores every candidate against the Senior AI Engineer JD, and writes a top-100
 
 The whole thing is built around one hard constraint from the spec: **the step
 that produces the CSV gets no network, CPU only, ≤16 GB, ≤5 minutes.** So the
-work is split in two — a slow offline precompute that builds artifacts once, and
+work is split in two - a slow offline precompute that builds artifacts once, and
 a fast online ranker that only reads them.
 
 ```
@@ -23,7 +68,7 @@ pip install -r requirements.txt
 # 1. one-time, offline: features + embeddings + BM25 index + fit model
 python precompute.py --candidates ./candidates.jsonl --jd ./data/job_description.txt
 
-# 2. the graded step — reads artifacts only, no network
+# 2. the graded step - reads artifacts only, no network
 python rank.py --candidates ./candidates.jsonl --out ./submission.csv
 ```
 
@@ -40,7 +85,7 @@ gap between what the JD says and what it means."* The dataset backs that up with
 traps. So the scoring leans on a few opinions:
 
 - **Retrieval / IR / ranking experience is the signal.** Vector search, hybrid
-  search, embeddings, learning-to-rank, recommendation systems — named in the
+  search, embeddings, learning-to-rank, recommendation systems - named in the
   profile and, better, verified by on-platform assessment scores.
 - **A non-technical title with AI keywords is a trap, not a candidate.** An "HR
   Manager" with nine AI skills and no technical role ever is flagged as a
@@ -50,7 +95,7 @@ traps. So the scoring leans on a few opinions:
   JD calls out, and gets penalised.
 - **Behavioural signals decide reachability.** Someone perfect on paper who
   hasn't logged in for six months with a 5% recruiter response rate isn't
-  actually available — they get down-weighted, hard.
+  actually available - they get down-weighted, hard.
 - **Honeypots never make the top 100.** ~80 profiles have impossible career
   maths (8 years at a 3-year-old company, "expert" in 10 skills used 0 months).
   They're detected up front and pinned to score 0. Honeypot rate in the top 100
@@ -87,18 +132,18 @@ tests/        pytest suite (run: python -m pytest)
 CPU). If it isn't installed or can't be downloaded, the embedder falls back to a
 deterministic hashing embedder (numpy only) so the pipeline still runs fully
 offline. The backend used is recorded in `artifacts/embedding_meta.json` and
-`rank.py` rebuilds the same one to embed the JD query — no network either way.
+`rank.py` rebuilds the same one to embed the JD query - no network either way.
 
 **ML model.** `ml/trainer.py` uses whichever of XGBoost / LightGBM / sklearn is
 installed; if none are, `predict` falls back to the proxy formula directly.
 Nothing downstream changes.
 
-**Graceful degradation.** Missing model → formula. Missing embeddings → BM25
-only. Missing index → cosine only. The ranker always produces output.
+**Graceful degradation.** Missing model -> formula. Missing embeddings -> BM25
+only. Missing index -> cosine only. The ranker always produces output.
 
 **Two ways to run `rank.py`:** with precomputed artifacts it takes the fast path
 (read the feature matrix, re-run retrieval over the cached index). With no
-artifacts — e.g. a small sample uploaded to the sandbox — it computes everything
+artifacts - e.g. a small sample uploaded to the sandbox - it computes everything
 live for just those candidates. Same code produces the CSV both ways.
 
 ## Live signal ingestion layer (the differentiator)
@@ -113,19 +158,19 @@ the same skill claimed on a resume scores 0.2. Evidence beats assertions.
 
 ```
 ingestion/    GitHub GraphQL client, resume parser, Celery tasks (fan-out)
-intelligence/ confidence scorer, skill extractor, artifact summariser (Gemini→heuristic)
+intelligence/ confidence scorer, skill extractor, artifact summariser (Gemini->heuristic)
 graph/        Neo4j knowledge graph (Developer-[:HAS_SKILL]->Skill, [:PRODUCED]->Artifact)
-              + an in-memory backend + natural-language → Cypher query
+              + an in-memory backend + natural-language -> Cypher query
 ```
 
 How it works:
 1. `POST /developers/connect-github {github_username}` kicks off a background
    sync. A worker fetches commits/PRs/issues, summarises each into structured
-   evidence (what was done, skills, complexity 1–5, production signal), and
+   evidence (what was done, skills, complexity 1-5, production signal), and
    writes it to Postgres + the graph. Every artifact carries a **SHA-256
    content_hash** (cryptographic anchor + idempotency).
 2. Confidence accumulates per skill with recency decay (1-year half-life).
-3. `POST /search/natural-language {query}` — ask *"who debugged a race condition
+3. `POST /search/natural-language {query}` - ask *"who debugged a race condition
    in production"* and get developers back **with the exact commits/PRs that
    prove it**. Intent is parsed by Gemini (heuristic fallback) and routed to a
    graph traversal SQL can't express cleanly.
@@ -135,8 +180,8 @@ How it works:
 **This does not change the graded submission.** The bonus is 0 for any candidate
 without linked evidence, so `rank.py` produces exactly the same `submission.csv`.
 
-Everything degrades: **Gemini → heuristic summariser**, **spaCy → taxonomy NER**,
-**Neo4j → in-memory graph**, **Celery → eager inline tasks** — so it runs and
+Everything degrades: **Gemini -> heuristic summariser**, **spaCy -> taxonomy NER**,
+**Neo4j -> in-memory graph**, **Celery -> eager inline tasks** - so it runs and
 tests with no external services, and is production-real in Docker (the
 `worker-ingestion`, `worker-intelligence`, `beat`, and `neo4j` services).
 
@@ -148,7 +193,7 @@ tests with no external services, and is production-real in Docker (the
 | `rank.py` (fast path, full 100K) | ~2.3 s | ~1.3 GB |
 
 With `sentence-transformers` the embedding pass in precompute is the slow part
-(tens of minutes on CPU) — but that's offline and outside the 5-minute budget.
+(tens of minutes on CPU) - but that's offline and outside the 5-minute budget.
 The ranking step stays a few seconds either way.
 
 ## Tests

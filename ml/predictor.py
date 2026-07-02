@@ -1,6 +1,6 @@
 """Load the fit scorer and predict. Sub-second for 100K on CPU.
 
-If the model file is missing or won't load, we don't crash — we fall back to the
+If the model file is missing or won't load, we don't crash - we fall back to the
 proxy formula directly. Worst case the ranker is still a sensible scorer.
 """
 
